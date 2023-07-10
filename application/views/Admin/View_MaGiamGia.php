@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                    <h4 class="mb-0 font-size-18">Chuyên Mục</h4>
+                    <h4 class="mb-0 font-size-18">Mã Giảm Giá</h4>
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="<?php echo base_url('admin/'); ?>">Trang Chủ</a></li>
-                            <li class="breadcrumb-item active">Chuyên Mục</li>
+                            <li class="breadcrumb-item active">Mã Giảm Giá</li>
                         </ol>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Danh sách chuyên mục</h4>
+                    <h4 class="card-title">Danh sách mã giảm giá</h4>
                     <div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                         <div class="row">
                             <div class="col-sm-12">
@@ -28,15 +28,24 @@
                                     <table class="table mb-0">
                                         <thead>
                                             <tr>
-                                                <th tabindex="0" aria-controls="basic-datatable"
-                                                rowspan="1" colspan="1"
-                                                >Hình Ảnh</th>
 	                                            <th tabindex="0" aria-controls="basic-datatable" rowspan="1"
 	                                                colspan="1"
-	                                                >Tên Chuyên Mục</th>
+	                                                >Mã Sử Dụng</th>
+                                                <th tabindex="0" aria-controls="basic-datatable" rowspan="1"
+                                                    colspan="1"
+                                                    >Giá Trị</th>
 	                                            <th tabindex="0" aria-controls="basic-datatable" rowspan="1"
 	                                                colspan="1"
-	                                                >Đường Dẫn</th>
+	                                                >Ngày Tạo</th>
+                                                <th tabindex="0" aria-controls="basic-datatable" rowspan="1"
+                                                    colspan="1"
+                                                    >Ngày Hết Hạn</th>
+                                                <th tabindex="0" aria-controls="basic-datatable" rowspan="1"
+                                                    colspan="1"
+                                                    >Đã Dùng</th>
+                                                <th tabindex="0" aria-controls="basic-datatable" rowspan="1"
+                                                    colspan="1"
+                                                    >Tối Đa</th>
 	                                            <th style="text-align: center;" tabindex="0" aria-controls="basic-datatable" rowspan="1"
 	                                                colspan="1"
 	                                                >Cập Nhật
@@ -49,33 +58,22 @@
                                         </thead>
                                         <tbody>
                                             <?php foreach ($list as $key => $value): ?>
-                                    		<tr role="row" class="odd">
-	                                            <td style="white-space: unset;"><img style="image-rendering: optimizeQuality;" src="<?php echo $value['AnhChinh']; ?>" width="100" height="100"></td>
+                                                <?php if($value['TrangThai'] != 0){ ?>
+                                            		<tr role="row" class="odd">
+        	                                            <td style="font-weight: bold; color: #346ee0;"><?php echo $value['MaSuDung']; ?></td>
+                                                        <td><?php echo number_format($value['TriGia']); ?> đ</td>
+                                                        <td><?php echo $value['NgayTao']; ?></td>
+                                                        <td><?php echo $value['NgayHetHan']; ?></td>
+                                                        <td><?php echo $value['SoLanDung']; ?> lần</td>
+                                                        <td><?php echo $value['SoLuong']; ?> lần</td>
+        	                                            <td style="text-align: center;"><a href="<?php echo base_url('admin/ma-giam-gia/sua/'.$value['MaGiamGia'].'/') ?>"><i style="font-size: 18px; color: #393f4e;" class="bx bx-detail"></i></a> </td>
 
-	                                            <td style="white-space: unset;"><a style="font-weight: bold;" href="<?php echo base_url('admin/chuyen-muc/sua/'.$value['MaChuyenMuc'].'/') ?>"><?php echo $value['TenChuyenMuc']; ?></a></td>
-
-	                                            <td><?php echo $value['DuongDan']; ?></td>
-
-	                                            <td style="text-align: center;"><a href="<?php echo base_url('admin/chuyen-muc/sua/'.$value['MaChuyenMuc'].'/') ?>"><i style="font-size: 18px; color: #393f4e;" class="bx bx-detail"></i></a> </td>
-
-	                                            <td style="text-align: center;"><a href="<?php echo base_url('admin/chuyen-muc/them-thung-rac/'.$value['MaChuyenMuc'].'/'); ?>"><i style="font-size: 18px; color: #393f4e;" class="bx bx-trash-alt"></i></a></td>
-	                                        </tr>
+        	                                            <td style="text-align: center;"><a href="<?php echo base_url('admin/ma-giam-gia/them-thung-rac/'.$value['MaGiamGia'].'/'); ?>"><i style="font-size: 18px; color: #393f4e;" class="bx bx-trash-alt"></i></a></td>
+        	                                        </tr>
+                                                <?php } ?>
                                     	<?php endforeach ?>
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="dataTables_paginate paging_simple_numbers" id="basic-datatable_paginate">
-                                    <ul class="pagination pagination-rounded">
-                                        <?php for($i = 1; $i <= $totalPages; $i++){ ?>
-                                       		<li style="margin-right: 5px;" class="paginate_button page-item"><a href="<?php echo base_url('admin/chuyen-muc/trang/'.$i.'/') ?>"
-                                                class="page-link"><?php echo $i; ?></a></li>
-                                        <?php } ?>           
-                                    </ul>
                                 </div>
                             </div>
                         </div>

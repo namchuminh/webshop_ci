@@ -63,4 +63,15 @@ $route['admin/nha-cung-cap/thung-rac/xoa/(:any)'] = 'Admin/NhaCungCap/delete/$1'
 $route['admin/nha-cung-cap/thung-rac/xoa'] = 'Admin/NhaCungCap/deleteAll/$1';
 $route['admin/nha-cung-cap/lich-su/(:any)'] = 'Admin/NhaCungCap/history/$1';
 
-
+//Route admin sale code
+$route['admin/ma-giam-gia/them'] = 'Admin/MaGiamGia/Add';
+$route['admin/ma-giam-gia'] = 'Admin/MaGiamGia/index';
+$route['admin/ma-giam-gia/trang/(:any)'] = 'Admin/MaGiamGia/Page/$1';
+$route['admin/ma-giam-gia/sua/(:any)'] = 'Admin/MaGiamGia/Update/$1';
+$route['admin/ma-giam-gia/them-thung-rac/(:any)'] = 'Admin/MaGiamGia/remove/$1';
+$route['admin/ma-giam-gia/thung-rac'] = 'Admin/MaGiamGia/trash';
+$route['admin/ma-giam-gia/thung-rac/trang/(:any)'] = 'Admin/MaGiamGia/PageTrash/$1';
+$route['admin/ma-giam-gia/thung-rac/khoi-phuc/(:any)'] = 'Admin/MaGiamGia/reset/$1';
+$route['admin/ma-giam-gia/thung-rac/khoi-phuc'] = 'Admin/MaGiamGia/resetAll';
+$route['admin/ma-giam-gia/thung-rac/xoa/(:any)'] = 'Admin/MaGiamGia/delete/$1';
+$route['admin/ma-giam-gia/thung-rac/xoa'] = 'Admin/MaGiamGia/deleteAll/$1';

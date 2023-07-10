@@ -164,9 +164,9 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-barcode"></i><span>Mã Giảm Giá</span></a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="ui-butt21ons.html">Danh Sách</a></li>
-                                <li><a href="ui-car12ds.html">Thêm Mới</a></li>
-                                <li><a href="ui-car12ousel.html">Thùng Rác</a>
+                                <li><a href="<?php echo base_url('admin/ma-giam-gia/'); ?>">Danh Sách</a></li>
+                                <li><a href="<?php echo base_url('admin/ma-giam-gia/them/'); ?>">Thêm Mới</a></li>
+                                <li><a href="<?php echo base_url('admin/ma-giam-gia/thung-rac/'); ?>">Thùng Rác</a>
                             </ul>
                         </li>
 

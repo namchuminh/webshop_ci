@@ -126,9 +126,9 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bxs-news"></i><span>Tin Tức</span></a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="ui-butto46554ns.html">Danh Sách</a></li>
-                                <li><a href="ui-car4654ds.html">Thêm Mới</a></li>
-                                <li><a href="ui-caro4564usel.html">Thùng Rác</a>
+                                <li><a href="<?php echo base_url('admin/tin-tuc/'); ?>">Danh Sách</a></li>
+                                <li><a href="<?php echo base_url('admin/tin-tuc/them/'); ?>">Thêm Mới</a></li>
+                                <li><a href="<?php echo base_url('admin/tin-tuc/thung-rac/'); ?>">Thùng Rác</a>
                             </ul>
                         </li>
 

@@ -235,8 +235,8 @@
             }
         })
 
-        $('.thoat').click(function(){
-            $(".toast").removeClass("show")
+        $('.close').click(function(){
+            $(".toast").attr("style", "display: none;")
         })
     });
 </script>

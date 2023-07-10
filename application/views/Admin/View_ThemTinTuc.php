@@ -1,7 +1,7 @@
 <?php require(__DIR__.'/layouts/header.php'); ?>
 
 <?php if(isset($error) && !empty($error)){ ?>
-<div style="position: fixed; top: 72px; z-index: 100000; right: 11px; display: block; opacity: 1;" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true" data-toggle="toast">
+<div style="position: fixed; top: 72px; z-index: 100000; right: 11px;opacity: 1;" class="toast fade show">
     <div class="toast-header">
         <strong class="mr-auto">Thông Báo</strong>
         <small>Có Lỗi Khi Thêm</small>
@@ -16,7 +16,7 @@
 <?php } ?>
 
 <?php if(isset($success) && !empty($success)){ ?>
-<div style="position: fixed; top: 72px; z-index: 100000; right: 11px; display: block; opacity: 1;" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true" data-toggle="toast">
+<div style="position: fixed; top: 72px; z-index: 100000; right: 11px; opacity: 1;" class="toast">
     <div class="toast-header">
         <strong class="mr-auto">Thông Báo</strong>
         <small>Thành Công</small>
@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                    <h4 class="mb-0 font-size-18">Sản Phẩm</h4>
+                    <h4 class="mb-0 font-size-18">Tin Tức</h4>
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="<?php echo base_url('admin/'); ?>">Trang Chủ</a></li>
@@ -148,8 +148,8 @@
             }
         })
 
-        $('.thoat').click(function(){
-            $(".toast").removeClass("show")
+        $('.close').click(function(){
+            $(".toast").attr("style", "display: none;")
         })
     });
 </script>

@@ -1,7 +1,7 @@
 <?php require(__DIR__.'/layouts/header.php'); ?>
 
 <?php if(isset($error) && !empty($error)){ ?>
-<div style="position: fixed; top: 72px; z-index: 100000; right: 11px; display: block; opacity: 1;" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true" data-toggle="toast">
+<div style="position: fixed; top: 72px; z-index: 100000; right: 11px;opacity: 1;" class="toast fade show">
     <div class="toast-header">
         <strong class="mr-auto">Thông Báo</strong>
         <small>Có Lỗi Khi Thêm</small>
@@ -16,7 +16,7 @@
 <?php } ?>
 
 <?php if(isset($success) && !empty($success)){ ?>
-<div style="position: fixed; top: 72px; z-index: 100000; right: 11px; display: block; opacity: 1;" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true" data-toggle="toast">
+<div style="position: fixed; top: 72px; z-index: 100000; right: 11px; opacity: 1;" class="toast">
     <div class="toast-header">
         <strong class="mr-auto">Thông Báo</strong>
         <small>Thành Công</small>
@@ -35,12 +35,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                    <h4 class="mb-0 font-size-18">Sản Phẩm</h4>
+                    <h4 class="mb-0 font-size-18">Chuyên Mục</h4>
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="<?php echo base_url('admin/'); ?>">Trang Chủ</a></li>
-                            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/tin-tuc/'); ?>">Tin Tức</a></li>
-                            <li class="breadcrumb-item active">Thêm Tin Tức</li>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/chuyen-muc/'); ?>">Chuyên Mục</a></li>
+                            <li class="breadcrumb-item active">Sửa Chuyên Mục</li>
                         </ol>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Nhập nội dung tin tức</h4>
+                    <h4 class="card-title">Nhập thông tin chuyên mục</h4>
                     <div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                         <div class="row">
                             <div class="col-xl-12">
@@ -61,14 +61,14 @@
                                 <div class="card-body">
                                     <form method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label for="simpleinput">Tên Bài Viết</label>
-                                            <input type="text" id="simpleinput" class="form-control tensanpham" placeholder="Tên bài viết" required name="tenbaiviet" value="<?php echo $detail[0]['TieuDe']; ?>">
+                                            <label for="simpleinput">Tên Chuyên Mục</label>
+                                            <input type="text" id="simpleinput" class="form-control tensanpham" placeholder="Tên chuyên mục" required name="tenchuyenmuc" value="<?php echo $detail[0]['TenChuyenMuc']; ?>">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="duongdan">Đường Dẫn</label>
                                             <span id="taoduongdan" style="float: right; cursor: pointer; text-decoration: underline;">Tạo Tự Động</span>
-                                            <input type="text" id="duongdan" class="form-control" placeholder="Đường dẫn tin tức..." required name="duongdan" value="<?php echo $detail[0]['DuongDan']; ?>">
+                                            <input type="text" id="duongdan" class="form-control" placeholder="Đường dẫn chuyên mục.." required name="duongdan" value="<?php echo $detail[0]['DuongDan']; ?>">
                                         </div>
 
                                         <div class="form-group">
@@ -76,26 +76,13 @@
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" name="anhchinh" id="customFile" onchange="loadFile(event, 'anhchinhload')">
                                                 <label class="custom-file-label" for="customFile">Chọn Ảnh</label>
+                                                <label class="mx-1 mt-1" style="color: black; font-weight: normal;">*Kích thước ảnh có độ rộng lớn hơn 1000px và chiều cao lớn hơn 700px</label>
                                             </div>
-                                            <br>  
                                             <br> 
-                                            <img id="anhchinhload" src="<?php echo $detail[0]['AnhChinh']; ?>" style="width: 200px; height: 200px;">    
+                                            <img id="anhchinhload" src="<?php echo $detail[0]['AnhChinh']; ?>" style="width: 100%; height: 300px;">    
                                         </div>
 
-										<div class="form-group">
-										    <label for="simpleinput">Thẻ</label>
-										    <input type="text" id="simpleinput" class="form-control" placeholder="Thẻ cách bởi dấu phẩy..." required name="the" value="<?php echo $detail[0]['The']; ?>">
-										</div>
-
-
-                                        <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">Nội Dung</label>
-                                            <textarea required class="form-control" id="myTextarea" name="noidung">
-                                                <?php echo $detail[0]['NoiDung']; ?>
-                                            </textarea>
-                                        </div>
-
-                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Cập Nhật Tin</button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Cập Nhật Chuyên Mục</button>
                                     </form>
                                 </div>
                                 <!-- end card-body-->

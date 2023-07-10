@@ -10,6 +10,7 @@ class SanPham extends CI_Controller {
 		}
 		$data = array();
 		$this->load->model('Admin/Model_SanPham');
+		$this->load->model('Admin/Model_NhaCungCap');
 	}
 
 	public function index()
@@ -64,12 +65,13 @@ class SanPham extends CI_Controller {
 			$the = $this->input->post('the');
 			$duongdan = $this->input->post('duongdan');
 			$mausac = $this->input->post('colors');
+			$soluong = $this->input->post('soluong');
 			$anhchinh = "";
 			$anhphu1 = "";
 			$anhphu2 = "";
 			$anhphu3 = "";
 
-			if(empty($tensanpham) || empty($motangan) || empty($motadai) || empty($giagoc) || empty($giaban) || empty($chuyenmuc) || empty($duongdan) || empty($the)){
+			if(empty($tensanpham) || empty($motangan) || empty($motadai) || empty($giagoc) || empty($giaban) || empty($chuyenmuc) || empty($duongdan) || empty($the) || empty($soluong)){
 				$data['error'] = "Vui lòng nhập đủ thông tin sản phẩm!";
 				return $this->load->view('Admin/View_ThemSanPham', $data);
 			}
@@ -95,7 +97,7 @@ class SanPham extends CI_Controller {
 			}
 
 			//Add product
-			$masanpham = $this->Model_SanPham->addProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the, $duongdan);
+			$masanpham = $this->Model_SanPham->addProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the, $duongdan, $soluong);
 
 			//Add image
 			$config['upload_path'] = './uploads/';
@@ -157,13 +159,14 @@ class SanPham extends CI_Controller {
 			$chuyenmuc = $this->input->post('chuyenmuc');
 			$the = $this->input->post('the');
 			$duongdan = $this->input->post('duongdan');
+			$soluong = $this->input->post('soluong');
 			$mausac = $this->input->post('colors');
 			$anhchinh = "";
 			$anhphu1 = "";
 			$anhphu2 = "";
 			$anhphu3 = "";
 
-			if(empty($tensanpham) || empty($motangan) || empty($motadai) || empty($giagoc) || empty($giaban) || empty($chuyenmuc) || empty($duongdan) || empty($the)){
+			if(empty($tensanpham) || empty($motangan) || empty($motadai) || empty($giagoc) || empty($giaban) || empty($chuyenmuc) || empty($duongdan) || empty($the) || empty($soluong)){
 				$data['error'] = "Vui lòng nhập đủ thông tin sản phẩm!";
 				return $this->load->view('Admin/View_SuaSanPham', $data);
 			}
@@ -178,7 +181,7 @@ class SanPham extends CI_Controller {
 				return $this->load->view('Admin/View_SuaSanPham', $data);
 			}
 
-			$this->Model_SanPham->updateProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the, $duongdan, $MaSanPham);
+			$this->Model_SanPham->updateProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the, $duongdan, $soluong, $MaSanPham);
 
 			//Update image
 			$config['upload_path'] = './uploads/';
@@ -288,6 +291,55 @@ class SanPham extends CI_Controller {
 			$data['list'] = $this->Model_SanPham->getAllProductTrash($start);
 			return $this->load->view('Admin/View_ThungRacSanPham', $data);
 		}
+	}
+
+	public function Import($MaSanPham){
+		if(count($this->Model_SanPham->getProductById($MaSanPham)) == 0){
+			return redirect(base_url('admin/san-pham/'));
+		}
+
+		$data['provide'] = $this->Model_NhaCungCap->getAll();
+		$data['detail'] = $this->Model_SanPham->getProductById($MaSanPham);
+
+		$soluongcu = $this->Model_SanPham->getProductById($MaSanPham)[0]['SoLuong'];
+
+		if ($this->input->server('REQUEST_METHOD') === 'POST') {
+			$nhacungcap = $this->input->post('nhacungcap');
+			$soluong = $this->input->post('soluong');
+
+			if(empty($soluong) || $soluong == 0){
+				$data['error'] = "Vui lòng nhập số lượng sản phẩm!";
+				return $this->load->view('Admin/View_NhapSanPham', $data);
+			}
+
+			if($soluong < 1){
+				$data['error'] = "Số lượng sản phẩm phải lớn hơn hoặc bằng 1!";
+				return $this->load->view('Admin/View_NhapSanPham', $data);
+			}
+
+			$pattern = '/^-?\d+$/';
+			if(!preg_match($pattern, $soluong)){
+				$data['error'] = "Số lượng nhập không hợp lệ!";
+				return $this->load->view('Admin/View_NhapSanPham', $data);
+			}
+
+			$soluongmoi = $soluongcu + $soluong;
+
+			if(empty($nhacungcap) || !$nhacungcap){
+				$this->Model_SanPham->importProduct($MaSanPham,$soluongmoi);
+				$data['detail'] = $this->Model_SanPham->getProductById($MaSanPham);
+				$data['success'] = "Nhập số lượng sản phẩm vào kho thành công!";
+				return $this->load->view('Admin/View_NhapSanPham', $data);
+			}else{
+				$this->Model_SanPham->importProduct($MaSanPham,$soluongmoi);
+				$this->Model_SanPham->insertHistoryProvide($nhacungcap,$MaSanPham,$soluong,$soluongcu);
+				$data['detail'] = $this->Model_SanPham->getProductById($MaSanPham);
+				$data['success'] = "Nhập số lượng sản phẩm vào kho thành công!";
+				return $this->load->view('Admin/View_NhapSanPham', $data);
+			}
+		}
+
+		return $this->load->view('Admin/View_NhapSanPham', $data);
 	}
 }
 

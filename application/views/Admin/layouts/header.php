@@ -153,9 +153,9 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bxs-truck"></i><span>Nhà Cung Cấp</span></a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="ui-butt1ons.html">Danh Sách</a></li>
-                                <li><a href="ui-car1ds.html">Thêm Mới</a></li>
-                                <li><a href="ui-car1ousel.html">Thùng Rác</a>
+                                <li><a href="<?php echo base_url('admin/nha-cung-cap/'); ?>">Danh Sách</a></li>
+                                <li><a href="<?php echo base_url('admin/nha-cung-cap/them/'); ?>">Thêm Mới</a></li>
+                                <li><a href="<?php echo base_url('admin/nha-cung-cap/thung-rac/'); ?>">Thùng Rác</a>
                             </ul>
                         </li>
 

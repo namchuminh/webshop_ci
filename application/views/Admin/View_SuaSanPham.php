@@ -73,7 +73,12 @@
                                             	<?php echo $detail[0]['MoTaDai']; ?>
                                             </textarea>
                                         </div>
-                                                
+                                        
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Số Lượng</label>
+                                            <input required type="number" class="form-control" id="exampleFormControlInput1" min="1" placeholder="Nhập số lượng..." name="soluong" value="<?php echo $detail[0]['SoLuong'] ?>">
+                                        </div>
+
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Giá Gốc</label>
                                             <input required type="number" class="form-control" id="exampleFormControlInput1" min="1" value="<?php echo $detail[0]['GiaGoc']; ?>" name="giagoc">

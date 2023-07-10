@@ -33,7 +33,7 @@ class Model_SanPham extends CI_Model {
 		return $result->result_array();
 	}
 
-	public function addProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan){
+	public function addProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan, $soluong){
 		$data = array(
 	        "TenSanPham" => $tensanpham,
 	        "MoTaNgan" => $motangan,
@@ -42,7 +42,8 @@ class Model_SanPham extends CI_Model {
 	        "GiaBan" => $giaban,
 	        "MaChuyenMuc" => $chuyenmuc,
 	        "The" => $the,
-	        "DuongDan" => $duongdan
+	        "DuongDan" => $duongdan,
+	        "SoLuong" => $soluong
 	    );
 
 	    $this->db->insert('sanpham', $data);
@@ -63,9 +64,9 @@ class Model_SanPham extends CI_Model {
 		return $result;
 	}
 
-	public function updateProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan,$masanpham){
-		$sql = "UPDATE `sanpham` SET `TenSanPham`= ?,`MoTaNgan`= ?,`MoTaDai`= ?,`GiaGoc`= ?,`GiaBan`= ?,`MaChuyenMuc`= ?,`The`= ?,`DuongDan`= ? WHERE `MaSanPham`= ?";
-		$result = $this->db->query($sql,array($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan,$masanpham));
+	public function updateProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan, $soluong, $masanpham){
+		$sql = "UPDATE `sanpham` SET `TenSanPham`= ?,`MoTaNgan`= ?,`MoTaDai`= ?,`GiaGoc`= ?,`GiaBan`= ?,`MaChuyenMuc`= ?,`The`= ?,`DuongDan`= ?,`SoLuong`= ? WHERE `MaSanPham`= ?";
+		$result = $this->db->query($sql,array($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan,$soluong,$masanpham));
 		return $result;
 	}
 
@@ -124,7 +125,17 @@ class Model_SanPham extends CI_Model {
 		return $result;
 	}
 
+	public function importProduct($MaSanPham,$soluongmoi){
+		$sql = "UPDATE `sanpham` SET `SoLuong`= ? WHERE `MaSanPham`= ?";
+		$result = $this->db->query($sql, array($soluongmoi,$MaSanPham));
+		return $result;
+	}
 
+	public function insertHistoryProvide($MaNhaCungCap, $MaSanPham, $SoLuong, $SoLuongCu){
+		$sql = "INSERT INTO `lichsunhap`(`MaNhaCungCap`, `MaSanPham`, `SoLuong`, `SoLuongCu`) VALUES (?, ?, ?, ?)";
+		$result = $this->db->query($sql,array($MaNhaCungCap, $MaSanPham, $SoLuong, $SoLuongCu));
+		return $result;
+	}
 }
 
 /* End of file Model_SanPham.php */

@@ -49,10 +49,18 @@
 	                                                colspan="1"
 	                                                >Giá Bán
 	                                            </th>
+                                                <th tabindex="0" aria-controls="basic-datatable" rowspan="1"
+                                                    colspan="1"
+                                                    >Số Lượng
+                                                </th>
 	                                            <th tabindex="0" aria-controls="basic-datatable" rowspan="1"
 	                                                colspan="1"
 	                                                >Chuyên Mục
 	                                            </th>
+                                                <th style="text-align: center;" tabindex="0" aria-controls="basic-datatable" rowspan="1"
+                                                    colspan="1"
+                                                    >Nhập Hàng
+                                                </th>
 	                                            <th style="text-align: center;" tabindex="0" aria-controls="basic-datatable" rowspan="1"
 	                                                colspan="1"
 	                                                >Cập Nhật
@@ -68,9 +76,11 @@
                                     		<tr role="row" class="odd">
 	                                            <td style="white-space: unset; width: 100px"><img style="image-rendering: optimizeQuality;" src="<?php echo $value['duongdananh']; ?>" width="100" height="100"></td>
 	                                            <td style="white-space: unset; max-width: 150px"><a style="font-weight: bold;" href="<?php echo base_url('admin/san-pham/sua/'.$value['MaSanPham'].'/') ?>"><?php echo $value['TenSanPham']; ?></a></td>
-	                                            <td><?php echo number_format($value['GiaGoc']); ?>đ</td>
-	                                            <td><?php echo number_format($value['GiaBan']); ?>đ</td>
+	                                            <td><?php echo number_format($value['GiaGoc']); ?> đ</td>
+	                                            <td><?php echo number_format($value['GiaBan']); ?> đ</td>
+                                                <td><?php echo $value['SoLuong']; ?> sản phẩm</td>
 	                                            <td><?php echo $value['TenChuyenMuc']; ?></td>
+                                                <td style="text-align: center;"><a href="<?php echo base_url('admin/san-pham/nhap/'.$value['MaSanPham'].'/') ?>"><i style="font-size: 18px; color: #393f4e;" class="bx bx-add-to-queue"></i></a> </td>
 	                                            <td style="text-align: center;"><a href="<?php echo base_url('admin/san-pham/sua/'.$value['MaSanPham'].'/') ?>"><i style="font-size: 18px; color: #393f4e;" class="bx bx-detail"></i></a> </td>
 	                                            <td style="text-align: center;"><a href="<?php echo base_url('admin/san-pham/them-thung-rac/'.$value['MaSanPham'].'/'); ?>"><i style="font-size: 18px; color: #393f4e;" class="bx bx-trash-alt"></i></a></td>
 	                                        </tr>

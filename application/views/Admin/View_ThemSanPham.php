@@ -75,7 +75,12 @@
                                             <textarea required class="form-control" id="myTextarea" name="motadai">
                                             </textarea>
                                         </div>
-                                                
+                                        
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">Số Lượng</label>
+                                            <input required type="number" class="form-control" id="exampleFormControlInput1" min="1" placeholder="Nhập số lượng..." name="soluong">
+                                        </div>
+
                                         <div class="form-group">
                                             <label for="exampleFormControlInput1">Giá Gốc</label>
                                             <input required type="number" class="form-control" id="exampleFormControlInput1" min="1" placeholder="Nhập giá gốc..." name="giagoc">

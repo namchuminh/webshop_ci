@@ -104,3 +104,16 @@ $route['admin/khach-hang/mo-khoa/(:any)'] = 'Admin/KhachHang/unlock/$1';
 
 //Route admin config
 $route['admin/cau-hinh'] = 'Admin/CauHinh/index';
+
+//Route admin order
+$route['admin/don-hang'] = 'Admin/DonHang/index';
+$route['admin/don-hang/trang/(:any)'] = 'Admin/DonHang/Page/$1';
+$route['admin/don-hang/xem/(:any)'] = 'Admin/DonHang/View/$1';
+$route['admin/don-hang/them-thung-rac/(:any)'] = 'Admin/DonHang/remove/$1';
+$route['admin/don-hang/thung-rac'] = 'Admin/DonHang/trash';
+$route['admin/don-hang/thung-rac/trang/(:any)'] = 'Admin/DonHang/PageTrash/$1';
+$route['admin/don-hang/thung-rac/khoi-phuc/(:any)'] = 'Admin/DonHang/reset/$1';
+$route['admin/don-hang/thung-rac/khoi-phuc'] = 'Admin/DonHang/resetAll';
+$route['admin/don-hang/thung-rac/xoa/(:any)'] = 'Admin/DonHang/delete/$1';
+$route['admin/don-hang/thung-rac/xoa'] = 'Admin/DonHang/deleteAll/$1';
+$route['admin/don-hang/hanh-dong/(:any)/(:any)'] = 'Admin/DonHang/action/$1/$2';

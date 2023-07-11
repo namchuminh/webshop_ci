@@ -181,8 +181,8 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bxs-cart"></i><span>Đơn Hàng</span></a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="ui-butt21fons.html">Danh Sách</a></li>
-                                <li><a href="ui-car12aousel.html">Thùng Rác</a>
+                                <li><a href="<?php echo base_url('admin/don-hang/') ?>">Danh Sách</a></li>
+                                <li><a href="<?php echo base_url('admin/don-hang/thung-rac/') ?>">Thùng Rác</a>
                             </ul>
                         </li>
 

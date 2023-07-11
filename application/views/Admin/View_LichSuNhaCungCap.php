@@ -21,7 +21,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Lịch sử nhà cung cấp: <?php echo $detail[0]['TenNhaCungCap']; ?></h4>
+                    <h4 class="card-title">Lịch sử nhà cung cấp</h4>
                     <div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                         <div class="row">
                             <div class="col-sm-12">

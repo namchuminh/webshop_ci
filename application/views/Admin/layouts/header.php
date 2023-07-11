@@ -173,8 +173,8 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bxs-contact"></i><span>Liên Hệ</span></a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="ui-butt21foans.html">Danh Sách</a></li>
-                                <li><a href="ui-car12aoausel.html">Thùng Rác</a>
+                                <li><a href="<?php echo base_url('admin/lien-he/'); ?>">Danh Sách</a></li>
+                                <li><a href="<?php echo base_url('admin/lien-he/thung-rac/'); ?>">Thùng Rác</a>
                             </ul>
                         </li>
 

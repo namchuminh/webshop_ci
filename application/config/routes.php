@@ -75,3 +75,17 @@ $route['admin/ma-giam-gia/thung-rac/khoi-phuc/(:any)'] = 'Admin/MaGiamGia/reset/
 $route['admin/ma-giam-gia/thung-rac/khoi-phuc'] = 'Admin/MaGiamGia/resetAll';
 $route['admin/ma-giam-gia/thung-rac/xoa/(:any)'] = 'Admin/MaGiamGia/delete/$1';
 $route['admin/ma-giam-gia/thung-rac/xoa'] = 'Admin/MaGiamGia/deleteAll/$1';
+
+
+//Route admin contact
+$route['admin/lien-he'] = 'Admin/LienHe/index';
+$route['admin/lien-he/trang/(:any)'] = 'Admin/LienHe/Page/$1';
+$route['admin/lien-he/xem/(:any)'] = 'Admin/LienHe/View/$1';
+$route['admin/lien-he/them-thung-rac/(:any)'] = 'Admin/LienHe/remove/$1';
+$route['admin/lien-he/thung-rac'] = 'Admin/LienHe/trash';
+$route['admin/lien-he/thung-rac/trang/(:any)'] = 'Admin/LienHe/PageTrash/$1';
+$route['admin/lien-he/thung-rac/khoi-phuc/(:any)'] = 'Admin/LienHe/reset/$1';
+$route['admin/lien-he/thung-rac/khoi-phuc'] = 'Admin/LienHe/resetAll';
+$route['admin/lien-he/thung-rac/xoa/(:any)'] = 'Admin/LienHe/delete/$1';
+$route['admin/lien-he/thung-rac/xoa'] = 'Admin/LienHe/deleteAll/$1';
+

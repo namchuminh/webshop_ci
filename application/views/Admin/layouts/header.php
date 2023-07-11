@@ -189,8 +189,8 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bxs-user"></i><span>Khách Hàng</span></a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="ui-butt21aoens.html">Danh Sách</a></li>
-                                <li><a href="ui-car12ofeusel.html">Đang Cấm</a>
+                                <li><a href="<?php echo base_url('admin/khach-hang/'); ?>">Danh Sách</a></li>
+                                <li><a href="<?php echo base_url('admin/khach-hang/thung-rac/'); ?>">Đang Cấm</a>
                             </ul>
                         </li>
 
@@ -204,7 +204,7 @@
                         </li>
 
                         <li>
-                            <a href="javascript: void(0);" class="waves-effect"><i class="bx bx-cog"></i><span>Cấu Hình</span></a>
+                            <a href="<?php echo base_url('admin/cau-hinh/') ?>" class="waves-effect"><i class="bx bx-cog"></i><span>Cấu Hình</span></a>
                         </li>
 
                     </ul>

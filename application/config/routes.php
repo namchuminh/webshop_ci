@@ -89,3 +89,18 @@ $route['admin/lien-he/thung-rac/khoi-phuc'] = 'Admin/LienHe/resetAll';
 $route['admin/lien-he/thung-rac/xoa/(:any)'] = 'Admin/LienHe/delete/$1';
 $route['admin/lien-he/thung-rac/xoa'] = 'Admin/LienHe/deleteAll/$1';
 
+//Route admin customer
+$route['admin/khach-hang'] = 'Admin/KhachHang/index';
+$route['admin/khach-hang/trang/(:any)'] = 'Admin/KhachHang/Page/$1';
+$route['admin/khach-hang/xem/(:any)'] = 'Admin/KhachHang/View/$1';
+$route['admin/khach-hang/them-thung-rac/(:any)'] = 'Admin/KhachHang/remove/$1';
+$route['admin/khach-hang/thung-rac'] = 'Admin/KhachHang/trash';
+$route['admin/khach-hang/thung-rac/trang/(:any)'] = 'Admin/KhachHang/PageTrash/$1';
+$route['admin/khach-hang/thung-rac/khoi-phuc/(:any)'] = 'Admin/KhachHang/reset/$1';
+$route['admin/khach-hang/thung-rac/khoi-phuc'] = 'Admin/KhachHang/resetAll';
+$route['admin/khach-hang/thung-rac/xoa/(:any)'] = 'Admin/KhachHang/delete/$1';
+$route['admin/khach-hang/thung-rac/xoa'] = 'Admin/KhachHang/deleteAll/$1';
+$route['admin/khach-hang/mo-khoa/(:any)'] = 'Admin/KhachHang/unlock/$1';
+
+//Route admin config
+$route['admin/cau-hinh'] = 'Admin/CauHinh/index';

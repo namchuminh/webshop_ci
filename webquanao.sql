@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2023 at 06:17 AM
+-- Generation Time: Jul 12, 2023 at 06:53 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -45,7 +45,7 @@ CREATE TABLE `cauhinh` (
 --
 
 INSERT INTO `cauhinh` (`MaCauHinh`, `Email`, `SoDienThoai`, `DiaChi`, `TenWebsite`, `Logo`, `Facebook`, `Instagram`, `Tiktok`, `ThuongHieu`) VALUES
-(1, 'chuminhnam1@gmail.com', '09999998881', 'Hà Nội1', 'Website quần áo1', 'http://localhost/webquanao/uploads/sanpham51.jpg', '1', '1', '1', 'http://localhost/webquanao/uploads/logo11.png');
+(1, 'chuminhnam1@gmail.com', '09999998881', 'Hà Nội1', 'Website quần áo1', 'http://localhost/webquanao/uploads/sanpham51.jpg', '1', '1', '', 'http://localhost/webquanao/uploads/logo11.png');
 
 -- --------------------------------------------------------
 
@@ -134,8 +134,15 @@ CREATE TABLE `giaodien` (
 --
 
 INSERT INTO `giaodien` (`MaGiaoDien`, `MaChuyenMuc`, `TheLoai`, `HinhAnh`) VALUES
-(9, 18, 3, 'http://localhost/webquanao/uploads/sanpham65.png'),
-(10, NULL, 3, 'http://localhost/webquanao/uploads/sanpham65.png');
+(14, 19, 1, 'http://localhost/webquanao/uploads/hero-1.jpg'),
+(15, 18, 1, 'http://localhost/webquanao/uploads/hero-11.jpg'),
+(16, NULL, 1, 'http://localhost/webquanao/uploads/hero-12.jpg'),
+(17, 19, 2, 'http://localhost/webquanao/uploads/banner-14.jpg'),
+(18, NULL, 2, 'http://localhost/webquanao/uploads/banner-13.jpg'),
+(19, 19, 2, 'http://localhost/webquanao/uploads/banner-15.jpg'),
+(20, 18, 3, 'http://localhost/webquanao/uploads/banner-4.jpg'),
+(21, 19, 3, 'http://localhost/webquanao/uploads/banner-41.jpg'),
+(22, NULL, 3, 'http://localhost/webquanao/uploads/banner-16.jpg');
 
 -- --------------------------------------------------------
 
@@ -234,7 +241,127 @@ INSERT INTO `hinhanh` (`MaHinhAnh`, `MaSanPham`, `DuongDan`, `LoaiAnh`) VALUES
 (103, 51, 'http://localhost/webquanao/uploads/tintuc4.jpg', 1),
 (104, 51, 'http://localhost/webquanao/uploads/tintuc41.jpg', 2),
 (105, 51, 'http://localhost/webquanao/uploads/tintuc42.jpg', 3),
-(106, 51, 'http://localhost/webquanao/uploads/tintuc43.jpg', 4);
+(106, 51, 'http://localhost/webquanao/uploads/tintuc43.jpg', 4),
+(107, 52, 'http://localhost/webquanao/uploads/product-1.jpg', 1),
+(108, 52, 'http://localhost/webquanao/uploads/product-11.jpg', 2),
+(109, 52, 'http://localhost/webquanao/uploads/product-12.jpg', 3),
+(110, 52, 'http://localhost/webquanao/uploads/product-13.jpg', 4),
+(111, 53, 'http://localhost/webquanao/uploads/product-14.jpg', 1),
+(112, 53, 'http://localhost/webquanao/uploads/product-15.jpg', 2),
+(113, 53, 'http://localhost/webquanao/uploads/product-16.jpg', 3),
+(114, 53, 'http://localhost/webquanao/uploads/product-17.jpg', 4),
+(115, 54, 'http://localhost/webquanao/uploads/product-18.jpg', 1),
+(116, 54, 'http://localhost/webquanao/uploads/product-19.jpg', 2),
+(117, 54, 'http://localhost/webquanao/uploads/product-110.jpg', 3),
+(118, 54, 'http://localhost/webquanao/uploads/product-111.jpg', 4),
+(119, 55, 'http://localhost/webquanao/uploads/product-112.jpg', 1),
+(120, 55, 'http://localhost/webquanao/uploads/product-113.jpg', 2),
+(121, 55, 'http://localhost/webquanao/uploads/product-114.jpg', 3),
+(122, 55, 'http://localhost/webquanao/uploads/product-115.jpg', 4),
+(123, 56, 'http://localhost/webquanao/uploads/product-116.jpg', 1),
+(124, 56, 'http://localhost/webquanao/uploads/product-117.jpg', 2),
+(125, 56, 'http://localhost/webquanao/uploads/product-118.jpg', 3),
+(126, 56, 'http://localhost/webquanao/uploads/product-119.jpg', 4),
+(127, 57, 'http://localhost/webquanao/uploads/product-120.jpg', 1),
+(128, 57, 'http://localhost/webquanao/uploads/product-121.jpg', 2),
+(129, 57, 'http://localhost/webquanao/uploads/product-122.jpg', 3),
+(130, 57, 'http://localhost/webquanao/uploads/product-123.jpg', 4),
+(131, 58, 'http://localhost/webquanao/uploads/product-124.jpg', 1),
+(132, 58, 'http://localhost/webquanao/uploads/product-125.jpg', 2),
+(133, 58, 'http://localhost/webquanao/uploads/product-126.jpg', 3),
+(134, 58, 'http://localhost/webquanao/uploads/product-127.jpg', 4),
+(135, 59, 'http://localhost/webquanao/uploads/product-128.jpg', 1),
+(136, 59, 'http://localhost/webquanao/uploads/product-129.jpg', 2),
+(137, 59, 'http://localhost/webquanao/uploads/product-130.jpg', 3),
+(138, 59, 'http://localhost/webquanao/uploads/product-131.jpg', 4),
+(139, 60, 'http://localhost/webquanao/uploads/product-132.jpg', 1),
+(140, 60, 'http://localhost/webquanao/uploads/product-133.jpg', 2),
+(141, 60, 'http://localhost/webquanao/uploads/product-134.jpg', 3),
+(142, 60, 'http://localhost/webquanao/uploads/product-135.jpg', 4),
+(143, 61, 'http://localhost/webquanao/uploads/product-136.jpg', 1),
+(144, 61, 'http://localhost/webquanao/uploads/product-137.jpg', 2),
+(145, 61, 'http://localhost/webquanao/uploads/product-138.jpg', 3),
+(146, 61, 'http://localhost/webquanao/uploads/product-139.jpg', 4),
+(147, 62, 'http://localhost/webquanao/uploads/product-144.jpg', 1),
+(148, 62, 'http://localhost/webquanao/uploads/product-141.jpg', 2),
+(149, 62, 'http://localhost/webquanao/uploads/product-142.jpg', 3),
+(150, 62, 'http://localhost/webquanao/uploads/product-143.jpg', 4),
+(151, 63, 'http://localhost/webquanao/uploads/on-sale-1.jpg', 1),
+(152, 63, 'http://localhost/webquanao/uploads/on-sale-11.jpg', 2),
+(153, 63, 'http://localhost/webquanao/uploads/on-sale-12.jpg', 3),
+(154, 63, 'http://localhost/webquanao/uploads/on-sale-13.jpg', 4),
+(155, 64, 'http://localhost/webquanao/uploads/on-sale-14.jpg', 1),
+(156, 64, 'http://localhost/webquanao/uploads/on-sale-15.jpg', 2),
+(157, 64, 'http://localhost/webquanao/uploads/on-sale-16.jpg', 3),
+(158, 64, 'http://localhost/webquanao/uploads/on-sale-17.jpg', 4),
+(159, 65, 'http://localhost/webquanao/uploads/on-sale-18.jpg', 1),
+(160, 65, 'http://localhost/webquanao/uploads/on-sale-19.jpg', 2),
+(161, 65, 'http://localhost/webquanao/uploads/on-sale-110.jpg', 3),
+(162, 65, 'http://localhost/webquanao/uploads/on-sale-111.jpg', 4),
+(163, 66, 'http://localhost/webquanao/uploads/on-sale-112.jpg', 1),
+(164, 66, 'http://localhost/webquanao/uploads/on-sale-113.jpg', 2),
+(165, 66, 'http://localhost/webquanao/uploads/on-sale-114.jpg', 3),
+(166, 66, 'http://localhost/webquanao/uploads/on-sale-115.jpg', 4),
+(167, 67, 'http://localhost/webquanao/uploads/on-sale-116.jpg', 1),
+(168, 67, 'http://localhost/webquanao/uploads/on-sale-117.jpg', 2),
+(169, 67, 'http://localhost/webquanao/uploads/on-sale-118.jpg', 3),
+(170, 67, 'http://localhost/webquanao/uploads/on-sale-119.jpg', 4),
+(171, 68, 'http://localhost/webquanao/uploads/on-sale-120.jpg', 1),
+(172, 68, 'http://localhost/webquanao/uploads/on-sale-121.jpg', 2),
+(173, 68, 'http://localhost/webquanao/uploads/on-sale-122.jpg', 3),
+(174, 68, 'http://localhost/webquanao/uploads/on-sale-123.jpg', 4),
+(175, 69, 'http://localhost/webquanao/uploads/on-sale-124.jpg', 1),
+(176, 69, 'http://localhost/webquanao/uploads/on-sale-125.jpg', 2),
+(177, 69, 'http://localhost/webquanao/uploads/on-sale-126.jpg', 3),
+(178, 69, 'http://localhost/webquanao/uploads/on-sale-127.jpg', 4),
+(179, 70, 'http://localhost/webquanao/uploads/on-sale-128.jpg', 1),
+(180, 70, 'http://localhost/webquanao/uploads/on-sale-129.jpg', 2),
+(181, 70, 'http://localhost/webquanao/uploads/on-sale-130.jpg', 3),
+(182, 70, 'http://localhost/webquanao/uploads/on-sale-131.jpg', 4),
+(183, 71, 'http://localhost/webquanao/uploads/on-sale-132.jpg', 1),
+(184, 71, 'http://localhost/webquanao/uploads/on-sale-133.jpg', 2),
+(185, 71, 'http://localhost/webquanao/uploads/on-sale-134.jpg', 3),
+(186, 71, 'http://localhost/webquanao/uploads/on-sale-135.jpg', 4),
+(187, 72, 'http://localhost/webquanao/uploads/on-sale-140.jpg', 1),
+(188, 72, 'http://localhost/webquanao/uploads/on-sale-137.jpg', 2),
+(189, 72, 'http://localhost/webquanao/uploads/on-sale-138.jpg', 3),
+(190, 72, 'http://localhost/webquanao/uploads/on-sale-139.jpg', 4),
+(191, 73, 'http://localhost/webquanao/uploads/best-deal-2.jpg', 1),
+(192, 73, 'http://localhost/webquanao/uploads/best-deal-21.jpg', 2),
+(193, 73, 'http://localhost/webquanao/uploads/best-deal-22.jpg', 3),
+(194, 73, 'http://localhost/webquanao/uploads/best-deal-23.jpg', 4),
+(195, 74, 'http://localhost/webquanao/uploads/best-deal-24.jpg', 1),
+(196, 74, 'http://localhost/webquanao/uploads/best-deal-25.jpg', 2),
+(197, 74, 'http://localhost/webquanao/uploads/best-deal-26.jpg', 3),
+(198, 74, 'http://localhost/webquanao/uploads/best-deal-27.jpg', 4),
+(199, 75, 'http://localhost/webquanao/uploads/best-deal-28.jpg', 1),
+(200, 75, 'http://localhost/webquanao/uploads/best-deal-29.jpg', 2),
+(201, 75, 'http://localhost/webquanao/uploads/best-deal-210.jpg', 3),
+(202, 75, 'http://localhost/webquanao/uploads/best-deal-211.jpg', 4),
+(203, 76, 'http://localhost/webquanao/uploads/best-deal-212.jpg', 1),
+(204, 76, 'http://localhost/webquanao/uploads/best-deal-213.jpg', 2),
+(205, 76, 'http://localhost/webquanao/uploads/best-deal-214.jpg', 3),
+(206, 76, 'http://localhost/webquanao/uploads/best-deal-215.jpg', 4),
+(207, 77, 'http://localhost/webquanao/uploads/best-deal-216.jpg', 1),
+(208, 77, 'http://localhost/webquanao/uploads/best-deal-217.jpg', 2),
+(209, 77, 'http://localhost/webquanao/uploads/best-deal-218.jpg', 3),
+(210, 77, 'http://localhost/webquanao/uploads/best-deal-219.jpg', 4),
+(211, 78, 'http://localhost/webquanao/uploads/best-deal-220.jpg', 1),
+(212, 78, 'http://localhost/webquanao/uploads/best-deal-221.jpg', 2),
+(213, 78, 'http://localhost/webquanao/uploads/best-deal-222.jpg', 3),
+(214, 78, 'http://localhost/webquanao/uploads/best-deal-223.jpg', 4),
+(215, 79, 'http://localhost/webquanao/uploads/best-deal-224.jpg', 1),
+(216, 79, 'http://localhost/webquanao/uploads/best-deal-225.jpg', 2),
+(217, 79, 'http://localhost/webquanao/uploads/best-deal-226.jpg', 3),
+(218, 79, 'http://localhost/webquanao/uploads/best-deal-227.jpg', 4),
+(219, 80, 'http://localhost/webquanao/uploads/best-deal-228.jpg', 1),
+(220, 80, 'http://localhost/webquanao/uploads/best-deal-229.jpg', 2),
+(221, 80, 'http://localhost/webquanao/uploads/best-deal-230.jpg', 3),
+(222, 80, 'http://localhost/webquanao/uploads/best-deal-231.jpg', 4),
+(223, 81, 'http://localhost/webquanao/uploads/best-deal-236.jpg', 1),
+(224, 81, 'http://localhost/webquanao/uploads/best-deal-233.jpg', 2),
+(225, 81, 'http://localhost/webquanao/uploads/best-deal-234.jpg', 3),
+(226, 81, 'http://localhost/webquanao/uploads/best-deal-235.jpg', 4);
 
 -- --------------------------------------------------------
 
@@ -400,7 +527,93 @@ INSERT INTO `mausac` (`MaMauSac`, `MaSanPham`, `TenMauSac`, `MaHienThi`) VALUES
 (94, 50, 'white', 'white'),
 (99, 51, 'red', 'red'),
 (100, 51, 'white', 'white'),
-(101, 51, 'black', 'black');
+(101, 51, 'black', 'black'),
+(102, 52, 'yellow', 'yellow'),
+(103, 52, 'white', 'white'),
+(104, 52, 'black', 'black'),
+(105, 53, 'yellow', 'yellow'),
+(106, 53, 'white', 'white'),
+(107, 54, 'blue', 'blue'),
+(108, 54, 'red', 'red'),
+(109, 54, 'yellow', 'yellow'),
+(110, 55, 'blue', 'blue'),
+(111, 55, 'red', 'red'),
+(112, 55, 'yellow', 'yellow'),
+(113, 56, 'blue', 'blue'),
+(114, 56, 'red', 'red'),
+(115, 56, 'yellow', 'yellow'),
+(116, 57, 'blue', 'blue'),
+(117, 57, 'red', 'red'),
+(118, 57, 'yellow', 'yellow'),
+(119, 58, 'blue', 'blue'),
+(120, 58, 'red', 'red'),
+(121, 58, 'yellow', 'yellow'),
+(122, 59, 'blue', 'blue'),
+(123, 59, 'red', 'red'),
+(124, 59, 'yellow', 'yellow'),
+(125, 60, 'blue', 'blue'),
+(126, 60, 'red', 'red'),
+(127, 60, 'yellow', 'yellow'),
+(128, 61, 'blue', 'blue'),
+(129, 61, 'red', 'red'),
+(130, 61, 'yellow', 'yellow'),
+(131, 62, 'blue', 'blue'),
+(132, 62, 'red', 'red'),
+(133, 62, 'yellow', 'yellow'),
+(134, 63, 'yellow', 'yellow'),
+(135, 63, 'white', 'white'),
+(136, 64, 'yellow', 'yellow'),
+(137, 64, 'white', 'white'),
+(138, 65, 'yellow', 'yellow'),
+(139, 65, 'white', 'white'),
+(140, 66, 'red', 'red'),
+(141, 66, 'white', 'white'),
+(142, 66, 'black', 'black'),
+(143, 67, 'red', 'red'),
+(144, 67, 'white', 'white'),
+(145, 67, 'black', 'black'),
+(146, 68, 'red', 'red'),
+(147, 68, 'white', 'white'),
+(148, 68, 'black', 'black'),
+(149, 69, 'red', 'red'),
+(150, 69, 'white', 'white'),
+(151, 69, 'black', 'black'),
+(152, 70, 'red', 'red'),
+(153, 70, 'white', 'white'),
+(154, 70, 'black', 'black'),
+(155, 71, 'red', 'red'),
+(156, 71, 'white', 'white'),
+(157, 71, 'black', 'black'),
+(158, 72, 'red', 'red'),
+(159, 72, 'white', 'white'),
+(160, 72, 'black', 'black'),
+(161, 73, 'red', 'red'),
+(162, 73, 'yellow', 'yellow'),
+(163, 73, 'white', 'white'),
+(164, 74, 'red', 'red'),
+(165, 74, 'yellow', 'yellow'),
+(166, 74, 'white', 'white'),
+(167, 75, 'red', 'red'),
+(168, 75, 'yellow', 'yellow'),
+(169, 75, 'white', 'white'),
+(170, 76, 'red', 'red'),
+(171, 76, 'yellow', 'yellow'),
+(172, 76, 'white', 'white'),
+(173, 77, 'red', 'red'),
+(174, 77, 'yellow', 'yellow'),
+(175, 77, 'white', 'white'),
+(176, 78, 'red', 'red'),
+(177, 78, 'yellow', 'yellow'),
+(178, 78, 'white', 'white'),
+(179, 79, 'red', 'red'),
+(180, 79, 'yellow', 'yellow'),
+(181, 79, 'white', 'white'),
+(182, 80, 'red', 'red'),
+(183, 80, 'yellow', 'yellow'),
+(184, 80, 'white', 'white'),
+(185, 81, 'red', 'red'),
+(186, 81, 'yellow', 'yellow'),
+(187, 81, 'white', 'white');
 
 -- --------------------------------------------------------
 
@@ -466,15 +679,45 @@ CREATE TABLE `sanpham` (
   `The` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `DuongDan` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `TrangThai` int(11) NOT NULL DEFAULT 1,
-  `SoLuong` int(11) NOT NULL DEFAULT 0
+  `SoLuong` int(11) NOT NULL DEFAULT 0,
+  `LoaiSanPham` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sanpham`
 --
 
-INSERT INTO `sanpham` (`MaSanPham`, `TenSanPham`, `MoTaNgan`, `MoTaDai`, `GiaGoc`, `GiaBan`, `MaChuyenMuc`, `The`, `DuongDan`, `TrangThai`, `SoLuong`) VALUES
-(51, 'a', 'a', '<p>a</p>\r\n', 140000, 130000, 18, 'quần áo, nam nữ', 'a', 1, 105);
+INSERT INTO `sanpham` (`MaSanPham`, `TenSanPham`, `MoTaNgan`, `MoTaDai`, `GiaGoc`, `GiaBan`, `MaChuyenMuc`, `The`, `DuongDan`, `TrangThai`, `SoLuong`, `LoaiSanPham`) VALUES
+(52, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'Sản phẩm, quần áo', 'san-pham-mau-cho-cua-hang', 1, 1, 1),
+(53, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 1, 1),
+(54, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
+(55, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
+(56, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
+(57, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
+(58, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
+(59, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
+(60, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
+(61, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
+(62, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
+(63, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
+(64, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
+(65, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
+(66, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
+(67, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
+(68, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
+(69, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
+(70, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
+(71, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
+(72, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
+(73, 'Sản phẩm siêu giảm giá', 'Sản phẩm siêu giảm giá', '<p>Sản phẩm si&ecirc;u giảm gi&aacute;</p>\r\n', 150000, 140000, 18, 'nam, quan nam', 'san-pham-sieu-giam-gia', 1, 15, 2),
+(74, 'Sản phẩm siêu giảm giá', 'Sản phẩm siêu giảm giá', '<p>Sản phẩm si&ecirc;u giảm gi&aacute;</p>\r\n', 150000, 140000, 18, 'nam, quan nam', 'san-pham-sieu-giam-gia', 1, 15, 2),
+(75, 'Sản phẩm siêu giảm giá', 'Sản phẩm siêu giảm giá', '<p>Sản phẩm si&ecirc;u giảm gi&aacute;</p>\r\n', 150000, 140000, 18, 'nam, quan nam', 'san-pham-sieu-giam-gia', 1, 15, 2),
+(76, 'Sản phẩm siêu giảm giá', 'Sản phẩm siêu giảm giá', '<p>Sản phẩm si&ecirc;u giảm gi&aacute;</p>\r\n', 150000, 140000, 18, 'nam, quan nam', 'san-pham-sieu-giam-gia', 1, 15, 2),
+(77, 'Sản phẩm siêu giảm giá', 'Sản phẩm siêu giảm giá', '<p>Sản phẩm si&ecirc;u giảm gi&aacute;</p>\r\n', 150000, 140000, 18, 'nam, quan nam', 'san-pham-sieu-giam-gia', 1, 15, 2),
+(78, 'Sản phẩm siêu giảm giá', 'Sản phẩm siêu giảm giá', '<p>Sản phẩm si&ecirc;u giảm gi&aacute;</p>\r\n', 150000, 140000, 18, 'nam, quan nam', 'san-pham-sieu-giam-gia', 1, 15, 2),
+(79, 'Sản phẩm siêu giảm giá', 'Sản phẩm siêu giảm giá', '<p>Sản phẩm si&ecirc;u giảm gi&aacute;</p>\r\n', 150000, 140000, 18, 'nam, quan nam', 'san-pham-sieu-giam-gia', 1, 15, 2),
+(80, 'Sản phẩm siêu giảm giá', 'Sản phẩm siêu giảm giá', '<p>Sản phẩm si&ecirc;u giảm gi&aacute;</p>\r\n', 150000, 140000, 18, 'nam, quan nam', 'san-pham-sieu-giam-gia', 1, 15, 2),
+(81, 'Sản phẩm siêu giảm giá', 'Sản phẩm siêu giảm giá', '<p>Sản phẩm si&ecirc;u giảm gi&aacute;</p>\r\n', 150000, 140000, 18, 'nam, quan nam', 'san-pham-sieu-giam-gia', 1, 15, 2);
 
 -- --------------------------------------------------------
 
@@ -620,13 +863,13 @@ ALTER TABLE `donhang`
 -- AUTO_INCREMENT for table `giaodien`
 --
 ALTER TABLE `giaodien`
-  MODIFY `MaGiaoDien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `MaGiaoDien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `hinhanh`
 --
 ALTER TABLE `hinhanh`
-  MODIFY `MaHinhAnh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `MaHinhAnh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
 
 --
 -- AUTO_INCREMENT for table `khachhang`
@@ -656,7 +899,7 @@ ALTER TABLE `magiamgia`
 -- AUTO_INCREMENT for table `mausac`
 --
 ALTER TABLE `mausac`
-  MODIFY `MaMauSac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `MaMauSac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=188;
 
 --
 -- AUTO_INCREMENT for table `nhacungcap`
@@ -674,7 +917,7 @@ ALTER TABLE `nhanvien`
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `MaSanPham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `MaSanPham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `tintuc`

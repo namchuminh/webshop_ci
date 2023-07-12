@@ -90,6 +90,16 @@
                                             <label for="exampleFormControlInput1">Giá Bán</label>
                                             <input required type="number" class="form-control" id="exampleFormControlInput1" min="1" placeholder="Nhập giá bán..." name="giaban">
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Loại Sản Phẩm</label>
+                                            <select name="loaisanpham" required class="form-control" id="exampleFormControlSelect1">
+                                                <option value="3">Bình Thường</option>
+                                                <option value="1">Nổi Bật</option>
+                                                <option value="2">Siêu Giảm Giá</option>
+                                            </select>
+                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Chuyên Mục</label>
                                             <select required class="form-control" id="exampleFormControlSelect1" name="chuyenmuc">

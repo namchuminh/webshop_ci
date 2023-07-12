@@ -1,15 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class TrangChu extends CI_Controller {
+class TrangChu extends MY_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('Model_TrangChu');
+		$data = array();
 	}
 
 	public function index()
 	{
-		echo "This is my home!";
+		$data['title'] = "Cửa hàng mua sắm trực tuyến uy tín, giá rẻ!";
+		$data['slide'] = $this->Model_TrangChu->getSlides();
+		$data['banner1'] = $this->Model_TrangChu->getBanner1();
+		$data['banner2'] = $this->Model_TrangChu->getBanner2();
+		$data['popular'] = $this->Model_TrangChu->getPopular();
+		$data['new'] = $this->Model_TrangChu->getNew();
+		$data['sale'] = $this->Model_TrangChu->getSale();
+		return $this->load->view('View_TrangChu', $data);
 	}
 
 }

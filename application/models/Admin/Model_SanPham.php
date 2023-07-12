@@ -33,7 +33,7 @@ class Model_SanPham extends CI_Model {
 		return $result->result_array();
 	}
 
-	public function addProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan, $soluong){
+	public function addProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan,$soluong,$loaisanpham){
 		$data = array(
 	        "TenSanPham" => $tensanpham,
 	        "MoTaNgan" => $motangan,
@@ -43,7 +43,8 @@ class Model_SanPham extends CI_Model {
 	        "MaChuyenMuc" => $chuyenmuc,
 	        "The" => $the,
 	        "DuongDan" => $duongdan,
-	        "SoLuong" => $soluong
+	        "SoLuong" => $soluong,
+	        "LoaiSanPham" => $loaisanpham
 	    );
 
 	    $this->db->insert('sanpham', $data);
@@ -64,9 +65,9 @@ class Model_SanPham extends CI_Model {
 		return $result;
 	}
 
-	public function updateProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan, $soluong, $masanpham){
-		$sql = "UPDATE `sanpham` SET `TenSanPham`= ?,`MoTaNgan`= ?,`MoTaDai`= ?,`GiaGoc`= ?,`GiaBan`= ?,`MaChuyenMuc`= ?,`The`= ?,`DuongDan`= ?,`SoLuong`= ? WHERE `MaSanPham`= ?";
-		$result = $this->db->query($sql,array($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan,$soluong,$masanpham));
+	public function updateProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan, $soluong, $loaisanpham, $masanpham){
+		$sql = "UPDATE `sanpham` SET `TenSanPham`= ?,`MoTaNgan`= ?,`MoTaDai`= ?,`GiaGoc`= ?,`GiaBan`= ?,`MaChuyenMuc`= ?,`The`= ?,`DuongDan`= ?,`SoLuong`= ?, `LoaiSanPham` = ? WHERE `MaSanPham`= ?";
+		$result = $this->db->query($sql,array($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the,$duongdan,$soluong, $loaisanpham, $masanpham));
 		return $result;
 	}
 

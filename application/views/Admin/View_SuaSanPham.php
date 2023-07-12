@@ -88,6 +88,25 @@
                                             <label for="exampleFormControlInput1">Giá Bán</label>
                                             <input required type="number" class="form-control" id="exampleFormControlInput1" min="1" value="<?php echo $detail[0]['GiaBan']; ?>" name="giaban">
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Loại Sản Phẩm</label>
+                                            <select name="loaisanpham" required class="form-control" id="exampleFormControlSelect1">
+                                                <?php if($detail[0]['LoaiSanPham'] == 3){ ?>
+                                                    <option value="3" selected>Bình Thường</option>
+                                                    <option value="1">Nổi Bật</option>
+                                                    <option value="2">Siêu Giảm Giá</option>
+                                                <?php }else if($detail[0]['LoaiSanPham'] == 1){ ?>
+                                                    <option value="3">Bình Thường</option>
+                                                    <option value="1" selected>Nổi Bật</option>
+                                                    <option value="2">Siêu Giảm Giá</option>
+                                                <?php }else if($detail[0]['LoaiSanPham'] == 2){ ?>
+                                                    <option value="3">Bình Thường</option>
+                                                    <option value="1">Nổi Bật</option>
+                                                    <option value="2" selected>Siêu Giảm Giá</option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Chuyên Mục</label>
                                             <select name="chuyenmuc" required class="form-control" id="exampleFormControlSelect1">

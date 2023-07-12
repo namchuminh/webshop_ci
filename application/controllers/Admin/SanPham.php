@@ -66,12 +66,13 @@ class SanPham extends CI_Controller {
 			$duongdan = $this->input->post('duongdan');
 			$mausac = $this->input->post('colors');
 			$soluong = $this->input->post('soluong');
+			$loaisanpham = $this->input->post('loaisanpham');
 			$anhchinh = "";
 			$anhphu1 = "";
 			$anhphu2 = "";
 			$anhphu3 = "";
 
-			if(empty($tensanpham) || empty($motangan) || empty($motadai) || empty($giagoc) || empty($giaban) || empty($chuyenmuc) || empty($duongdan) || empty($the) || empty($soluong)){
+			if(empty($tensanpham) || empty($motangan) || empty($motadai) || empty($giagoc) || empty($giaban) || empty($chuyenmuc) || empty($duongdan) || empty($the) || empty($soluong) || empty($loaisanpham)){
 				$data['error'] = "Vui lòng nhập đủ thông tin sản phẩm!";
 				return $this->load->view('Admin/View_ThemSanPham', $data);
 			}
@@ -97,7 +98,7 @@ class SanPham extends CI_Controller {
 			}
 
 			//Add product
-			$masanpham = $this->Model_SanPham->addProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the, $duongdan, $soluong);
+			$masanpham = $this->Model_SanPham->addProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the, $duongdan, $soluong, $loaisanpham);
 
 			//Add image
 			$config['upload_path'] = './uploads/';
@@ -160,13 +161,14 @@ class SanPham extends CI_Controller {
 			$the = $this->input->post('the');
 			$duongdan = $this->input->post('duongdan');
 			$soluong = $this->input->post('soluong');
+			$loaisanpham = $this->input->post('loaisanpham');
 			$mausac = $this->input->post('colors');
 			$anhchinh = "";
 			$anhphu1 = "";
 			$anhphu2 = "";
 			$anhphu3 = "";
 
-			if(empty($tensanpham) || empty($motangan) || empty($motadai) || empty($giagoc) || empty($giaban) || empty($chuyenmuc) || empty($duongdan) || empty($the) || empty($soluong)){
+			if(empty($tensanpham) || empty($motangan) || empty($motadai) || empty($giagoc) || empty($giaban) || empty($chuyenmuc) || empty($duongdan) || empty($the) || empty($soluong) || empty($loaisanpham)){
 				$data['error'] = "Vui lòng nhập đủ thông tin sản phẩm!";
 				return $this->load->view('Admin/View_SuaSanPham', $data);
 			}
@@ -181,7 +183,7 @@ class SanPham extends CI_Controller {
 				return $this->load->view('Admin/View_SuaSanPham', $data);
 			}
 
-			$this->Model_SanPham->updateProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the, $duongdan, $soluong, $MaSanPham);
+			$this->Model_SanPham->updateProduct($tensanpham,$motangan,$motadai,$giagoc,$giaban,$chuyenmuc,$the, $duongdan, $soluong, $loaisanpham, $MaSanPham);
 
 			//Update image
 			$config['upload_path'] = './uploads/';

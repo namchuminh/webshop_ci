@@ -82,9 +82,9 @@
                     <div class="dropdown d-inline-block ml-2">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" src="<?php echo base_url('public/admin/'); ?>images/users/avatar-3.jpg"
+                            <img class="rounded-circle header-profile-user" src="<?php echo $_SESSION['anhchinh']; ?>"
                                 alt="Header Avatar">
-                            <span class="d-none d-sm-inline-block ml-1">Jamie D.</span>
+                            <span class="d-none d-sm-inline-block ml-1"><?php echo $_SESSION['hoten']; ?></span>
                             <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">

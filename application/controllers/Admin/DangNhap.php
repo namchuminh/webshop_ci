@@ -37,6 +37,8 @@ class DangNhap extends CI_Controller {
 					$newdata = array(
 					    'taikhoan'  => $taikhoan,
 					    'login' => True,
+					    'hoten' => $this->Model_DangNhap->getInfoByUsername($taikhoan)[0]['TenNhanVien'],
+					    'anhchinh' => $this->Model_DangNhap->getInfoByUsername($taikhoan)[0]['AnhChinh']
 					);
 					$this->session->set_userdata($newdata);
 					return redirect(base_url('admin/'));

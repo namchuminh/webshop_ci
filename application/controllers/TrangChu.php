@@ -18,6 +18,7 @@ class TrangChu extends MY_Controller {
 		$data['popular'] = $this->Model_TrangChu->getPopular();
 		$data['new'] = $this->Model_TrangChu->getNew();
 		$data['sale'] = $this->Model_TrangChu->getSale();
+		$data['news'] = $this->Model_TrangChu->getNews();
 		return $this->load->view('View_TrangChu', $data);
 	}
 

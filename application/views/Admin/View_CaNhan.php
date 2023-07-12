@@ -152,7 +152,7 @@
 
                                         <div class="form-group">
                                             <label for="simpleinput">Mật Khẩu</label>
-                                            <input type="text" id="simpleinput" class="form-control" placeholder="Nhập mật khẩu mới..." name="matkhau">
+                                            <input type="password" id="simpleinput" class="form-control" placeholder="Nhập mật khẩu mới..." name="matkhau">
                                         </div>
 
                                         <button type="submit" class="btn btn-primary waves-effect waves-light">Cập Nhật Thông Tin</button>

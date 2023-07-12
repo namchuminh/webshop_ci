@@ -433,61 +433,54 @@
 
                 </div>
 
-                <div class="col-xl-6 col-lg-7 col-12 mb-40">
-
-                    <div class="row">
-                        <div class="section-title text-start col mb-30">
-                            <h1>TIN TỨC MỚI</h1>
-                            <p>Bài viết mới trong cửa hàng được xuất bản gần đây</p>
-                        </div>
-                    </div>
-
-                    <div class="row mbn-40">
-
-                        <div class="col-12 mb-40">
-                            <div class="blog-item">
-                                <div class="image-wrap">
-                                    <h4 class="date">May <span>25</span></h4>
-                                    <a class="image" href="single-blog.html"><img src="<?php echo base_url('public/website/'); ?>images/blog/blog-1.jpg" alt="Image"></a>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="single-blog.html">Lates and new Trens for baby fashion</a></h4>
-                                    <div class="desc">
-                                        <p>Jadusona is one of the most of a exclusive Baby shop in the</p>
-                                    </div>
-                                    <ul class="meta">
-                                        <li><a href="#"><img src="<?php echo base_url('public/website/'); ?>images/blog/blog-author-1.jpg" alt="Blog Author">Muhin</a></li>
-                                        <li><a href="#">25 Likes</a></li>
-                                        <li><a href="#">05 Views</a></li>
-                                    </ul>
-                                </div>
+                <?php if(count($news) != 0){ ?>
+                    <div class="col-xl-6 col-lg-7 col-12 mb-40">
+                        <div class="row">
+                            <div class="section-title text-start col mb-30">
+                                <h1>TIN TỨC MỚI</h1>
+                                <p>Bài viết mới trong cửa hàng được xuất bản gần đây</p>
                             </div>
                         </div>
+                        <div class="row mbn-40">
+                            <?php foreach ($news as $key => $value): ?>
+                                <div class="col-12 mb-40">
+                                    <div class="blog-item">
+                                        <div class="image-wrap">
+                                            <h4 class="date">T-<?php echo explode('-',$value['NgayDang'])[1]; ?> <span><?php echo explode('-',$value['NgayDang'])[2]; ?></span></h4>
+                                            <a class="image" href="<?php echo base_url('tin-tuc/'.$value['DuongDan'].'/'); ?>">
+                                                <img style="width: 209px; height: 177px;" src="<?php echo $value['AnhChinh']; ?>" alt="Image">
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="title"><a href="<?php echo base_url('tin-tuc/'.$value['DuongDan'].'/'); ?>"><?php echo $value['TieuDe']; ?></a></h4>
+                                            <div class="desc">
 
-                        <div class="col-12 mb-40">
-                            <div class="blog-item">
-                                <div class="image-wrap">
-                                    <h4 class="date">May <span>20</span></h4>
-                                    <a class="image" href="single-blog.html"><img src="<?php echo base_url('public/website/'); ?>images/blog/blog-2.jpg" alt="Image"></a>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="single-blog.html">New Collection New Trend all New Style</a></h4>
-                                    <div class="desc">
-                                        <p>Jadusona is one of the most of a exclusive Baby shop in the</p>
+                                                <?php 
+                                                    $words = explode(' ', $value['NoiDung']);
+                                                    $first15Words = array_slice($words, 0, 15);
+                                                    $noidung = implode(' ', $first15Words);
+                                                 ?>
+
+                                                <p><?php echo $noidung; ?>...</p>
+                                            </div>
+                                            <ul class="meta">
+                                                <li>
+                                                    <a>
+                                                        <img style="width: 40px; height: 40px;" src="<?php echo $value['anhnhanvien']; ?>" alt="Blog Author">
+                                                        <?php echo $value['TenNhanVien']; ?>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <?php echo $value['NgayDang']; ?>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <ul class="meta">
-                                        <li><a href="#"><img src="<?php echo base_url('public/website/'); ?>images/blog/blog-author-2.jpg" alt="Blog Author">Takiya</a></li>
-                                        <li><a href="#">25 Likes</a></li>
-                                        <li><a href="#">05 Views</a></li>
-                                    </ul>
                                 </div>
-                            </div>
+                            <?php endforeach ?>
                         </div>
-
                     </div>
-
-                </div>
-
+                <?php } ?>
             </div>
         </div>
     </div>

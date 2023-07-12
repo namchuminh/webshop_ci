@@ -29,22 +29,29 @@ class Model_TrangChu extends CI_Model {
 	}
 
 	public function getPopular(){
-		$sql = "SELECT sanpham.*, hinhanh.LoaiAnh, hinhanh.MaSanPham, hinhanh.DuongDan AS duongdananh FROM sanpham,hinhanh WHERE hinhanh.MaSanPham = sanpham.MaSanPham AND LoaiSanPham = 1 AND hinhanh.LoaiAnh = 1 ORDER BY sanpham.MaSanPham DESC LIMIT 8;";
+		$sql = "SELECT sanpham.*, hinhanh.LoaiAnh, hinhanh.MaSanPham, hinhanh.DuongDan AS duongdananh FROM sanpham,hinhanh WHERE hinhanh.MaSanPham = sanpham.MaSanPham AND LoaiSanPham = 1 AND hinhanh.LoaiAnh = 1 AND sanpham.TrangThai != 0 ORDER BY sanpham.MaSanPham DESC LIMIT 8;";
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
 
 	public function getNew(){
-		$sql = "SELECT sanpham.*, hinhanh.LoaiAnh, hinhanh.MaSanPham, hinhanh.DuongDan AS duongdananh FROM sanpham,hinhanh WHERE hinhanh.MaSanPham = sanpham.MaSanPham AND LoaiSanPham = 3 AND hinhanh.LoaiAnh = 1 ORDER BY sanpham.MaSanPham DESC LIMIT 8;";
+		$sql = "SELECT sanpham.*, hinhanh.LoaiAnh, hinhanh.MaSanPham, hinhanh.DuongDan AS duongdananh FROM sanpham,hinhanh WHERE hinhanh.MaSanPham = sanpham.MaSanPham AND LoaiSanPham = 3 AND hinhanh.LoaiAnh = 1 AND sanpham.TrangThai != 0 ORDER BY sanpham.MaSanPham DESC LIMIT 8;";
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
 
 	public function getSale(){
-		$sql = "SELECT sanpham.*, hinhanh.LoaiAnh, hinhanh.MaSanPham, hinhanh.DuongDan AS duongdananh FROM sanpham,hinhanh WHERE hinhanh.MaSanPham = sanpham.MaSanPham AND LoaiSanPham = 2 AND hinhanh.LoaiAnh = 1 ORDER BY sanpham.MaSanPham DESC LIMIT 8;";
+		$sql = "SELECT sanpham.*, hinhanh.LoaiAnh, hinhanh.MaSanPham, hinhanh.DuongDan AS duongdananh FROM sanpham,hinhanh WHERE hinhanh.MaSanPham = sanpham.MaSanPham AND LoaiSanPham = 2 AND hinhanh.LoaiAnh = 1 AND sanpham.TrangThai != 0 ORDER BY sanpham.MaSanPham DESC LIMIT 8;";
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
+
+	public function getNews(){
+		$sql = "SELECT tintuc.*, nhanvien.TenNhanVien, nhanvien.MaNhanVien, nhanvien.AnhChinh AS anhnhanvien FROM tintuc,nhanvien WHERE tintuc.MaNhanVien = nhanvien.MaNhanVien AND tintuc.TrangThai != 0 ORDER BY tintuc.MaTinTuc DESC LIMIT 3";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
+
 }
 
 /* End of file Model_TrangChu.php */

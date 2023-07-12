@@ -47,6 +47,13 @@ class CaNhan extends CI_Controller {
 
 			$this->Model_CaNhan->update($tenhanvien,$sodienthoai,$email,$diachi,$taikhoan);
 
+			$newdata = array(
+			    'hoten' => $this->Model_CaNhan->getByUsername($taikhoan)[0]['TenNhanVien'],
+			    'anhchinh' => $this->Model_CaNhan->getByUsername($taikhoan)[0]['AnhChinh']
+			);
+
+			$this->session->set_userdata($newdata);
+
 			$data['success'] = "Cập nhật thông tin quản trị thành công!";
 			$data['detail'] = $this->Model_CaNhan->getByUsername($taikhoan);
 			return $this->load->view('Admin/View_CaNhan', $data);

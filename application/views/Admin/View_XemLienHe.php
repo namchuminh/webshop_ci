@@ -1,5 +1,10 @@
 <?php require(__DIR__.'/layouts/header.php'); ?>
-
+<style type="text/css">
+    .form-control:disabled, .form-control[readonly]{
+        background-color: white;
+        opacity: 1;
+    }
+</style>
 <div class="page-content">
     <div class="container-fluid">
         <div class="row">

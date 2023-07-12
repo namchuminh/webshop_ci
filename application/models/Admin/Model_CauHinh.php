@@ -22,6 +22,12 @@ class Model_CauHinh extends CI_Model {
 		return $result;
 	}
 
+	public function uploadBrand($ThuongHieu){
+		$sql = "UPDATE `cauhinh` SET `ThuongHieu`=? WHERE 1";
+		$result = $this->db->query($sql,array($ThuongHieu));
+		return $result;
+	}
+
 	public function updateNoImage($email,$sodienthoai,$diachi,$tenwebsite,$facebook,$instagram,$tiktok){
 		$sql = "UPDATE `cauhinh` SET `Email`=?,`SoDienThoai`=?,`DiaChi`=?,`TenWebsite`=?,`Facebook`=?,`Instagram`=?,`Tiktok`=? WHERE 1";
 		$result = $this->db->query($sql,array($email,$sodienthoai,$diachi,$tenwebsite,$facebook,$instagram,$tiktok));

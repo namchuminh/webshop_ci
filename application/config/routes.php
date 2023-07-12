@@ -117,3 +117,10 @@ $route['admin/don-hang/thung-rac/khoi-phuc'] = 'Admin/DonHang/resetAll';
 $route['admin/don-hang/thung-rac/xoa/(:any)'] = 'Admin/DonHang/delete/$1';
 $route['admin/don-hang/thung-rac/xoa'] = 'Admin/DonHang/deleteAll/$1';
 $route['admin/don-hang/hanh-dong/(:any)/(:any)'] = 'Admin/DonHang/action/$1/$2';
+
+//Route admin theme
+$route['admin/giao-dien'] = 'Admin/GiaoDien/index';
+$route['admin/giao-dien/them'] = 'Admin/GiaoDien/Add';
+$route['admin/giao-dien/trang/(:any)'] = 'Admin/GiaoDien/Page/$1';
+$route['admin/giao-dien/sua/(:any)'] = 'Admin/GiaoDien/Update/$1';
+$route['admin/giao-dien/xoa/(:any)'] = 'Admin/GiaoDien/delete/$1';

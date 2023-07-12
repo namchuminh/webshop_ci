@@ -25,6 +25,7 @@ class CauHinh extends CI_Controller {
 			$instagram = $this->input->post('instagram');
 			$tiktok = $this->input->post('tiktok');
 			$logo = "";
+			$thuonghieu = "";
 
 			if(empty($tenwebsite) || empty($sodienthoai) || empty($email) || empty($diachi)){
 				$data['error'] = "Tên website, số điện thoại, email, địa chỉ không được bỏ trống!";
@@ -36,6 +37,12 @@ class CauHinh extends CI_Controller {
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
 			$this->load->library('upload', $config);
+
+			if ($this->upload->do_upload('thuonghieu')){
+				$imagebranh = $this->upload->data();
+				$thuonghieu = base_url('uploads')."/".$imagebranh['file_name'];
+				$this->Model_CauHinh->uploadBrand($thuonghieu);
+			}
 
 			if ($this->upload->do_upload('logo')){
 				$imagelogo = $this->upload->data();

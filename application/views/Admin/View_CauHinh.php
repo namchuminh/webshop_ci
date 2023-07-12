@@ -95,6 +95,30 @@
                                                 <img id="anhchinhload" style="width: 100px; height: 100px;">
                                             </div>
                                         <?php } ?>
+
+                                        <?php if(!empty($detail[0]['ThuongHieu'])){ ?>
+                                            <div class="form-group">
+                                                <label>Thương Hiệu</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="thuonghieu" id="customFile" onchange="loadFile(event, 'thuonghieu')">
+                                                    <label class="custom-file-label" for="customFile">Chọn Ảnh</label>
+                                                    <label class="mx-1 mt-1" style="color: black; font-weight: normal;">*Kích thước 150x40</label>
+                                                </div>
+                                                <br> 
+                                                <img id="thuonghieu" src="<?php echo $detail[0]['ThuongHieu']; ?>" style="width: 150px; height: 40px;">
+                                            </div>
+                                        <?php }else{ ?>
+                                            <div class="form-group">
+                                                <label>Thương Hiệu</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="logo" id="customFile" onchange="loadFile(event, 'thuonghieu')">
+                                                    <label class="custom-file-label" for="customFile">Chọn Ảnh</label>
+                                                    <label class="mx-1 mt-1" style="color: black; font-weight: normal;">*Kích thước 150x40</label>
+                                                </div>
+                                                <br> 
+                                                <img id="thuonghieu" style="width: 150px; height: 40px;">
+                                            </div>
+                                        <?php } ?>
                                         
 
                                         <?php if(!empty($detail[0]['SoDienThoai'])){ ?>

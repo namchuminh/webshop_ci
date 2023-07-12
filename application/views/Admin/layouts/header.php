@@ -108,7 +108,7 @@
             <div data-simplebar class="h-100">
 
                 <div class="navbar-brand-box">
-                    <a href="index.html" class="logo">
+                    <a href="<?php echo base_url('admin/'); ?>" class="logo">
                         <img src="<?php echo base_url('public/admin/'); ?>images/logo-light.png" />
                     </a>
                 </div>
@@ -198,8 +198,8 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bxs-dashboard"></i><span>Giao Diện</span></a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="ui-butt21fons.html">Danh Sách</a></li>
-                                <li><a href="ui-buttgdf21fons.html">Thêm Mới</a></li>
+                                <li><a href="<?php echo base_url("admin/giao-dien/") ?>">Danh Sách</a></li>
+                                <li><a href="<?php echo base_url("admin/giao-dien/them/") ?>">Thêm Mới</a></li>
                             </ul>
                         </li>
 

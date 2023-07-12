@@ -9,6 +9,9 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['admin'] = 'Admin/TrangChu';
 $route['admin/dang-nhap'] = 'Admin/DangNhap';
+$route['admin/dang-xuat'] = 'Admin/DangXuat';
+$route['admin/ca-nhan'] = 'Admin/CaNhan';
+
 //Route admin product
 $route['admin/san-pham'] = 'Admin/SanPham';
 $route['admin/san-pham/trang/(:any)'] = 'Admin/SanPham/Page/$1';

@@ -89,11 +89,11 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item d-flex align-items-center justify-content-between"
-                                href="javascript:void(0)">
+                                href="<?php echo base_url('admin/ca-nhan/') ?>">
                                 Cá Nhân
                             </a>
                             <a class="dropdown-item d-flex align-items-center justify-content-between"
-                                href="javascript:void(0)">
+                                href="<?php echo base_url('admin/dang-xuat/') ?>">
                                 <span>Đăng Xuất</span>
                             </a>
                         </div>

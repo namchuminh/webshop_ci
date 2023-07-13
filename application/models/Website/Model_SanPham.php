@@ -53,6 +53,18 @@ class Model_SanPham extends CI_Model {
 		return $result->num_rows();
 	}
 
+	public function getBySlug($DuongDan){
+		$sql = "SELECT sanpham.*, hinhanh.DuongDan AS duongdananh, hinhanh.LoaiAnh, chuyenmuc.TenChuyenMuc FROM sanpham LEFT JOIN hinhanh ON sanpham.MaSanPham = hinhanh.MaSanPham INNER JOIN chuyenmuc ON sanpham.MaChuyenMuc = chuyenmuc.MaChuyenMuc WHERE sanpham.TrangThai != 0 AND sanpham.DuongDan = ?";
+		$result = $this->db->query($sql, array($DuongDan));
+		return $result->result_array();
+	}
+
+	public function getRelated($machuyenmuc){
+		$sql = "SELECT sanpham.*, hinhanh.LoaiAnh, hinhanh.MaSanPham, hinhanh.DuongDan AS duongdananh FROM sanpham,hinhanh WHERE hinhanh.MaSanPham = sanpham.MaSanPham AND hinhanh.LoaiAnh = 1 AND sanpham.TrangThai != 0 AND sanpham.MaChuyenMuc = ? ORDER BY RAND() LIMIT 10";
+		$result = $this->db->query($sql, array($machuyenmuc));
+		return $result->result_array();
+	}
+
 }
 
 /* End of file Model_SanPham.php */

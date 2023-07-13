@@ -197,6 +197,23 @@ class SanPham extends MY_Controller {
 		}
 
 	}
+
+	public function Detail($DuongDan){
+
+		if(count($this->Model_SanPham->getBySlug($DuongDan)) == 0){
+			return redirect(base_url('san-pham'));
+		}
+
+		$machuyenmuc = $this->Model_SanPham->getBySlug($DuongDan)[0]['MaChuyenMuc'];
+
+		$data['related'] = $this->Model_SanPham->getRelated($machuyenmuc);
+		$data['detail'] = $this->Model_SanPham->getBySlug($DuongDan);
+		$data['popular'] = $this->Model_TrangChu->getPopular();
+		$data['category'] = $this->Model_SanPham->getCategory();
+		$data['list'] = $this->Model_SanPham->getAll();
+		$data['title'] = $this->Model_SanPham->getBySlug($DuongDan)[0]['TenSanPham'];
+		return $this->load->view('Website/View_ChiTietSanPham', $data);
+	}
 }
 
 /* End of file SanPham.php */

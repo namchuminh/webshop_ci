@@ -11,6 +11,7 @@ $route['san-pham'] = 'Website/SanPham/index';
 $route['san-pham/trang/(:any)'] = 'Website/SanPham/Page/$1';
 $route['san-pham/mau/(:any)'] = 'Website/SanPham/Color/$1';
 $route['san-pham/mau/(:any)/trang/(:any)'] = 'Website/SanPham/PageColor/$1/$2';
+$route['san-pham/(:any)'] = 'Website/SanPham/Detail/$1';
 $route['tim-kiem'] = 'Website/SanPham/Search';
 $route['tim-kiem/trang/(:any)'] = 'Website/SanPham/PageSearch/$1';
 

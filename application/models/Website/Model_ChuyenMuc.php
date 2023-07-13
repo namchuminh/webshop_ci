@@ -17,7 +17,7 @@ class Model_ChuyenMuc extends CI_Model {
 	}
 
 	public function getAllCategory($start = 0, $end = 8){
-		$sql = "SELECT COUNT(sp.MaSanPham) AS soLuongSanPham, cm.tenChuyenMuc, cm.DuongDan, cm.AnhChinh FROM sanpham sp JOIN chuyenmuc cm ON sp.maChuyenMuc = cm.maChuyenMuc WHERE cm.TrangThai != 0 GROUP BY cm.maChuyenMuc, cm.tenChuyenMuc LIMIT ?, ?";
+		$sql = "SELECT COUNT(sp.MaSanPham) AS soLuongSanPham, cm.tenChuyenMuc, cm.DuongDan, cm.AnhChinh FROM sanpham sp JOIN chuyenmuc cm ON sp.maChuyenMuc = cm.maChuyenMuc WHERE cm.TrangThai != 0 GROUP BY cm.maChuyenMuc, cm.tenChuyenMuc ORDER BY cm.MaChuyenMuc DESC LIMIT ?, ?";
 		$result = $this->db->query($sql, array($start, $end));
 		return $result->result_array();
 	}
@@ -30,7 +30,7 @@ class Model_ChuyenMuc extends CI_Model {
 	}
 
 	public function getAllProduct($MaChuyenMuc, $start = 0, $end = 12){
-		$sql = "SELECT chuyenmuc.MaChuyenMuc, sanpham.*, hinhanh.MaSanPham, hinhanh.LoaiAnh, hinhanh.DuongDan AS duongdananh FROM chuyenmuc, sanpham, hinhanh WHERE sanpham.MaChuyenMuc = chuyenmuc.MaChuyenMuc AND sanpham.MaSanPham = hinhanh.MaSanPham AND hinhanh.LoaiAnh = 1 AND chuyenmuc.MaChuyenMuc = ? LIMIT ?, ?";
+		$sql = "SELECT chuyenmuc.MaChuyenMuc, sanpham.*, hinhanh.MaSanPham, hinhanh.LoaiAnh, hinhanh.DuongDan AS duongdananh FROM chuyenmuc, sanpham, hinhanh WHERE sanpham.MaChuyenMuc = chuyenmuc.MaChuyenMuc AND sanpham.MaSanPham = hinhanh.MaSanPham AND hinhanh.LoaiAnh = 1 AND chuyenmuc.MaChuyenMuc = ? ORDER BY sanpham.MaSanPham DESC LIMIT ?, ?";
 		$result = $this->db->query($sql, array($MaChuyenMuc, $start, $end));
 		return $result->result_array();
 	}

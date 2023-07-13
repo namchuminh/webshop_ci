@@ -15,6 +15,12 @@ class Model_Website extends CI_Model {
         return $data;
 	}
 
+	public function checkActiveCustomer($taikhoan){
+		$sql = "SELECT * FROM khachhang WHERE TaiKhoan = ? AND TrangThai = 0";
+		$result = $this->db->query($sql,array($taikhoan));
+		return $result->num_rows();
+	}
+
 }
 
 /* End of file Model_Website.php */

@@ -52,10 +52,15 @@
                     </div>
 
                     <div class="col mt-10 mb-10">
-                        <!-- Header Shop Links Start -->
-                        <div class="header-top-right">
-                            <p><a href="login-register.html">ĐĂNG NHẬP</a><a href="login-register.html">ĐĂNG KÝ</a></p>
-                        </div><!-- Header Shop Links End -->
+                        <?php if(isset($_SESSION['khachhang'])){ ?>
+                            <div class="header-top-right">
+                                <p><a href="<?php echo base_url('khach-hang/'); ?>"><?php echo ucwords($_SESSION['TenKhachHang']); ?></a><a href="<?php echo base_url('dang-xuat/'); ?>">Đăng Xuất</a></p>
+                            </div>
+                        <?php }else{ ?>
+                            <div class="header-top-right">
+                                <p><a href="<?php echo base_url('dang-nhap/'); ?>">Đăng Nhập</a><a href="<?php echo base_url('dang-ky/'); ?>">Đăng Ký</a></p>
+                            </div>
+                        <?php } ?>
                     </div>
 
                 </div>

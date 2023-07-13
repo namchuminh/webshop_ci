@@ -14,12 +14,18 @@ $route['san-pham/mau/(:any)/trang/(:any)'] = 'Website/SanPham/PageColor/$1/$2';
 $route['tim-kiem'] = 'Website/SanPham/Search';
 $route['tim-kiem/trang/(:any)'] = 'Website/SanPham/PageSearch/$1';
 
+//Route news
 $route['tin-tuc'] = 'Website/TinTuc/index';
 $route['tin-tuc/trang/(:any)'] = 'Website/TinTuc/Page/$1';
 $route['tin-tuc/(:any)'] = 'Website/TinTuc/Detail/$1';
 
+//Route contact
 $route['lien-he'] = 'Website/LienHe/index';
 
+//Route login
+$route['dang-nhap'] = 'Website/DangNhap/Login';
+$route['dang-xuat'] = 'Website/DangXuat';
+$route['dang-ky'] = 'Website/DangNhap/Register';
 
 $route['chuyen-muc'] = 'Website/ChuyenMuc/index';
 $route['chuyen-muc/trang/(:any)'] = 'Website/ChuyenMuc/Page/$1';

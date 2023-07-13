@@ -16,7 +16,7 @@ class Model_DangNhap extends CI_Model {
 	}
 
 	public function checkAccountAdminStatus($taikhoan, $matkhau){
-		$sql = "SELECT * FROM nhanvien WHERE TaiKhoan = ? AND MatKhau = ? AND TrangThai = -1";
+		$sql = "SELECT * FROM nhanvien WHERE TaiKhoan = ? AND MatKhau = ? AND TrangThai = 0";
 		$result = $this->db->query($sql, array($taikhoan, $matkhau));
 		return $result->num_rows();
 	}

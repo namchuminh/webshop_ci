@@ -70,7 +70,7 @@
                     <div class="col mt-15 mb-15">
                         <!-- Logo Start -->
                         <div class="header-logo">
-                            <a href="index.html">
+                            <a href="<?php echo base_url(); ?>">
                                 <img src="<?php echo $config[0]['ThuongHieu']; ?>" alt="Jadusona">
                             </a>
                         </div><!-- Logo End -->

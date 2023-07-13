@@ -6,6 +6,14 @@ $route['default_controller'] = 'TrangChu';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+//Route product
+$route['san-pham'] = 'Website/SanPham/index';
+$route['san-pham/trang/(:any)'] = 'Website/SanPham/Page/$1';
+$route['san-pham/mau/(:any)'] = 'Website/SanPham/Color/$1';
+$route['san-pham/mau/(:any)/trang/(:any)'] = 'Website/SanPham/PageColor/$1/$2';
+$route['tim-kiem'] = 'Website/SanPham/Search';
+$route['tim-kiem/trang/(:any)'] = 'Website/SanPham/PageSearch/$1';
+
 
 $route['admin'] = 'Admin/TrangChu';
 $route['admin/dang-nhap'] = 'Admin/DangNhap';
@@ -127,3 +135,5 @@ $route['admin/giao-dien/them'] = 'Admin/GiaoDien/Add';
 $route['admin/giao-dien/trang/(:any)'] = 'Admin/GiaoDien/Page/$1';
 $route['admin/giao-dien/sua/(:any)'] = 'Admin/GiaoDien/Update/$1';
 $route['admin/giao-dien/xoa/(:any)'] = 'Admin/GiaoDien/delete/$1';
+
+

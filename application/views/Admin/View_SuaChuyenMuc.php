@@ -76,10 +76,10 @@
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" name="anhchinh" id="customFile" onchange="loadFile(event, 'anhchinhload')">
                                                 <label class="custom-file-label" for="customFile">Chọn Ảnh</label>
-                                                <label class="mx-1 mt-1" style="color: black; font-weight: normal;">*Kích thước ảnh có độ rộng lớn hơn 1000px và chiều cao lớn hơn 700px</label>
+                                                <label class="mx-1 mt-1" style="color: black; font-weight: normal;">*Kích thước ảnh 270x320</label>
                                             </div>
                                             <br> 
-                                            <img id="anhchinhload" src="<?php echo $detail[0]['AnhChinh']; ?>" style="width: 100%; height: 300px;">    
+                                            <img id="anhchinhload" src="<?php echo $detail[0]['AnhChinh']; ?>" style="width: 270px; height: 320px;">    
                                         </div>
 
                                         <button type="submit" class="btn btn-primary waves-effect waves-light">Cập Nhật Chuyên Mục</button>

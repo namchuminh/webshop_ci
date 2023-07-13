@@ -111,14 +111,6 @@
                                     	<a href="<?php echo base_url('san-pham/'); ?>">SẢN PHẨM</a>
                                     </li>
                                     <li><a href="<?php echo base_url('chuyen-muc/'); ?>">CHUYÊN MỤC</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="cart.html">Cart</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                            <li><a href="login-register.html">Login & Register</a></li>
-                                            <li><a href="my-account.html">My Account</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                            <li><a href="404.html">404 Error</a></li>
-                                        </ul>
                                     </li>
                                     <li>
                                     	<a href="<?php echo base_url('tin-tuc/'); ?>">TIN TỨC</a>

@@ -38,7 +38,7 @@
                                 <tbody>
                                     <?php if(isset($_SESSION['cart'])){ ?>
                                         <?php foreach ($list as $key => $value): ?>
-                                            <tr>
+                                            <tr class="product-<?php echo $value['id'];?>">
                                                 <td class="pro-thumbnail">
                                                     <a style="font-family: system-ui;">
                                                         <img style="width: 100px; height: 100px;" src="<?php echo $value['image']; ?>" alt="">
@@ -94,6 +94,9 @@
                                     <?php } ?>
                                 </tbody>
                             </table>
+                            <?php if(!isset($_SESSION['cart'])){ ?>
+                                <p class="text-center mt-30">Không Có Sản Phẩm Nào Trong Giỏ Hàng!</p>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-7 col-12 mb-40">
@@ -103,7 +106,7 @@
                         <?php if(isset($_SESSION['sumCart']) && $_SESSION['sumCart'] != 0){ ?>
                             <div class="cart-coupon">
                                 <h4>Mã Giảm Giá</h4>
-                                <p style="font-family: system-ui;">Nhập mã giảm giá nếu có.</p>
+                                <p class="coupon-info" style="font-family: system-ui;">Nhập mã giảm giá nếu có.</p>
                                  <div class="cuppon-form">
                                     <input type="text" class="code_input" placeholder="Mã giảm giá...">
                                     <input class="sale-code" type="submit" value="Áp Dụng">
@@ -119,7 +122,17 @@
                                     <tbody>
                                         <tr class="cart-subtotal">
                                             <th style="text-transform: unset;">Tổng đơn</th>
-                                            <td><span class="amount"><?php echo number_format($_SESSION['sumCart']); ?>đ</span></td>
+                                            <td>
+                                                <span class="amount">
+                                                    <?php
+                                                        if(isset($_SESSION['saleCode'])){
+                                                            echo number_format($_SESSION['sumCart'] + $_SESSION['saleCode']);
+                                                        }else{
+                                                            echo number_format($_SESSION['sumCart']);
+                                                        } 
+                                                    ?>đ
+                                                </span>
+                                            </td>
                                         </tr>
                                         <tr class="cart-subtotal">
                                             <th style="text-transform: unset;">Mã giảm giá</th>
@@ -127,13 +140,13 @@
                                                 <?php if(isset($_SESSION['saleCode'])){ ?>
                                                     - <?php echo number_format($_SESSION['saleCode']); ?>đ
                                                 <?php }else{ ?>
-                                                    - <?php echo '0đ'; ?>
+                                                    <?php echo '0đ'; ?>
                                                 <?php } ?>
                                             </span></td>
                                         </tr>
                                         <tr class="cart-subtotal">
                                             <th style="text-transform: unset;">Phí vận chuyển</th>
-                                            <td><span class="amount">- 0đ</span></td>
+                                            <td><span class="amount">0đ</span></td>
                                         </tr>
                                         <tr class="order-total">
                                             <th style="text-transform: unset;">Tổng Tiền</th>
@@ -144,7 +157,8 @@
                                     </tbody>
                                 </table>
                                 <div class="proceed-to-checkout section mt-30">
-                                    <a href="#" style="font-family: system-ui;">Xử Lý Thanh Toán</a>
+                                    <p class="error-pay" style="font-family: system-ui;"></p>
+                                    <a class="check-pay" style="font-family: system-ui;">Xử Lý Thanh Toán</a>
                                 </div>
                             </div>
                         </div>
@@ -195,7 +209,17 @@
                 if(data == true){
                     location.reload()
                 }else{
-                    alert(data)
+                    $('.coupon-info').html(data)
+                }
+            });
+        })
+
+        $('.check-pay').click(function(e){
+            $.get($('.url_suagiohang').val() + 'thanh-toan' + '/', function(data){
+                if(data != true){
+                    $('.error-pay').html(data)
+                }else{
+                    window.location.href = '<?php echo base_url('thanh-toan/'); ?>'
                 }
             });
         })

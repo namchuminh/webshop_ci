@@ -13,7 +13,7 @@ class GioHang extends MY_Controller {
 	{
         $cart = $this->session->userdata('cart');
         $data['list'] = $cart;
-
+        $data['title'] = "Giỏ Hàng Sản Phẩm";
         return $this->load->view('Website/View_GioHang', $data);
 	}
 
@@ -198,6 +198,10 @@ class GioHang extends MY_Controller {
             if (isset($_SESSION['saleCode'])) {
                 unset($_SESSION['saleCode']);
             }
+
+            unset($_SESSION['cart']);
+            unset($_SESSION['sumCart']);
+            unset($_SESSION['numberCart']);
         }
     }
 
@@ -251,6 +255,32 @@ class GioHang extends MY_Controller {
 
         echo TRUE;
     }
+
+    public function checkCart(){
+        $cart = $this->session->userdata('cart');
+        if(!$cart || count($cart) == 0){
+            echo "Vui Lòng Thêm Sản Phẩm Vào Giỏ Hàng";
+            return;
+        }
+
+        $colorNull = FALSE;
+
+        foreach ($cart as $key => $value) {
+            if(count($value['color']) > 1){
+                $colorNull = TRUE;
+            }
+        }
+
+        if($colorNull == TRUE){
+            echo "Vui Lòng Chọn Đủ Màu Sắc Sản Phẩm!";
+            return;
+        }
+
+        $this->session->set_userdata('redirectPay', TRUE);
+
+        echo TRUE;
+    }
+
 }
 
 /* End of file GioHang.php */

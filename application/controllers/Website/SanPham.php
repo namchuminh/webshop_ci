@@ -205,6 +205,7 @@ class SanPham extends MY_Controller {
 		}
 
 		$machuyenmuc = $this->Model_SanPham->getBySlug($DuongDan)[0]['MaChuyenMuc'];
+		$masanpham = $this->Model_SanPham->getBySlug($DuongDan)[0]['MaSanPham'];
 
 		$data['related'] = $this->Model_SanPham->getRelated($machuyenmuc);
 		$data['detail'] = $this->Model_SanPham->getBySlug($DuongDan);
@@ -212,6 +213,7 @@ class SanPham extends MY_Controller {
 		$data['category'] = $this->Model_SanPham->getCategory();
 		$data['list'] = $this->Model_SanPham->getAll();
 		$data['title'] = $this->Model_SanPham->getBySlug($DuongDan)[0]['TenSanPham'];
+		$data['color'] = $this->Model_SanPham->getColor($masanpham);
 		return $this->load->view('Website/View_ChiTietSanPham', $data);
 	}
 }

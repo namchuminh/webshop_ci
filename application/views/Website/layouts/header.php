@@ -96,11 +96,20 @@
                             </div>
 
                             <div class="header-wishlist">
-                                <a href="wishlist.html"><img src="<?php echo base_url('public/website/'); ?>images/icons/wishlist.png" alt="Wishlist"> <span>02</span></a>
+                                <a href="wishlist.html"><img src="<?php echo base_url('public/website/'); ?>images/icons/wishlist.png" alt="Wishlist"> <span></span></a>
                             </div>
 
                             <div class="header-mini-cart">
-                                <a href="cart.html"><img src="<?php echo base_url('public/website/'); ?>images/icons/cart.png" alt="Cart"> <span>02($250)</span></a>
+                                <a href="<?php echo base_url('gio-hang/'); ?>"><img src="<?php echo base_url('public/website/'); ?>images/icons/cart.png" alt="Cart"> 
+                                    <span style="font-size: 14px;" class="cart-info">
+                                        <?php if(isset($_SESSION['sumCart'])){ ?>
+                                            (<?php echo $_SESSION['numberCart']; ?>)
+                                            <?php echo number_format($_SESSION['sumCart']); ?>đ
+                                        <?php }else{ ?>
+                                            <?php echo "0đ"; ?>
+                                        <?php } ?>
+                                    </span>
+                                </a>
                             </div>
 
                         </div><!-- Header Advance Search End -->

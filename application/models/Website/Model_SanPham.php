@@ -65,6 +65,12 @@ class Model_SanPham extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getColor($masanpham){
+		$sql = "SELECT * FROM mausac WHERE MaSanPham = ?";
+		$result = $this->db->query($sql, array($masanpham));
+		return $result->result_array();
+	}
+
 }
 
 /* End of file Model_SanPham.php */

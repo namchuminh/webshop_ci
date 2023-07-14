@@ -97,7 +97,18 @@
 <script src="<?php echo base_url('public/website/'); ?>js/plugins.js"></script>
 <!-- Main JS -->
 <script src="<?php echo base_url('public/website/'); ?>js/main.js"></script>
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".them-gio-hang").click(function(e){
+            e.preventDefault()
+            var urlThem = $(this).attr("value");
+            $.get(urlThem, function(data){
+                var data = JSON.parse(data)
+                $('.cart-info').html('(' + data.numberCart + ') ' + data.sumCart + 'đ')
+            })
+        });
+    });
+</script>
 </body>
 
 </html>

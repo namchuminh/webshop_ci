@@ -6,6 +6,16 @@ $route['default_controller'] = 'TrangChu';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+//Route cart 
+$route['gio-hang'] = 'Website/GioHang/index';
+$route['gio-hang/them/(:any)/(:any)'] = 'Website/GioHang/Add/$1/$2';
+$route['gio-hang/them-chi-tiet/(:any)/(:any)/(:any)'] = 'Website/GioHang/AddDetail/$1/$2/$3/';
+$route['gio-hang/xoa/(:any)'] = 'Website/GioHang/DeleteById/$1';
+$route['gio-hang/sua-mau/(:any)/(:any)'] = 'Website/GioHang/UpdateColor/$1/$2';
+$route['gio-hang/sua-so-luong/(:any)/(:any)'] = 'Website/GioHang/UpdateNumber/$1/$2';
+$route['gio-hang/ma-giam-gia/(:any)'] = 'Website/GioHang/Code/$1';
+
+
 //Route product
 $route['san-pham'] = 'Website/SanPham/index';
 $route['san-pham/trang/(:any)'] = 'Website/SanPham/Page/$1';

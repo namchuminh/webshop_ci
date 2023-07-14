@@ -97,11 +97,20 @@
                             </div>
 
                             <div class="header-wishlist">
-                                <a href="wishlist.html"><img src="<?php echo base_url('public/website/'); ?>images/icons/wishlist.png" alt="Wishlist"> <span>02</span></a>
+                                <a href="wishlist.html"><img src="<?php echo base_url('public/website/'); ?>images/icons/wishlist.png" alt="Wishlist"> <span></span></a>
                             </div>
 
                             <div class="header-mini-cart">
-                                <a href="cart.html"><img src="<?php echo base_url('public/website/'); ?>images/icons/cart.png" alt="Cart"> <span>02($250)</span></a>
+                                <a href="<?php echo base_url('gio-hang/'); ?>"><img src="<?php echo base_url('public/website/'); ?>images/icons/cart.png" alt="Cart"> 
+                                    <span style="font-size: 14px;" class="cart-info">
+                                        <?php if(isset($_SESSION['sumCart'])){ ?>
+                                            (<?php echo $_SESSION['numberCart']; ?>)
+                                            <?php echo number_format($_SESSION['sumCart']); ?>đ
+                                        <?php }else{ ?>
+                                            <?php echo "0đ"; ?>
+                                        <?php } ?>
+                                    </span>
+                                </a>
                             </div>
 
                         </div><!-- Header Advance Search End -->
@@ -198,7 +207,7 @@
                                         <img style="height: 100%;" src="<?php echo $value['duongdananh']; ?>" alt="Image">
                                         <div class="image-overlay">
                                             <div class="action-buttons">
-                                                <button>Thêm Giỏ Hàng</button>
+                                                <button><a class="them-gio-hang" style="color: unset;" value="<?php echo base_url('gio-hang/them/'.$value['MaSanPham'].'/1/'); ?>">Thêm Giỏ Hàng</a></button>
                                                 <button>Yêu Thích</button>
                                             </div>
                                         </div>
@@ -582,6 +591,21 @@
 <script src="<?php echo base_url('public/website/'); ?>js/plugins.js"></script>
 <!-- Main JS -->
 <script src="<?php echo base_url('public/website/'); ?>js/main.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".them-gio-hang").click(function(e){
+            e.preventDefault()
+            var urlThem = $(this).attr("value");
+            $.get(urlThem, function(data){
+
+                var data = JSON.parse(data)
+                $('.cart-info').html('(' + data.numberCart + ') ' + data.sumCart + 'đ')
+            })
+
+        });
+    });
+</script>
 
 </body>
 

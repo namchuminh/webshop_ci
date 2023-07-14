@@ -45,7 +45,8 @@
                                                 <img style="height: 100%;" src="<?php echo $value['duongdananh']; ?>" alt="Image">
                                                 <div class="image-overlay">
                                                     <div class="action-buttons">
-                                                        <button>Thêm Giỏ Hàng</button>
+                                                        <button><a style="color: unset;" class="them-gio-hang" value="<?php echo base_url('gio-hang/them/'.$value['MaSanPham'].'/1/'); ?>">THÊM GIỎ HÀNG
+                                                        </a></button>
                                                         <button>Yêu Thích</button>
                                                     </div>
                                                 </div>

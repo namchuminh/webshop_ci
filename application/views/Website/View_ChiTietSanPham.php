@@ -71,26 +71,30 @@
                                 <span class="availability">Trạng Thái: <span>Còn <?php echo $detail[0]['SoLuong']; ?> Sản Phẩm</span></span>
 
                                 <div class="quantity-colors">
-
                                     <div class="quantity">
                                         <h5>Số Lượng:</h5>
-                                        <div class="pro-qty"><input type="text" value="1"></div>
+                                        <div class="pro-qty"><input type="text" class="soluong" value="1"></div>
                                     </div>                            
-
-                                    <div class="colors">
-                                        <h5>Màu Sắc:</h5>
-                                        <div class="color-options">
-                                            <button style="background-color: #ff502e"></button>
-                                            <button style="background-color: #fff600"></button>
-                                            <button style="background-color: #1b2436"></button>
-                                        </div>
-                                    </div>                            
-
                                 </div>
-
+                                <div class="quantity-colors">
+                                    <div class="colors" style="width: 100%;">
+                                        <h5>Màu Sắc:</h5>
+                                        <ul class="sidebar-list d-flex" style="margin-top: -5px;">
+                                            <?php foreach ($color as $key => $value): ?>
+                                                <li>
+                                                    <a>
+                                                        <span value="<?php echo $value['MaHienThi']; ?>" class="color" style="border: 1px solid #d8d8d8;width: 30px; height: 30px;background-color: <?php echo $value['MaHienThi']; ?>;"></span>
+                                                    </a>
+                                                </li>
+                                            <?php endforeach ?>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <div class="actions">
-
-                                    <button><i class="ti-shopping-cart"></i><span>THÊM GIỎ HÀNG</span></button>
+                                    <button class="them-gio-hang-ct">
+                                        <i class="ti-shopping-cart"></i>
+                                        <span>THÊM GIỎ HÀNG</span>
+                                    </button>
                                     <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button>
 
                                 </div>
@@ -146,7 +150,10 @@
                                             <img style="height: 100%;" src="<?php echo $value['duongdananh']; ?>" alt="">
                                             <div class="image-overlay">
                                                 <div class="action-buttons">
-                                                    <button>THÊM GIỎ HÀNG</button>
+                                                    <button>
+                                                        <a style="color: unset;" class="them-gio-hang" value="<?php echo base_url('gio-hang/them/'.$value['MaSanPham'].'/1/'); ?>">THÊM GIỎ HÀNG
+                                                        </a>
+                                                    </button>
                                                     <button>YÊU THÍCH</button>
                                                 </div>
                                             </div>
@@ -228,5 +235,32 @@
             </div>
         </div>
     </div>
-
+    <input type="hidden" class="url_giohang" value="<?php echo base_url('gio-hang/them-chi-tiet/'.$detail[0]['MaSanPham'].'/'); ?>">
+    <input type="hidden" class="mausac" value="">
 <?php require(__DIR__.'/layouts/footer.php'); ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var color = ""
+        $(".color").click(function(e){
+            color = $(this).attr("value")
+            $('.mausac').val(color)
+        })
+        $(".them-gio-hang-ct").click(function(e){
+            if($('.soluong').val() == "" || $('.soluong').val() == 0){
+                alert("Số lượng sản phẩm phải lớn hơn 0!")
+                return
+            }
+            if($('.mausac').val() == ""){
+                alert("Vui lòng chọn màu sắc sản phẩm!")
+                return
+            }
+
+            var url = $('.url_giohang').val() + $('.soluong').val() + '/' + $('.mausac').val() + '/'
+            $.get(url, function(data){
+                var data = JSON.parse(data)
+                $('.cart-info').html('(' + data.numberCart + ') ' + data.sumCart + 'đ')
+            });
+
+        });
+    })
+</script>

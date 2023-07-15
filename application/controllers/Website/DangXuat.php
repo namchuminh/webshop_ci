@@ -16,6 +16,10 @@ class DangXuat extends CI_Controller {
 		$this->session->unset_userdata('login');
 		$this->session->unset_userdata('TenKhachHang');
 		$this->session->unset_userdata('SoDienThoai');
+		$this->session->unset_userdata('Email');
+		$this->session->unset_userdata('MaKhachHang');
+		$this->session->unset_userdata('DiaChi');
+		$this->session->unset_userdata('NgayThamGia');
 		return redirect(base_url('dang-nhap/'));
 	}
 

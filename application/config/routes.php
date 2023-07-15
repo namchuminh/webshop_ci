@@ -8,6 +8,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 //Route customer
 $route['khach-hang'] = 'Website/KhachHang/index';
+$route['khach-hang/don-hang/(:any)'] = 'Website/KhachHang/Detail/$1';
+$route['khach-hang/don-hang/huy-don/(:any)'] = 'Website/KhachHang/removeOrder/$1';
 
 
 //Route pay order

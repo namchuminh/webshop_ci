@@ -12,6 +12,7 @@ $route['khach-hang'] = 'Website/KhachHang/index';
 
 //Route pay order
 $route['thanh-toan'] = 'Website/ThanhToan/index';
+$route['thanh-toan/thuc-hien'] = 'Website/ThanhToan/PayOrder';
 
 
 //Route cart 

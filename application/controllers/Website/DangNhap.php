@@ -40,7 +40,8 @@ class DangNhap extends MY_Controller {
 					    'khachhang'  => $taikhoan,
 					    'login' => True,
 					    'TenKhachHang' => $this->Model_DangNhap->getInfoByUsername($taikhoan)[0]['TenKhachHang'],
-					    'SoDienThoai' => $this->Model_DangNhap->getInfoByUsername($taikhoan)[0]['SoDienThoai']
+					    'SoDienThoai' => $this->Model_DangNhap->getInfoByUsername($taikhoan)[0]['SoDienThoai'],
+					    'Email' => $this->Model_DangNhap->getInfoByUsername($taikhoan)[0]['Email']
 					);
 					$this->session->set_userdata($newdata);
 					return redirect(base_url('khach-hang/'));

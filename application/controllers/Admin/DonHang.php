@@ -121,6 +121,7 @@ class DonHang extends CI_Controller {
 
 	public function View($MaDonHang){
 		$data['list'] = $this->Model_DonHang->getDetailById($MaDonHang);
+		$data['list_order'] = $this->Model_DonHang->getDetailOrderById($MaDonHang);
 		return $this->load->view('Admin/View_XemDonHang', $data);
 	}
 }

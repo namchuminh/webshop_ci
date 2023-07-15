@@ -88,6 +88,7 @@
                                                 </li>
                                             <?php endforeach ?>
                                         </ul>
+                                        <p class="error-cart"></p>
                                     </div>
                                 </div>
                                 <div class="actions">
@@ -247,11 +248,11 @@
         })
         $(".them-gio-hang-ct").click(function(e){
             if($('.soluong').val() == "" || $('.soluong').val() == 0){
-                alert("Số lượng sản phẩm phải lớn hơn 0!")
+                $('.error-cart').html("Số Lượng Sản Phẩm Phải Lớn Hơn 0!")
                 return
             }
             if($('.mausac').val() == ""){
-                alert("Vui lòng chọn màu sắc sản phẩm!")
+                $('.error-cart').html("Vui Lòng Chọn Màu Sắc Sản Phẩm!")
                 return
             }
 
@@ -259,6 +260,7 @@
             $.get(url, function(data){
                 var data = JSON.parse(data)
                 $('.cart-info').html('(' + data.numberCart + ') ' + data.sumCart + 'đ')
+                $('.error-cart').html("Đã Thêm Sản Phẩm Vào Giỏ Hàng!")
             });
 
         });

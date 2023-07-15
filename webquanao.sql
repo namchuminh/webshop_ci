@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2023 at 09:20 PM
+-- Generation Time: Jul 15, 2023 at 04:40 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -66,8 +66,10 @@ CREATE TABLE `chitietdonhang` (
 --
 
 INSERT INTO `chitietdonhang` (`MaChiTietDonHang`, `MaDonHang`, `MaSanPham`, `SoLuong`, `MauSac`) VALUES
-(1, 10, 51, 2, ''),
-(2, 10, 51, 3, '');
+(16, 26, 62, 6, 'Xanh'),
+(17, 26, 61, 2, 'Đỏ'),
+(18, 26, 60, 1, 'Vàng'),
+(19, 26, 59, 1, 'Xanh');
 
 -- --------------------------------------------------------
 
@@ -113,17 +115,17 @@ CREATE TABLE `donhang` (
   `ThoiGian` datetime NOT NULL DEFAULT current_timestamp(),
   `TrangThai` int(11) NOT NULL DEFAULT 1,
   `DiaChi` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `GiamGia` int(11) NOT NULL DEFAULT 0
+  `GiamGia` int(11) NOT NULL DEFAULT 0,
+  `TenCongTy` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `PhuongThucThanhToan` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `donhang`
 --
 
-INSERT INTO `donhang` (`MaDonHang`, `MaKhachHang`, `SoLuong`, `ThanhTien`, `ThoiGian`, `TrangThai`, `DiaChi`, `GiamGia`) VALUES
-(10, 13, 45, 130000, '2023-07-11 18:49:47', 4, 'Hà Nội', 100000),
-(11, 13, 45, 130000, '2023-07-11 18:49:49', 4, 'Hà Nội', 0),
-(12, 13, 45, 134000, '2023-07-11 18:49:52', 4, 'Hà Nội', 0);
+INSERT INTO `donhang` (`MaDonHang`, `MaKhachHang`, `SoLuong`, `ThanhTien`, `ThoiGian`, `TrangThai`, `DiaChi`, `GiamGia`, `TenCongTy`, `PhuongThucThanhToan`) VALUES
+(26, 13, 10, 1300000, '2023-07-15 09:19:51', 1, 'Cổ Nhuế, Bắc Từ Liêm - Bắc từ liêm Hà Nội', 100000, 'Lập trình từ đầu', 2);
 
 -- --------------------------------------------------------
 
@@ -495,7 +497,7 @@ CREATE TABLE `magiamgia` (
 
 INSERT INTO `magiamgia` (`MaGiamGia`, `MaSuDung`, `NgayTao`, `NgayHetHan`, `TriGia`, `SoLanDung`, `SoLuong`, `TrangThai`) VALUES
 (5, 'NAMDEPTRAI', '2023-07-15', '2023-07-21', 100000, 2, 2, 1),
-(6, 'NAM', '2023-07-15', '2023-07-22', 100000, 1, 2, 1);
+(6, 'NAM', '2023-07-15', '2023-07-22', 100000, 2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -932,7 +934,7 @@ ALTER TABLE `cauhinh`
 -- AUTO_INCREMENT for table `chitietdonhang`
 --
 ALTER TABLE `chitietdonhang`
-  MODIFY `MaChiTietDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `MaChiTietDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `chuyenmuc`
@@ -944,7 +946,7 @@ ALTER TABLE `chuyenmuc`
 -- AUTO_INCREMENT for table `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `MaDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `MaDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `giaodien`

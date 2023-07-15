@@ -83,6 +83,12 @@ class Model_DonHang extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getDetailOrderById($MaDonHang){
+		$sql = "SELECT donhang.*, khachhang.MaKhachHang, khachhang.TenKhachHang, khachhang.TaiKhoan FROM donhang, khachhang WHERE donhang.MaKhachHang = khachhang.MaKhachHang AND donhang.TrangThai != 0 AND donhang.TrangThai != -1 AND donhang.MaDonHang = ?";
+		$result = $this->db->query($sql, array($MaDonHang));
+		return $result->result_array();
+	}
+
 }
 
 /* End of file Model_DonHang.php */

@@ -10,6 +10,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['khach-hang'] = 'Website/KhachHang/index';
 $route['khach-hang/don-hang/(:any)'] = 'Website/KhachHang/Detail/$1';
 $route['khach-hang/don-hang/huy-don/(:any)'] = 'Website/KhachHang/removeOrder/$1';
+$route['khach-hang/cap-nhat'] = 'Website/KhachHang/Update';
 
 
 //Route pay order

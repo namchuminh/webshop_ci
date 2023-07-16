@@ -54,7 +54,7 @@
                     <div class="col mt-10 mb-10">
                         <?php if(isset($_SESSION['khachhang'])){ ?>
                             <div class="header-top-right">
-                                <p><a href="<?php echo base_url('khach-hang/'); ?>"><?php echo ucwords($_SESSION['TenKhachHang']); ?></a><a href="<?php echo base_url('dang-xuat/'); ?>">Đăng Xuất</a></p>
+                                <p><a class="ten_taikhoan" href="<?php echo base_url('khach-hang/'); ?>"><?php echo ucwords($_SESSION['TenKhachHang']); ?></a><a href="<?php echo base_url('dang-xuat/'); ?>">Đăng Xuất</a></p>
                             </div>
                         <?php }else{ ?>
                             <div class="header-top-right">

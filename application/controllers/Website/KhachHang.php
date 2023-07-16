@@ -43,6 +43,85 @@ class KhachHang extends MY_Controller {
 
 		return redirect(base_url('khach-hang/'));
 	}
+
+	public function Update(){
+		$taikhoan = $this->session->userdata('khachhang');
+		if ($this->input->server('REQUEST_METHOD') === 'POST') {
+			$tenkhachhang = $this->input->post('tenkhachhang_c');
+			$sodienthoai = $this->input->post('sodienthoai_c');
+			$email = $this->input->post('email_c');
+			$diachi = $this->input->post('diachi_c');
+			$matkhau = $this->input->post('matkhau_c');
+			$matkhaumoi = $this->input->post('matkhaumoi_c');
+			$matkhaumoi2 = $this->input->post('matkhaumoi2_c');
+
+			if(empty($tenkhachhang) || empty($sodienthoai) || empty($email) || empty($diachi)){
+				echo "Vui Lòng Nhập Đủ Thông Tin Khách Hàng!";
+				return;
+			}
+
+			$regex = '/^[\p{L}\p{Mn}\p{Pd}\s]+$/u';
+			if (!preg_match($regex, $tenkhachhang)) {
+				echo "Họ Tên Khách Hàng Không Hợp Lệ!";
+				return;
+			}
+
+			$regexEmail = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+			if (!preg_match($regexEmail, $email)) {
+				echo "Email Khách Hàng Không Hợp Lệ!";
+				return;
+			}
+
+			$regexPhone = '/^(?:\+84|0)\d{9,11}$/';
+			if (!preg_match($regexPhone, $sodienthoai)) {
+				echo "Số Điện Thoại Khách Hàng Không Hợp Lệ!";
+				return;
+			}
+
+			if(!empty($matkhau) || !empty($matkhaumoi) || !empty($matkhaumoi2)){
+				if(empty($matkhau)){
+					echo "Vui Lòng Nhập Mật Khẩu Hiện Tại!";
+					return;
+				}
+
+				if($this->Model_KhachHang->getCustomerByUsername($taikhoan, md5($matkhau)) < 1){
+					echo "Mật Khẩu Hiện Tại Không Chính Xác!";
+					return;
+				}
+
+				if(empty($matkhaumoi)){
+					echo "Vui Lòng Nhập Mật Khẩu Mới!";
+					return;
+				}
+
+				if(empty($matkhaumoi2)){
+					echo "Vui Lòng Nhập Lại Mật Khẩu Mới!";
+					return;
+				}	
+
+				if($matkhaumoi != $matkhaumoi2){
+					echo "Mật Khẩu Nhập Lại Không Trùng Khớp!";
+					return;
+				}
+
+				$this->Model_KhachHang->updatePassword(md5($matkhaumoi),$taikhoan);
+			}
+
+			$this->Model_KhachHang->update($tenkhachhang, $sodienthoai, $diachi, $email, $taikhoan);
+
+			$newdata = array(
+			    'TenKhachHang' => $tenkhachhang,
+			    'SoDienThoai' => $sodienthoai,
+			    'Email' => $email,
+			    'DiaChi' => $diachi,
+			);
+			
+			$this->session->set_userdata($newdata);
+
+			return TRUE;
+		}
+
+	}
 }
 
 /* End of file KhachHang.php */

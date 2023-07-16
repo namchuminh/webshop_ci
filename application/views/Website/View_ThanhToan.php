@@ -161,7 +161,6 @@
 	$(document).ready(function(){
 		$('.place-order').click(function(e){
 			e.preventDefault()
-
 			var tencongty = $("input[name=tencongty]").val()
 			var quanhuyen = $("input[name=quanhuyen]").val()
 			var thanhpho = $("input[name=thanhpho]").val()

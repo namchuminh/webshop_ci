@@ -34,7 +34,23 @@ class Model_KhachHang extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function update($tenkhachhang, $sodienthoai, $diachi, $email, $taikhoan){
+		$sql = "UPDATE `khachhang` SET `TenKhachHang`=?,`SoDienThoai`=?,`DiaChi`=?,`Email`=? WHERE `TaiKhoan`=?";
+		$result = $this->db->query($sql, array($tenkhachhang, $sodienthoai, $diachi, $email, $taikhoan));
+		return $result;
+	}
 
+	public function getCustomerByUsername($taikhoan, $matkhau){
+		$sql = "SELECT * FROM khachhang WHERE TaiKhoan = ? AND matkhau = ?";
+		$result = $this->db->query($sql, array($taikhoan, $matkhau));
+		return $result->num_rows();
+	}
+
+	public function updatePassword($matkhau,$taikhoan){
+		$sql = "UPDATE `khachhang` SET `MatKhau`=? WHERE `TaiKhoan`=?";
+		$result = $this->db->query($sql, array($matkhau,$taikhoan));
+		return $result;
+	}
 }
 
 /* End of file Model_KhachHang.php */

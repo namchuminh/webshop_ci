@@ -118,43 +118,52 @@
                     <!-- Single Tab Content Start -->
                     <div class="tab-pane fade" id="account-info" role="tabpanel">
                         <div class="myaccount-content">
-                            <h3>Account Details</h3>
+                            <h3>Cập Nhật Thông Tin</h3>
 
                             <div class="account-details-form">
-                                <form action="#">
+                                <form method="POST">
                                     <div class="row">
+                                        <div class="col-12 mb-30"><h4>Đổi thông tin khách hàng</h4></div>
+
+                                        <div class="col-lg-12 col-12 mb-30">
+                                            <input id="first-name2" placeholder="Tài khoản" type="text" name="taikhoan" value="<?php echo $_SESSION['khachhang']; ?>" disabled require>
+                                        </div>
                                         <div class="col-lg-6 col-12 mb-30">
-                                            <input id="first-name" placeholder="First Name" type="text">
+                                            <input id="first-name" placeholder="Họ tên khách hàng" type="text" value="<?php echo $_SESSION['TenKhachHang']; ?>" require name="tenkhachhang_c">
                                         </div>
 
                                         <div class="col-lg-6 col-12 mb-30">
-                                            <input id="last-name" placeholder="Last Name" type="text">
+                                            <input id="last-name" placeholder="Số điện thoại" type="text" value="<?php echo $_SESSION['SoDienThoai']; ?>" require name="sodienthoai_c">
                                         </div>
+
+                                        <div class="col-6 mb-30">
+                                            <input id="Email Address" placeholder="Email khách hàng" type="email" value="<?php echo $_SESSION['Email']; ?>" require name="email_c"> 
+                                        </div>
+
+                                        <div class="col-6 mb-30">
+                                            <input id="text" placeholder="Địa chỉ khách hàng" type="text" value="<?php echo $_SESSION['DiaChi']; ?>" require name="diachi_c">
+                                        </div>
+
+                                        <div class="col-12 mb-30"><h4>Đổi mật khẩu</h4></div>
 
                                         <div class="col-12 mb-30">
-                                            <input id="display-name" placeholder="Display Name" type="text">
-                                        </div>
-
-                                        <div class="col-12 mb-30">
-                                            <input id="email" placeholder="Email Address" type="email">
-                                        </div>
-
-                                        <div class="col-12 mb-30"><h4>Password change</h4></div>
-
-                                        <div class="col-12 mb-30">
-                                            <input id="current-pwd" placeholder="Current Password" type="password">
+                                            <input id="current-pwd" placeholder="Mật khẩu hiện tại" type="password" name="matkhau_c">
                                         </div>
 
                                         <div class="col-lg-6 col-12 mb-30">
-                                            <input id="new-pwd" placeholder="New Password" type="password">
+                                            <input id="new-pwd" placeholder="Mật khẩu mới" type="password" name="matkhaumoi_c">
                                         </div>
 
                                         <div class="col-lg-6 col-12 mb-30">
-                                            <input id="confirm-pwd" placeholder="Confirm Password" type="password">
+                                            <input id="confirm-pwd" placeholder="Nhập lại mật khẩu mới" type="password" name="matkhaumoi2_c">
                                         </div>
 
-                                        <div class="col-12">
-                                            <button class="btn btn-dark btn-round btn-lg" style="font-family: system-ui;">Save Changes</button>
+                                        <div class="col-12 d-flex">
+                                            <button type="submit" class="update-info btn btn-dark btn-round btn-lg" style="font-family: system-ui;">Cập Nhật</button>
+                                            <span class="btn btn-white mt-1" style="font-family: system-ui; cursor: text;">
+                                                <h4 class="erorr-info"></h4>
+                                            </span>
+                                            
                                         </div>
 
                                     </div>
@@ -171,3 +180,39 @@
     </div>
 </div>
 <?php require(__DIR__.'/layouts/footer.php'); ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".update-info").click(function(e){
+            e.preventDefault()
+            var tenkhachhang_c = $("input[name=tenkhachhang_c]").val()
+            var sodienthoai_c = $("input[name=sodienthoai_c]").val()
+            var email_c = $("input[name=email_c]").val()
+            var diachi_c = $("input[name=diachi_c]").val()
+            var matkhau_c = $("input[name=matkhau_c]").val()
+            var matkhaumoi_c = $("input[name=matkhaumoi_c]").val()
+            var matkhaumoi2_c = $("input[name=matkhaumoi2_c]").val()
+            $.post('<?php echo base_url('khach-hang/cap-nhat/'); ?>', 
+                {
+                    tenkhachhang_c,sodienthoai_c,email_c,diachi_c,matkhau_c,matkhaumoi_c,matkhaumoi2_c
+                },
+                function(data){
+                    if(data == ''){
+                        $('.erorr-info').empty()
+                        $('.erorr-info').html("Cập Nhật Thành Công!")
+                        $("input[name=matkhau_c]").val('')
+                        $("input[name=matkhaumoi_c]").val('')
+                        $("input[name=matkhaumoi2_c]").val('')
+                        setTimeout(function() {
+                            $('.erorr-info').empty();
+                        }, 2000);
+                    }else{
+                        $('.ten_taikhoan').empty()
+                        $('.erorr-info').empty()
+                        $('.ten_taikhoan').html(tenkhachhang_c)
+                        $('.erorr-info').html(data)
+                    }
+                }
+            );
+        });
+    });
+</script>

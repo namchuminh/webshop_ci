@@ -8,11 +8,23 @@ class TrangChu extends CI_Controller {
 		if(!$this->session->has_userdata('taikhoan')){
 			return redirect(base_url('admin/dang-nhap/'));
 		}
+
+		$this->load->model('Admin/Model_TrangChu');
+		$data = array();
 	}
 
 	public function index()
 	{
-		return $this->load->view('Admin/View_TrangChu');
+		$data['topCustomer'] = $this->Model_TrangChu->getTopCustomer();
+		$data['productSelling'] = $this->Model_TrangChu->getProductSelling();
+		$data['numberProduct'] = $this->Model_TrangChu->getNumberProductCurrent();
+		$data['sumCustomer'] = $this->Model_TrangChu->getNumberCustomerCurrent() - $this->Model_TrangChu->getNumberCustomerOld();
+		$data['customerCurrent'] = $this->Model_TrangChu->getNumberCustomerCurrent();
+		$data['sumCurrent'] = $this->Model_TrangChu->getNumberRevenueCurrent() - $this->Model_TrangChu->getNumberRevenueOld();
+		$data['revenueCurrent'] = $this->Model_TrangChu->getNumberRevenueCurrent();
+		$data['sumOrders'] = $this->Model_TrangChu->getNumberOrdersCurrent() - $this->Model_TrangChu->getNumberOrdersOld();
+		$data['numberOrders'] = $this->Model_TrangChu->getNumberOrdersCurrent();
+		return $this->load->view('Admin/View_TrangChu', $data);
 	}
 
 }

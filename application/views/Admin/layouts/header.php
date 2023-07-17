@@ -29,7 +29,40 @@
 
         <header id="page-topbar">
             <div class="navbar-header">
+                <div class="d-flex align-items-left">
+                    <button type="button" class="btn btn-sm mr-2 d-lg-none px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
+                        <i class="fa fa-fw fa-bars"></i>
+                    </button>
 
+                    <div class="dropdown d-none d-sm-inline-block">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="mdi mdi-plus"></i> Tạo Mới
+                            <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 70px, 0px);">
+
+                            <!-- item-->
+                            <a href="<?php echo base_url('admin/san-pham/them/') ?>" class="dropdown-item notify-item">
+                                Sản Phẩm
+                            </a>
+
+                            <!-- item-->
+                            <a href="<?php echo base_url('admin/tin-tuc/them/') ?>" class="dropdown-item notify-item">
+                                Tin Tức
+                            </a>
+
+                            <!-- item-->
+                            <a href="<?php echo base_url('admin/ma-giam-gia/them/') ?>" class="dropdown-item notify-item">
+                                Mã Giảm Giá
+                            </a>
+
+                            <!-- item-->
+                            <a href="<?php echo base_url('admin/chuyen-muc/them/') ?>" class="dropdown-item notify-item">
+                                Chuyên Mục
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="d-flex align-items-left">
                     <button type="button" class="btn btn-sm mr-2 d-lg-none px-3 font-size-16 header-item waves-effect"
                         id="vertical-menu-btn">

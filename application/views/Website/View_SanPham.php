@@ -142,13 +142,18 @@
                             <li><a href="<?php echo base_url('san-pham/mau/hong/'); ?>" style="font-family: system-ui;"><span class="color" style="background-color: pink"></span> Hồng</a></li>
                         </ul>
                     </div>
-
+                    <?php $number = 5; ?>
+                    <?php 
+                        if(count($popular) < $number){ 
+                            $number = count($popular);
+                        }
+                    ?>
                     <?php if(count($popular) != 0){ ?>
                         <div class="sidebar">
                             <h4 class="sidebar-title">Sản Phẩm Nổi Bật</h4>
                             <div class="sidebar-product-wrap">
 
-                                <?php for($i = 0; $i < 5; $i++){ ?>
+                                <?php for($i = 0; $i < $number; $i++){ ?>
                                     <div class="sidebar-product">
                                         <a href="<?php echo base_url('san-pham/'.$popular[$i]['DuongDan'].'/') ?>" class="image" style="font-family: system-ui; height: 90px;"><img style="height: 100%;" src="<?php echo $popular[$i]['duongdananh']; ?>" alt=""></a>
                                         <div class="content">

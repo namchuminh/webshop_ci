@@ -37,7 +37,7 @@
                                 <li><a style="height: 100px;" href="<?php echo $detail[1]['duongdananh']; ?>" data-standard="<?php echo $detail[1]['duongdananh']; ?>"><img style="height: 100%;" src="<?php echo $detail[1]['duongdananh']; ?>" alt="" /></a></li>
                                 <li><a style="height: 100px;" href="<?php echo $detail[2]['duongdananh']; ?>" data-standard="<?php echo $detail[2]['duongdananh']; ?>"><img style="height: 100%;" src="<?php echo $detail[2]['duongdananh']; ?>" alt="" /></a></li>
                                 <li><a style="height: 100px;" href="<?php echo $detail[3]['duongdananh']; ?>" data-standard="<?php echo $detail[3]['duongdananh']; ?>"><img style="height: 100%;" src="<?php echo $detail[3]['duongdananh']; ?>" alt="" /></a></li>
-                                <li><a style="height: 100px;" href="<?php echo $detail[0]['duongdananh']; ?>" data-standard="<?php echo $detail[0]['duongdananh']; ?>"><img style="height: 100%;" src="<?php echo $detail[0]['duongdananh']; ?>" alt="" /></a></li>
+   
                             </ul>
                         </div>
 
@@ -204,13 +204,18 @@
                             <?php endforeach ?>
                         </ul>
                     </div>
-
+                    <?php $number = 5; ?>
+                    <?php 
+                        if(count($popular) < $number){ 
+                            $number = count($popular);
+                        }
+                    ?>
                     <?php if(count($popular) != 0){ ?>
                         <div class="sidebar">
                             <h4 class="sidebar-title">Sản Phẩm Nổi Bật</h4>
                             <div class="sidebar-product-wrap">
 
-                                <?php for($i = 0; $i < 5; $i++){ ?>
+                                <?php for($i = 0; $i < $number; $i++){ ?>
                                     <div class="sidebar-product">
                                         <a href="<?php echo base_url('san-pham/'.$popular[$i]['DuongDan'].'/') ?>" class="image" style="font-family: system-ui; height: 90px;"><img style="height: 100%;" src="<?php echo $popular[$i]['duongdananh']; ?>" alt=""></a>
                                         <div class="content">
@@ -238,6 +243,11 @@
     </div>
     <input type="hidden" class="url_giohang" value="<?php echo base_url('gio-hang/them-chi-tiet/'.$detail[0]['MaSanPham'].'/'); ?>">
     <input type="hidden" class="mausac" value="">
+<style type="text/css">
+    #more-info img{
+        width: 100%;
+    }
+</style>
 <?php require(__DIR__.'/layouts/footer.php'); ?>
 <script type="text/javascript">
     $(document).ready(function(){

@@ -77,7 +77,7 @@
                         <!-- Logo Start -->
                         <div class="header-logo">
                             <a href="<?php echo base_url(); ?>">
-                                <img src="<?php echo $config[0]['ThuongHieu']; ?>" alt="Jadusona">
+                                <img style="width: 150px; height: 40px; image-rendering: -WEBKIT-OPTIMIZE-CONTRAST;" src="<?php echo $config[0]['ThuongHieu']; ?>" alt="Jadusona">
                             </a>
                         </div><!-- Logo End -->
                     </div>

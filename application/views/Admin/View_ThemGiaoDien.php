@@ -62,7 +62,7 @@
                                     <form method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Chuyên Mục</label>
-                                            <select name="chuyenmuc" required class="form-control" id="exampleFormControlSelect1">
+                                            <select name="chuyenmuc" class="form-control" id="exampleFormControlSelect1">
                                                 <?php foreach ($category as $key => $value): ?>
                                                     <option value="<?php echo $value['MaChuyenMuc']; ?>" selected><?php echo $value['TenChuyenMuc']; ?></option>
                                                 <?php endforeach ?>

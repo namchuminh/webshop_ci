@@ -85,8 +85,13 @@
                     <div class="sidebar">
                         <h4 class="sidebar-title">Tin Tức Mới</h4>
                         <div class="sidebar-blog-wrap">
-
-                        	<?php for($i = 0; $i < 5; $i++){ ?>
+                            <?php $number = 5; ?>
+                            <?php 
+                                if(count($new) < $number){ 
+                                    $number = count($new);
+                                }
+                            ?>
+                        	<?php for($i = 0; $i < $number; $i++){ ?>
 	                            <div class="sidebar-blog">
 	                                <a href="<?php echo base_url('tin-tuc/'.$new[$i]['DuongDan'].'/') ?>" class="image" style="font-family: system-ui;"><img style="    height: 70px;" src="<?php echo $new[$i]['AnhChinh']; ?>" alt=""></a>
 	                                <div class="content">
@@ -98,13 +103,18 @@
 
                         </div>
                     </div>
-
+                    <?php $number = 5; ?>
+                        <?php 
+                            if(count($popular) < $number){ 
+                                $number = count($popular);
+                            }
+                        ?>
                     <?php if(count($popular) != 0){ ?>
                         <div class="sidebar">
                             <h4 class="sidebar-title">Sản Phẩm Nổi Bật</h4>
                             <div class="sidebar-product-wrap">
 
-                                <?php for($i = 0; $i < 5; $i++){ ?>
+                                <?php for($i = 0; $i < $number; $i++){ ?>
                                     <div class="sidebar-product">
                                         <a href="<?php echo base_url('san-pham/'.$popular[$i]['DuongDan'].'/') ?>" class="image" style="font-family: system-ui; height: 90px;"><img style="height: 100%;" src="<?php echo $popular[$i]['duongdananh']; ?>" alt=""></a>
                                         <div class="content">

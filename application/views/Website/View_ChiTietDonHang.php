@@ -23,7 +23,7 @@
                 <div class="col-12">
                     <div class="cart-table table-responsive">
                         <table>
-                            <thead>
+                            <thead style="font-family: system-ui;">
                                 <tr>
                                     <th class="pro-remove">STT</th>
                                     <th class="pro-thumbnail">Hình Ảnh</th>
@@ -86,7 +86,11 @@
                                 <td>
                                     <span class="amount">
                                         <?php
-                                            echo number_format($tongdon);
+                                            if($tongdon != 0){
+                                                echo number_format($tongdon);
+                                            }else{
+                                                echo $tongdon;
+                                            }
                                         ?>đ
                                     </span>
                                 </td>
@@ -94,10 +98,14 @@
                             <tr class="cart-subtotal">
                                 <th style="text-transform: unset;">Mã giảm giá</th>
                                 <td><span class="amount">
-                                    <?php if($list[0]['GiamGia'] != 0){ ?>
-                                        - <?php echo number_format($list[0]['GiamGia']); ?>đ
+                                    <?php if(count($list) != 0){ ?>
+                                        <?php if($list[0]['GiamGia'] != 0){ ?>
+                                            - <?php echo number_format($list[0]['GiamGia']); ?>đ
+                                        <?php }else{ ?>
+                                            <?php echo '0đ'; ?>
+                                        <?php } ?>
                                     <?php }else{ ?>
-                                        <?php echo '0đ'; ?>
+                                        0đ
                                     <?php } ?>
                                 </span></td>
                             </tr>
@@ -110,9 +118,11 @@
                                 <td>
                                     <strong>
                                         <span class="amount" >
-                                        <?php
-                                            echo number_format($tongdon - $list[0]['GiamGia']);
-                                        ?>đ
+                                            <?php if(count($list) != 0){ ?>
+                                                <?php echo number_format($tongdon - $list[0]['GiamGia']); ?>đ
+                                            <?php }else{ ?>
+                                                0đ
+                                            <?php } ?>
                                         </span>
                                     </strong>
                                 </td>

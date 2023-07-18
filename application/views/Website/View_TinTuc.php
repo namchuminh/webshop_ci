@@ -63,25 +63,27 @@
 
             <div class="col-12">
                 <ul class="page-pagination">
-                    <?php if(!is_numeric($number)){ ?>
-                        <li><a style="font-family: system-ui;"><i class="fa fa-angle-left"></i></a></li>
-                    <?php }else{ ?>
-                        <?php $prev = $number - 1; ?>
-                        <li><a href="<?php echo base_url('tin-tuc/trang/'.$prev.'/'); ?>" style="font-family: system-ui;"><i class="fa fa-angle-left"></i></a></li>
-                    <?php } ?>
-
-                    <?php for($i = 1; $i <= $totalPages; $i++){ ?>
-                        <li><a href="<?php echo base_url('tin-tuc/trang/'.$i.'/'); ?>" style="font-family: system-ui;"><?php echo $i; ?></a></li>
-                    <?php } ?>
-
-                    <?php if(!is_numeric($number)){ ?>
-                        <li><a href="<?php echo base_url('tin-tuc/trang/2/'); ?>" style="font-family: system-ui;"><i class="fa fa-angle-right"></i></a></li>
-                    <?php }else{ ?>
-                        <?php if($number == $totalPages){ ?>
-                            <li><a style="font-family: system-ui;"><i class="fa fa-angle-right"></i></a></li>
+                    <?php if(count($list) != 0){ ?>
+                        <?php if(!is_numeric($number)){ ?>
+                            <li><a style="font-family: system-ui;"><i class="fa fa-angle-left"></i></a></li>
                         <?php }else{ ?>
-                            <?php $next = $number + 1; ?>
-                            <li><a href="<?php echo base_url('tin-tuc/trang/'.$next.'/'); ?>" style="font-family: system-ui;"><i class="fa fa-angle-right"></i></a></li>
+                            <?php $prev = $number - 1; ?>
+                            <li><a href="<?php echo base_url('tin-tuc/trang/'.$prev.'/'); ?>" style="font-family: system-ui;"><i class="fa fa-angle-left"></i></a></li>
+                        <?php } ?>
+
+                        <?php for($i = 1; $i <= $totalPages; $i++){ ?>
+                            <li><a href="<?php echo base_url('tin-tuc/trang/'.$i.'/'); ?>" style="font-family: system-ui;"><?php echo $i; ?></a></li>
+                        <?php } ?>
+
+                        <?php if(!is_numeric($number)){ ?>
+                            <li><a href="<?php echo base_url('tin-tuc/trang/2/'); ?>" style="font-family: system-ui;"><i class="fa fa-angle-right"></i></a></li>
+                        <?php }else{ ?>
+                            <?php if($number == $totalPages){ ?>
+                                <li><a style="font-family: system-ui;"><i class="fa fa-angle-right"></i></a></li>
+                            <?php }else{ ?>
+                                <?php $next = $number + 1; ?>
+                                <li><a href="<?php echo base_url('tin-tuc/trang/'.$next.'/'); ?>" style="font-family: system-ui;"><i class="fa fa-angle-right"></i></a></li>
+                            <?php } ?>
                         <?php } ?>
                     <?php } ?>
                 </ul>

@@ -55,54 +55,11 @@ $(function() {
       labels: ['Series A', 'Series B']
     });
   }
-  if ($('#morris-area-example').length) {
-    Morris.Area({
-      element: 'morris-area-example',
-      lineColors: ['#1d84c6', '#f8ac5a'],
-      data: [{
-          y: '2013',
-          a: 80,
-          b: 100
-        },
-        {
-          y: '2014',
-          a: 110,
-          b: 130
-        },
-        {
-          y: '2015',
-          a: 90,
-          b: 110
-        },
-        {
-          y: '2016',
-          a: 120,
-          b: 140
-        },
-        {
-          y: '2017',
-          a: 110,
-          b: 125
-        },
-        {
-          y: '2018',
-          a: 170,
-          b: 190
-        },
-        {
-          y: '2019',
-          a: 120,
-          b: 140
-        }
-      ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      hideHover: 'auto',
-      gridLineColor: '#eef0f2',
-      resize: true,
-      labels: ['Series A', 'Series B']
-    });
-  }
+
+
+  
+
+  
   if ($("#morris-bar-example").length) {
     Morris.Bar({
       element: 'morris-bar-example',

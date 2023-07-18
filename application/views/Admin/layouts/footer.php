@@ -29,23 +29,19 @@
     <script src="<?php echo base_url('public/admin/'); ?>js/metismenu.min.js"></script>
     <script src="<?php echo base_url('public/admin/'); ?>js/waves.js"></script>
     <script src="<?php echo base_url('public/admin/'); ?>js/simplebar.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <!-- Morris Js-->
     <script src="<?php echo base_url('public/'); ?>plugins/morris-js/morris.min.js"></script>
     <!-- Raphael Js-->
     <script src="<?php echo base_url('public/'); ?>plugins/raphael/raphael.min.js"></script>
-
     <!-- Morris Custom Js-->
     <script src="<?php echo base_url('public/admin/'); ?>pages/dashboard-demo.js"></script>
-
     <!-- App js -->
     <script src="<?php echo base_url('public/admin/'); ?>js/theme.js"></script>
-
     <script src="<?php echo base_url('public/admin/'); ?>pages/datatables-demo.js"></script>
-
+    <script src="<?php echo base_url('public/admin/'); ?>pages/chartjs-demo.js"></script>
     <!-- App js -->
     <script src="assets/js/theme.js"></script>
-
 </body>
 
 </html>

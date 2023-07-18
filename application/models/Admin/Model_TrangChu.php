@@ -81,6 +81,24 @@ class Model_TrangChu extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getCategoryPopular(){
+		$sql = "SELECT chuyenmuc.TenChuyenMuc, COUNT(*) * 100.0 / (SELECT COUNT(*) FROM chitietdonhang) as PhanTram FROM chuyenmuc JOIN sanpham ON chuyenmuc.MaChuyenMuc = sanpham.MaChuyenMuc JOIN chitietdonhang ON sanpham.MaSanPham = chitietdonhang.MaSanPham GROUP BY chuyenmuc.MaChuyenMuc;";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
+
+	public function getProductCategory(){
+		$sql = "SELECT SUM(SoLuong) AS TongSoLuong FROM chitietdonhang WHERE MaDonHang IN (SELECT MaDonHang FROM donhang WHERE TrangThai >= 1)";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
+
+	public function getSumRevenue($thang){
+		$sql = "SELECT SUM(ThanhTien) AS TongTien FROM donhang WHERE MONTH(ThoiGian) = ? AND YEAR(ThoiGian) = YEAR(CURDATE());";
+		$result = $this->db->query($sql, array($thang));
+		return $result->result_array();
+	}
+	
 }
 
 /* End of file Model_TrangChu.php */

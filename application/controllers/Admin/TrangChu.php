@@ -15,6 +15,7 @@ class TrangChu extends CI_Controller {
 
 	public function index()
 	{
+		$data['productCategory'] = $this->Model_TrangChu->getProductCategory()[0]['TongSoLuong'];
 		$data['topCustomer'] = $this->Model_TrangChu->getTopCustomer();
 		$data['productSelling'] = $this->Model_TrangChu->getProductSelling();
 		$data['numberProduct'] = $this->Model_TrangChu->getNumberProductCurrent();
@@ -27,6 +28,40 @@ class TrangChu extends CI_Controller {
 		return $this->load->view('Admin/View_TrangChu', $data);
 	}
 
+
+	public function categoryPopular(){
+		$data = array();
+		$list = $this->Model_TrangChu->getCategoryPopular();
+
+		foreach ($list as $key => $value) {
+			$category = [
+				"label" => $value['TenChuyenMuc'],
+				"value" => round($value['PhanTram'])
+			];
+			array_push($data,$category);
+		}
+
+		$data = json_encode($data);
+
+		echo $data;
+	}
+
+	public function sumRevenue(){
+		$data = array();
+
+		for($i = 1; $i <= 12; $i++){
+			$list = $this->Model_TrangChu->getSumRevenue($i);
+			if(empty($list[0]['TongTien']) || !isset($list[0]['TongTien']) || $list[0]['TongTien'] == null){
+				array_push($data,0);
+			}else{
+				array_push($data,(int)$list[0]['TongTien']);
+			}
+		}
+
+		$data = json_encode($data);
+
+		echo $data;
+	}
 }
 
 /* End of file TrangChu.php */

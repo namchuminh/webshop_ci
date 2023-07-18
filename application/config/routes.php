@@ -57,6 +57,8 @@ $route['chuyen-muc/(:any)'] = 'Website/ChuyenMuc/Detail/$1';
 $route['chuyen-muc/(:any)/trang/(:any)'] = 'Website/ChuyenMuc/PageDetail/$1/$2';
 
 $route['admin'] = 'Admin/TrangChu';
+$route['admin/thong-ke-chuyen-muc'] = 'Admin/TrangChu/categoryPopular';
+$route['admin/thong-ke-doanh-thu'] = 'Admin/TrangChu/sumRevenue';
 $route['admin/dang-nhap'] = 'Admin/DangNhap';
 $route['admin/dang-xuat'] = 'Admin/DangXuat';
 $route['admin/ca-nhan'] = 'Admin/CaNhan';

@@ -6,142 +6,83 @@
 
 $(function() {
   'use strict';
-  if ($("#morris-bar-example").length) {
-    Morris.Bar({
-      element: 'morris-bar-example',
-      barColors: ['#ebeef1', '#20b799'],
-      data: [
-        {
-          y: '2010',
-          a: 80,
-          b: 100
-        },
-        {
-          y: '2011',
-          a: 110,
-          b: 130
-        },
-        {
-          y: '2012',
-          a: 90,
-          b: 110
-        },
-      {
-        y: '2013',
-        a: 80,
-        b: 100
-      },
-      {
-        y: '2014',
-        a: 110,
-        b: 130
-      },
-      {
-        y: '2015',
-        a: 90,
-        b: 110
-      },
-      {
-        y: '2016',
-        a: 120,
-        b: 140
-      },
-      {
-        y: '2017',
-        a: 110,
-        b: 125
-      },
-      {
-        y: '2018',
-        a: 170,
-        b: 190
-      },
-      {
-        y: '2019',
-        a: 120,
-        b: 140
+
+  var currentURL = window.location.href;
+
+  $.get(currentURL + 'thong-ke-chuyen-muc/', function(data){
+      if ($("#morris-donut-example").length) {
+        Morris.Donut({
+          element: 'morris-donut-example',
+          resize: true,
+          backgroundColor: 'transparent',
+          data: JSON.parse(data)
+        });
       }
-    ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      hideHover: 'auto',
-      gridLineColor: '#eef0f2',
-      resize: true,
-      barSizeRatio: 0.4,
-      labels: ['iPhone 8', 'Samsung Gallexy']
-    });
+  });
+
+
+  function maxMinData(data){
+    var max = data[0]
+    var min = data[0]
+    for(let i = 0; i < data.length; i++){
+      if(data[i] > max){
+        max = data[i]
+      }
+    }
+
+
+    for(let i = 0; i < data.length; i++){
+      if(data[i] < min){
+        min = data[i]
+      }
+    }
+
+    return [min, max + 200000]
   }
 
-
-
- if ($("#morris-donut-example").length) {
-    Morris.Donut({
-      element: 'morris-donut-example',
-      resize: true,
-      backgroundColor: 'transparent',
-      colors: ['#20b799', '#346ee0', '#e9ecef'],
-      data: [{
-          label: "Samsung Company",
-          value: 12
+  $.get(currentURL + 'thong-ke-doanh-thu/', function(data){
+    var min = maxMinData(JSON.parse(data))[0]
+    var max = maxMinData(JSON.parse(data))[1]
+    const formatter = new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    });
+    const xValues = ["Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6","Tháng 7","Tháng 8","Tháng 9","Tháng 10","Tháng 11","Tháng 12"];
+    const yValues = JSON.parse(data);
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{
+          fill: true,
+          lineTension: 0,
+          backgroundColor: "rgba(0,0,255,0.2)",
+          borderColor: "rgba(0,0,255,0.1)",
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: min, 
+              max:max,
+              callback: function(value) {
+                return formatter.format(value);
+              }
+            }
+          }],
         },
-        {
-          label: "Apple Company",
-          value: 30
-        },
-        {
-          label: "Vivo Mobiles",
-          value: 20
+        tooltips: {
+          callbacks: {
+            label: function(tooltipItem) {
+              return formatter.format(tooltipItem.yLabel);
+            }
+          }
         }
-      ]
+      }
     });
-  }
-
-  if ($('#morris-line-example').length) {
-    Morris.Line({
-      element: 'morris-line-example',
-      gridLineColor: '#eef0f2',
-      lineColors: ['#f15050', '#e9ecef'],
-      data: [{
-          y: '2013',
-          a: 80,
-          b: 100
-        },
-        {
-          y: '2014',
-          a: 110,
-          b: 130
-        },
-        {
-          y: '2015',
-          a: 90,
-          b: 110
-        },
-        {
-          y: '2016',
-          a: 120,
-          b: 140
-        },
-        {
-          y: '2017',
-          a: 110,
-          b: 125
-        },
-        {
-          y: '2018',
-          a: 170,
-          b: 190
-        },
-        {
-          y: '2019',
-          a: 120,
-          b: 140
-        }
-      ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      hideHover: 'auto',
-      resize: true,
-      labels: ['Series A', 'Series B']
-    });
-  }
+  });
+  
 });

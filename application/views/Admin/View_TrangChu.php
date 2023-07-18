@@ -94,104 +94,29 @@
             <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <div class="dropdown float-right position-relative">
-                            <a href="#" class="dropdown-toggle h4 text-muted" data-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#" class="dropdown-item">Action</a></li>
-                                <li><a href="#" class="dropdown-item">Another action</a></li>
-                                <li><a href="#" class="dropdown-item">Something else here</a></li>
-                                <li class="dropdown-divider"></li>
-                                <li><a href="#" class="dropdown-item">Separated link</a></li>
-                            </ul>
-                        </div>
-                        <h4 class="card-title d-inline-block">Daily Sales</h4>
+                        <h4 class="card-title d-inline-block">Loại Sản Phẩm - Bán Chạy</h4>
 
                         <div id="morris-donut-example" class="morris-chart" style="height: 260px;"></div>
 
                         <div class="row text-center mt-4">
-                            <div class="col-6">
-                                <h4>5,459</h4>
-                                <p class="text-muted mb-0">Total Sales</p>
-                            </div>
-                            <div class="col-6">
-                                <h4>18</h4>
-                                <p class="text-muted mb-0">Open Compaign</p>
+                            <div class="col-12">
+                                <h4><?php echo $productCategory; ?> sản phẩm</h4>
+                                <p class="text-muted mb-0">Đã bán trong toàn thời gian  </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div> <!-- end col -->
 
-            <div class="col-lg-4">
+            <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                        <div class="dropdown float-right position-relative">
-                            <a href="#" class="dropdown-toggle h4 text-muted" data-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#" class="dropdown-item">Action</a></li>
-                                <li><a href="#" class="dropdown-item">Another action</a></li>
-                                <li><a href="#" class="dropdown-item">Something else here</a></li>
-                                <li class="dropdown-divider"></li>
-                                <li><a href="#" class="dropdown-item">Separated link</a></li>
-                            </ul>
-                        </div>
-                        <h4 class="card-title d-inline-block">Statistics</h4>
-
-                        <div id="morris-bar-example" class="morris-chart" style="height: 260px;"></div>
-
-                        <div class="row text-center mt-4">
-                            <div class="col-6">
-                                <h4>$1875.54</h4>
-                                <p class="text-muted mb-0">Revenue</p>
-                            </div>
-                            <div class="col-6">
-                                <h4>541</h4>
-                                <p class="text-muted mb-0">Total Offers</p>
-                            </div>
-                        </div>
+                        <h4 class="card-title d-inline-block">Doanh Thu Theo Tháng</h4>
+                        <canvas id="myChart" style="width:100%;"></canvas>
                     </div>
                 </div>
             </div> <!-- end col -->
 
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="dropdown float-right position-relative">
-                            <a href="#" class="dropdown-toggle h4 text-muted" data-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#" class="dropdown-item">Action</a></li>
-                                <li><a href="#" class="dropdown-item">Another action</a></li>
-                                <li><a href="#" class="dropdown-item">Something else here</a></li>
-                                <li class="dropdown-divider"></li>
-                                <li><a href="#" class="dropdown-item">Separated link</a></li>
-                            </ul>
-                        </div>
-                        <h4 class="card-title d-inline-block">Total Revenue</h4>
-
-                        <div id="morris-line-example" class="morris-chart" style="height: 260px;"></div>
-
-                        <div class="row text-center mt-4">
-                            <div class="col-6">
-                                <h4>$7841.12</h4>
-                                <p class="text-muted mb-0">Total Revenue</p>
-                            </div>
-                            <div class="col-6">
-                                <h4>17</h4>
-                                <p class="text-muted mb-0">Open Compaign</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- end col -->
         </div>
         <!-- end row-->
 
@@ -243,19 +168,7 @@
                 <div class="card">
                     <div class="card-body">
                         
-                        <div class="dropdown float-right position-relative">
-                            <a href="#" class="dropdown-toggle h4 text-muted" data-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#" class="dropdown-item">Action</a></li>
-                                <li><a href="#" class="dropdown-item">Another action</a></li>
-                                <li><a href="#" class="dropdown-item">Something else here</a></li>
-                                <li class="dropdown-divider"></li>
-                                <li><a href="#" class="dropdown-item">Separated link</a></li>
-                            </ul>
-                        </div>
+                        
 
                         <h4 class="card-title overflow-hidden">Khách Hàng Mua Nhiều</h4>
                         <p class="card-subtitle mb-4 font-size-13 overflow-hidden">Top 5 khách hàng mua nhiều sản phẩm nhất

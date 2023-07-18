@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2023 at 04:40 AM
+-- Generation Time: Jul 18, 2023 at 03:39 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -68,8 +68,10 @@ CREATE TABLE `chitietdonhang` (
 INSERT INTO `chitietdonhang` (`MaChiTietDonHang`, `MaDonHang`, `MaSanPham`, `SoLuong`, `MauSac`) VALUES
 (16, 26, 62, 6, 'Xanh'),
 (17, 26, 61, 2, 'Đỏ'),
-(18, 26, 60, 1, 'Vàng'),
-(19, 26, 59, 1, 'Xanh');
+(18, 26, 61, 1, 'Vàng'),
+(19, 26, 59, 1, 'Xanh'),
+(20, 27, 63, 1, 'Trắng'),
+(21, 28, 87, 1, 'Vàng');
 
 -- --------------------------------------------------------
 
@@ -125,7 +127,9 @@ CREATE TABLE `donhang` (
 --
 
 INSERT INTO `donhang` (`MaDonHang`, `MaKhachHang`, `SoLuong`, `ThanhTien`, `ThoiGian`, `TrangThai`, `DiaChi`, `GiamGia`, `TenCongTy`, `PhuongThucThanhToan`) VALUES
-(26, 13, 10, 1300000, '2023-07-15 09:19:51', 1, 'Cổ Nhuế, Bắc Từ Liêm - Bắc từ liêm Hà Nội', 100000, 'Lập trình từ đầu', 2);
+(26, 13, 10, 1300000, '2023-07-18 09:19:51', 1, 'Cổ Nhuế, Bắc Từ Liêm - Bắc từ liêm Hà Nội', 100000, 'Lập trình từ đầu', 2),
+(27, 13, 1, 140000, '2023-07-18 06:38:55', 1, 'Hà Nội - Hà Nội Hà Nội', 0, 'Lập trình từ đầu', 1),
+(28, 13, 1, 140000, '2023-07-18 06:56:13', 1, 'Nam - Nam Nam', 0, 'Lập Trình Từ Đầu', 1);
 
 -- --------------------------------------------------------
 
@@ -421,7 +425,7 @@ CREATE TABLE `khachhang` (
 --
 
 INSERT INTO `khachhang` (`MaKhachHang`, `TenKhachHang`, `SoDienThoai`, `DiaChi`, `Email`, `TaiKhoan`, `MatKhau`, `TrangThai`, `NgayThamGia`) VALUES
-(13, 'Nam Chu Minh', '0999889999', 'Hà Nội', 'namchuminh@gmail.com', 'nam', '21232f297a57a5a743894a0e4a801fc3', 1, '2023-07-11 18:45:18'),
+(13, 'Chu Minh Nam', '0379962045', 'Bắc Từ Liêm, Hà Nội', 'namchuminh@gmail.com', 'nam', '21232f297a57a5a743894a0e4a801fc3', 1, '2023-07-11 18:45:18'),
 (24, 'Nguyễn Văn Anh', '0555666777', 'Hà Nội', 'nguyenvananh@gmail.com', 'nguyenvana', '20ca70c7c8f494c7bd1d54ad23d40cde', 1, '2023-07-14 00:41:12'),
 (25, 'Nguyễn Văn Bình', '0888999777', 'Hà Nam', 'nguyenvanbinh@gmail.com', 'nguyenvanb', '23280a0ad9238d00c62b0272af265c57', 1, '2023-07-14 00:42:46'),
 (26, 'Nguyễn Văn Chung', '0333444555', 'Hà Nội', 'nguyenvanchung@gmail.com', 'nguyenvanchung', '36a00d76edeef3128c3918786dc4e10d', 1, '2023-07-14 00:46:05'),
@@ -764,7 +768,7 @@ INSERT INTO `sanpham` (`MaSanPham`, `TenSanPham`, `MoTaNgan`, `MoTaDai`, `GiaGoc
 (58, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
 (59, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
 (60, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
-(61, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
+(61, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 19, 'nam, quần nam', 'san-pham-mau-cho-cua-hang', 1, 15, 1),
 (62, 'Sản phẩm mẫu cho cửa hàng', 'Sản phẩm mẫu cho cửa hàng', '<p>Sản phẩm mẫu cho cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'nam, quần nam', 'san-pham-mau-cho-cua-hangnam', 1, 15, 1),
 (63, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
 (64, 'Sản phẩm mới của cửa hàng', 'Sản phẩm mới của cửa hàng', '<p>Sản phẩm mới của cửa h&agrave;ng</p>\r\n', 150000, 140000, 18, 'quan, quan nam', 'san-pham-moi-cua-cua-hang', 1, 15, 3),
@@ -934,7 +938,7 @@ ALTER TABLE `cauhinh`
 -- AUTO_INCREMENT for table `chitietdonhang`
 --
 ALTER TABLE `chitietdonhang`
-  MODIFY `MaChiTietDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `MaChiTietDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `chuyenmuc`
@@ -946,7 +950,7 @@ ALTER TABLE `chuyenmuc`
 -- AUTO_INCREMENT for table `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `MaDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `MaDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `giaodien`

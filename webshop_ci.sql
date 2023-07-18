@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2023 at 03:55 PM
+-- Generation Time: Jul 18, 2023 at 03:59 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -45,7 +45,7 @@ CREATE TABLE `cauhinh` (
 --
 
 INSERT INTO `cauhinh` (`MaCauHinh`, `Email`, `SoDienThoai`, `DiaChi`, `TenWebsite`, `Logo`, `Facebook`, `Instagram`, `Tiktok`, `ThuongHieu`) VALUES
-(1, 'chuminhnam1@gmail.com', '09999998881', 'Hà Nội1', 'Website quần áo1', 'http://localhost/webquanao/uploads/sanpham51.jpg', '1', '1', '', 'http://localhost/webquanao/uploads/logo.png');
+(1, 'chuminhnam1@gmail.com', '09999998881', 'Hà Nội1', 'Web bán hàng trực tuyến', 'http://localhost/webquanao/uploads/sanpham51.jpg', '1', '1', '', 'http://localhost/webquanao/uploads/logo.png');
 
 -- --------------------------------------------------------
 

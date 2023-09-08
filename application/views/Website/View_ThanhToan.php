@@ -172,6 +172,7 @@
 			}
 
 			$.post('<?php echo base_url('thanh-toan/thuc-hien/'); ?>', {tencongty, quanhuyen, thanhpho, diachi, payment_method}, function(data){
+				console.log(data)
 				if(data == true){
 					window.location.href = '<?php echo base_url('khach-hang/'); ?>'
 				}else{

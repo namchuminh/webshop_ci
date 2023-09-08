@@ -14,6 +14,7 @@ class KhachHang extends MY_Controller {
 		}
 
 		$this->load->model('Website/Model_KhachHang');
+		$this->load->model('Website/Model_SanPham');
 		$data = array();
 	}
 
@@ -37,6 +38,14 @@ class KhachHang extends MY_Controller {
 	public function removeOrder($madonhang){
 		if(count($this->Model_KhachHang->checkOrderById($madonhang)) == 0){
 			return redirect(base_url('khach-hang/'));
+		}
+
+		$data = $this->Model_KhachHang->getDetailById($madonhang);
+
+		foreach ($data as $key => $value) {
+			$soluongcu = $this->Model_SanPham->getById($value['MaSanPham'])[0]['SoLuong'];
+			$soluongmoi = $soluongcu + $value['SoLuong'];
+			$this->Model_SanPham->updateNumberProductCancel($value['MaSanPham'], $soluongmoi);
 		}
 
 		$this->Model_KhachHang->removeOrder($madonhang);

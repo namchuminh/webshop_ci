@@ -22,6 +22,7 @@ class ThanhToan extends MY_Controller {
             }
         }
         $this->load->model('Website/Model_ThanhToan');
+        $this->load->model('Website/Model_SanPham');
         $data = array();
 	}
 
@@ -83,6 +84,12 @@ class ThanhToan extends MY_Controller {
 
 			foreach ($cart as $key => $value) {
 				$this->Model_ThanhToan->addDetail($madonhang, $value['id'], $value['number'], $mau[$value['color'][0]]);
+				$soluongcu = $this->Model_SanPham->getById($value['id'])[0]['SoLuong'];
+				$soluongmoi = $soluongcu - $value['number'];
+				if($soluongmoi <= 0){
+					$soluongmoi = 0;
+				}
+				$this->Model_SanPham->updateNumberProductPay($value['id'], $soluongmoi);
 			}
 
 			$this->session->unset_userdata('saleCode');

@@ -59,6 +59,24 @@ class Model_SanPham extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getById($masanpham){
+		$sql = "SELECT * FROM sanpham WHERE MaSanPham = ?";
+		$result = $this->db->query($sql, array($masanpham));
+		return $result->result_array();
+	}
+
+	public function updateNumberProductPay($masanpham, $soluong){
+		$sql = "UPDATE `sanpham` SET `SoLuong`= ? WHERE `MaSanPham`= ?";
+		$result = $this->db->query($sql, array($soluong,$masanpham));
+		return $result;
+	}
+
+	public function updateNumberProductCancel($masanpham, $soluong){
+		$sql = "UPDATE `sanpham` SET `SoLuong`= ? WHERE `MaSanPham`= ?";
+		$result = $this->db->query($sql, array($soluong,$masanpham));
+		return $result;
+	}
+
 	public function getRelated($machuyenmuc){
 		$sql = "SELECT sanpham.*, hinhanh.LoaiAnh, hinhanh.MaSanPham, hinhanh.DuongDan AS duongdananh FROM sanpham,hinhanh WHERE hinhanh.MaSanPham = sanpham.MaSanPham AND hinhanh.LoaiAnh = 1 AND sanpham.TrangThai != 0 AND sanpham.MaChuyenMuc = ? ORDER BY RAND() LIMIT 10";
 		$result = $this->db->query($sql, array($machuyenmuc));

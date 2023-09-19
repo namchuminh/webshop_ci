@@ -10,6 +10,18 @@ class Model_KhachHang extends CI_Model {
 		
 	}
 
+	public function countViewHistory($makhachhang){
+		$sql = "SELECT * FROM lichsuxem WHERE MaKHachHang = ?";
+		$result = $this->db->query($sql, array($makhachhang));
+		return $result->num_rows();
+	}
+
+	public function insertViewHistory($masanpham,$makhachhang){
+		$sql = "INSERT INTO lichsuxem (MaSanPham,MaKhachHang) VALUES (?,?)";
+		$result = $this->db->query($sql, array($masanpham,$makhachhang));
+		return $result;
+	}
+
 	public function getById($makhachhang){
 		$sql = "SELECT donhang.*, khachhang.MaKhachHang, khachhang.TenKhachHang FROM donhang, khachhang WHERE donhang.MaKhachHang = khachhang.MaKhachHang AND khachhang.MaKhachHang = ?";
 		$result = $this->db->query($sql, array($makhachhang));

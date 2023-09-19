@@ -137,31 +137,69 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="section-title text-start mb-30">
-                        <h1>Sản Phẩm Liên Quan</h1>
-                    </div>
+                    <?php if(count($suggestProduct) >=3 ){ ?>
+                        <div class="section-title text-start mb-30">
+                            <h3 style="font-weight: 500;">Sản Phẩm Đề Xuất</h3>
+                        </div>
+                    <?php } ?>
 
                     <div class="related-product-slider related-product-slider-2 slick-space p-0">
-                        <?php foreach ($related as $key => $value): ?>
-                            <div class="slick-slide">
-                                <div class="product-item">
-                                    <div class="product-inner">
-                                        <div class="image" style="height: 320px;">
-                                            <img style="height: 100%;" src="<?php echo $value['duongdananh']; ?>" alt="">
-                                            <div class="image-overlay">
-                                                <div class="action-buttons">
-                                                    <button>
-                                                        <a style="color: unset;" class="them-gio-hang" value="<?php echo base_url('gio-hang/them/'.$value['MaSanPham'].'/1/'); ?>">THÊM GIỎ HÀNG
-                                                        </a>
-                                                    </button>
-                                                    <button>YÊU THÍCH</button>
+                        <?php if(count($suggestProduct) >=3 ){ ?>
+                            <?php foreach ($suggestProduct as $key => $value): ?>
+                                <div class="slick-slide">
+                                    <div class="product-item">
+                                        <div class="product-inner">
+                                            <div class="image" style="height: 320px;">
+                                                <img style="height: 100%;" src="<?php echo $value['duongdananh']; ?>" alt="">
+                                                <div class="image-overlay">
+                                                    <div class="action-buttons">
+                                                        <button>
+                                                            <a style="color: unset;" class="them-gio-hang" value="<?php echo base_url('gio-hang/them/'.$value['MaSanPham'].'/1/'); ?>">THÊM GIỎ HÀNG
+                                                            </a>
+                                                        </button>
+                                                        <button>YÊU THÍCH</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content">
+                                                <div class="content-left">
+                                                    <h4 class="title"><a href="<?php echo base_url('san-pham/'.$value['DuongDan'].'/') ?>"><?php echo $value['TenSanPham']; ?></a></h4>
+                                                    <div class="ratting">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <h5 class="size">Giá Gốc: <span style="text-decoration: line-through;" class="price"><?php echo number_format($value['GiaGoc']); ?>đ</span></h5>
+                                                    <h5 class="size">Giá Bán: <span class="price"><?php echo number_format($value['GiaBan']); ?>đ</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="content-right">
+                                                    <span class="price" style="font-size: 16px;">-<?php echo number_format((($value['GiaGoc'] - $value['GiaBan']) / $value['GiaGoc']) * 100,1); ?>%</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="content">
-                                            <div class="content-left">
-                                                <h4 class="title"><a href="<?php echo base_url('san-pham/'.$value['DuongDan'].'/') ?>"><?php echo $value['TenSanPham']; ?></a></h4>
+                                    </div>
+                                </div>
+                            <?php endforeach ?>
+                        <?php } ?>
+                    </div>
+                    <br>
+                    <hr/>
+                    <?php if(count($related) != 0){ ?>
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <div class="section-title text-start mb-30">
+                                <h3 style="font-weight: 500;">Sản Phẩm Cùng Loại</h3>
+                            </div>
+                            <div class="small-product-slider row row-12 mbn-40 col-12">
+                                <?php foreach ($related as $key => $value): ?>
+                                    <div class="col mb-40">
+                                        <div class="on-sale-product">
+                                            <a style="height: 165px;" href="<?php echo base_url('san-pham/'.$value['DuongDan'].'/'); ?>" class="image"><img style="height: 100%;" src="<?php echo $value['duongdananh']; ?>" alt="Image"></a>
+                                            <div class="content text-center">
+                                                <h4 class="title"><a href="<?php echo base_url('san-pham/'.$value['DuongDan'].'/'); ?>"><?php echo $value['TenSanPham']; ?></a></h4>
+                                                <span class="price"><?php echo number_format($value['GiaBan']); ?>đ <span class="old"><?php echo number_format($value['GiaGoc']); ?>đ</span></span>
                                                 <div class="ratting">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -169,20 +207,13 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                 </div>
-                                                <h5 class="size">Giá Gốc: <span style="text-decoration: line-through;" class="price"><?php echo number_format($value['GiaGoc']); ?>đ</span></h5>
-                                                <h5 class="size">Giá Bán: <span class="price"><?php echo number_format($value['GiaBan']); ?>đ</span>
-                                                </h5>
-                                            </div>
-                                            <div class="content-right">
-                                                <span class="price" style="font-size: 16px;">-<?php echo number_format((($value['GiaGoc'] - $value['GiaBan']) / $value['GiaGoc']) * 100,1); ?>%</span>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php endforeach ?>
                             </div>
-                        <?php endforeach ?>
-
-                    </div>
+                        </div>
+                    <?php } ?>
 
                 </div>
 

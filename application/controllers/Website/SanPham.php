@@ -1,5 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+$project_path = realpath(APPPATH . '../');
+
+require_once $project_path . '/vendor/autoload.php';
+
+use Phpml\Association\Apriori;
+
 class SanPham extends MY_Controller {
 
 	public function __construct()
@@ -7,12 +13,12 @@ class SanPham extends MY_Controller {
 		parent::__construct();
 		$this->load->model('Website/Model_SanPham');
 		$this->load->model('Model_TrangChu');
+		$this->load->model('Website/Model_KhachHang');
 		$data = array();
 	}
 
 	public function index()
 	{
-
 		$totalRecords = $this->Model_SanPham->checkNumber();
 		$recordsPerPage = 12;
 		$totalPages = ceil($totalRecords / $recordsPerPage); 
@@ -23,6 +29,82 @@ class SanPham extends MY_Controller {
 		$data['list'] = $this->Model_SanPham->getAll();
 		$data['title'] = "Tất Cả Sản Phẩm Trong Cửa Hàng";
 		return $this->load->view('Website/View_SanPham', $data);
+	}
+
+	public function suggestProduct($product_id){
+		$this->db->order_by('MaLichSuXem', 'desc');
+		$this->db->limit(50); 
+		$history = $this->db->get('lichsuxem')->result_array();
+
+		// Tạo một mảng dữ liệu để áp dụng thuật toán Apriori
+        $dataset = [];
+        foreach ($history as $row) {
+            $dataset[$row['MaKhachHang']][] = $row['MaSanPham'];
+        }
+
+        // Áp dụng thuật toán Apriori để tạo ra các gợi ý sản phẩm
+        $apriori = new Apriori($support = 0.1);
+        $apriori->train($dataset, []);
+
+
+        // Lấy ra các gợi ý sản phẩm dựa trên quy tắc kết hợp
+        $newTransaction = [$product_id];
+        $associationRules = $apriori->getRules();
+        $recommendations = [];
+        foreach ($associationRules as $rule) {
+		    if (array_diff($rule["antecedent"], $newTransaction) === []) {
+		        $recommendations[] = $rule["consequent"];
+		    }
+		}
+
+		$max_length = 0;
+		$result = [];
+
+		foreach ($recommendations as $recommendation) {
+		    if (count($recommendation) > $max_length) {
+		        $max_length = count($recommendation);
+		        $result = $recommendation;
+		    }
+		}
+
+		return $result;
+	}
+
+	public function Detail($DuongDan){
+
+		if(count($this->Model_SanPham->getBySlug($DuongDan)) == 0){
+			return redirect(base_url('san-pham'));
+		}
+
+		$machuyenmuc = $this->Model_SanPham->getBySlug($DuongDan)[0]['MaChuyenMuc'];
+		$masanpham = $this->Model_SanPham->getBySlug($DuongDan)[0]['MaSanPham'];
+		$makhachhang = $this->session->userdata('session_id');
+
+		$this->session->set_userdata('masanpham',$masanpham);
+
+		if($this->session->has_userdata('khachhang')){
+			$makhachhang = $this->session->userdata('MaKhachHang');
+		}
+
+		if($this->Model_KhachHang->countViewHistory($makhachhang) <= 5){
+			$this->Model_KhachHang->insertViewHistory($masanpham,$makhachhang);
+		}
+
+		$suggestProduct = [];
+		if(count($this->suggestProduct($masanpham)) >= 3){
+			$arr_masanpham = implode(',', $this->suggestProduct($masanpham));
+			$suggestProduct = $this->Model_SanPham->getSuggestProduct($arr_masanpham);
+		}
+
+		$data['related'] = $this->Model_SanPham->getRelated($machuyenmuc);
+		$data['detail'] = $this->Model_SanPham->getBySlug($DuongDan);
+		$data['popular'] = $this->Model_TrangChu->getPopular();
+		$data['category'] = $this->Model_SanPham->getCategory();
+		$data['list'] = $this->Model_SanPham->getAll();
+		$data['title'] = $this->Model_SanPham->getBySlug($DuongDan)[0]['TenSanPham'];
+		$data['color'] = $this->Model_SanPham->getColor($masanpham);
+		$data['suggestProduct'] = $suggestProduct;
+		return $this->load->view('Website/View_ChiTietSanPham', $data);
 	}
 
 	public function Page($trang){
@@ -198,24 +280,7 @@ class SanPham extends MY_Controller {
 
 	}
 
-	public function Detail($DuongDan){
-
-		if(count($this->Model_SanPham->getBySlug($DuongDan)) == 0){
-			return redirect(base_url('san-pham'));
-		}
-
-		$machuyenmuc = $this->Model_SanPham->getBySlug($DuongDan)[0]['MaChuyenMuc'];
-		$masanpham = $this->Model_SanPham->getBySlug($DuongDan)[0]['MaSanPham'];
-
-		$data['related'] = $this->Model_SanPham->getRelated($machuyenmuc);
-		$data['detail'] = $this->Model_SanPham->getBySlug($DuongDan);
-		$data['popular'] = $this->Model_TrangChu->getPopular();
-		$data['category'] = $this->Model_SanPham->getCategory();
-		$data['list'] = $this->Model_SanPham->getAll();
-		$data['title'] = $this->Model_SanPham->getBySlug($DuongDan)[0]['TenSanPham'];
-		$data['color'] = $this->Model_SanPham->getColor($masanpham);
-		return $this->load->view('Website/View_ChiTietSanPham', $data);
-	}
+	
 }
 
 /* End of file SanPham.php */

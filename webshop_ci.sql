@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2023 at 03:59 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Sep 19, 2023 at 02:30 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,15 +29,15 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cauhinh` (
   `MaCauHinh` int(11) NOT NULL,
-  `Email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `SoDienThoai` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
-  `DiaChi` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `TenWebsite` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Logo` text COLLATE utf8_unicode_ci NOT NULL,
-  `Facebook` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Instagram` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Tiktok` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `ThuongHieu` text COLLATE utf8_unicode_ci NOT NULL
+  `Email` varchar(255) NOT NULL,
+  `SoDienThoai` varchar(11) NOT NULL,
+  `DiaChi` varchar(500) NOT NULL,
+  `TenWebsite` varchar(255) NOT NULL,
+  `Logo` text NOT NULL,
+  `Facebook` varchar(255) NOT NULL,
+  `Instagram` varchar(255) NOT NULL,
+  `Tiktok` varchar(255) NOT NULL,
+  `ThuongHieu` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -58,7 +58,7 @@ CREATE TABLE `chitietdonhang` (
   `MaDonHang` int(11) NOT NULL,
   `MaSanPham` int(11) NOT NULL,
   `SoLuong` int(11) NOT NULL,
-  `MauSac` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `MauSac` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -69,11 +69,18 @@ CREATE TABLE `chitietdonhang` (
 
 CREATE TABLE `chuyenmuc` (
   `MaChuyenMuc` int(11) NOT NULL,
-  `TenChuyenMuc` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `DuongDan` text COLLATE utf8_unicode_ci NOT NULL,
-  `AnhChinh` text COLLATE utf8_unicode_ci NOT NULL,
+  `TenChuyenMuc` varchar(255) NOT NULL,
+  `DuongDan` text NOT NULL,
+  `AnhChinh` text NOT NULL,
   `TrangThai` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `chuyenmuc`
+--
+
+INSERT INTO `chuyenmuc` (`MaChuyenMuc`, `TenChuyenMuc`, `DuongDan`, `AnhChinh`, `TrangThai`) VALUES
+(1, 'Phụ Kiện 1', 'phu-kien-1', 'http://localhost/webshop_ci/uploads/rsz_screenshot_from_2020-07-03_12-01-57-722x400.png', 1);
 
 -- --------------------------------------------------------
 
@@ -88,11 +95,18 @@ CREATE TABLE `donhang` (
   `ThanhTien` int(11) NOT NULL,
   `ThoiGian` datetime NOT NULL DEFAULT current_timestamp(),
   `TrangThai` int(11) NOT NULL DEFAULT 1,
-  `DiaChi` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `DiaChi` varchar(500) NOT NULL,
   `GiamGia` int(11) NOT NULL DEFAULT 0,
-  `TenCongTy` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `TenCongTy` varchar(500) NOT NULL,
   `PhuongThucThanhToan` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `donhang`
+--
+
+INSERT INTO `donhang` (`MaDonHang`, `MaKhachHang`, `SoLuong`, `ThanhTien`, `ThoiGian`, `TrangThai`, `DiaChi`, `GiamGia`, `TenCongTy`, `PhuongThucThanhToan`) VALUES
+(1, 13, 5, 150000, '2023-09-19 08:23:06', 4, 'HN', 15000, 'abcd', 1);
 
 -- --------------------------------------------------------
 
@@ -104,8 +118,21 @@ CREATE TABLE `giaodien` (
   `MaGiaoDien` int(11) NOT NULL,
   `MaChuyenMuc` int(11) DEFAULT NULL,
   `TheLoai` int(11) NOT NULL,
-  `HinhAnh` text COLLATE utf8_unicode_ci NOT NULL
+  `HinhAnh` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `giaodien`
+--
+
+INSERT INTO `giaodien` (`MaGiaoDien`, `MaChuyenMuc`, `TheLoai`, `HinhAnh`) VALUES
+(1, 1, 1, 'http://localhost/webshop_ci/uploads/Fig1.png'),
+(2, 1, 2, 'http://localhost/webshop_ci/uploads/Fig11.png'),
+(3, 1, 3, 'http://localhost/webshop_ci/uploads/Fig12.png'),
+(4, 1, 2, 'http://localhost/webshop_ci/uploads/Fig13.png'),
+(5, 1, 2, 'http://localhost/webshop_ci/uploads/Fig14.png'),
+(6, 1, 3, 'http://localhost/webshop_ci/uploads/download_(2)21.png'),
+(7, 1, 3, 'http://localhost/webshop_ci/uploads/download_(2)22.png');
 
 -- --------------------------------------------------------
 
@@ -116,7 +143,7 @@ CREATE TABLE `giaodien` (
 CREATE TABLE `hinhanh` (
   `MaHinhAnh` int(11) NOT NULL,
   `MaSanPham` int(11) NOT NULL,
-  `DuongDan` text COLLATE utf8_unicode_ci NOT NULL,
+  `DuongDan` text NOT NULL,
   `LoaiAnh` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -125,156 +152,74 @@ CREATE TABLE `hinhanh` (
 --
 
 INSERT INTO `hinhanh` (`MaHinhAnh`, `MaSanPham`, `DuongDan`, `LoaiAnh`) VALUES
-(77, 44, 'http://localhost/webquanao/uploads/tintuc211.png', 3),
-(78, 44, 'http://localhost/webquanao/uploads/tintuc319.jpg', 4),
-(79, 45, 'http://localhost/webquanao/uploads/tintuc44.jpg', 1),
-(80, 45, 'http://localhost/webquanao/uploads/tintuc212.png', 2),
-(81, 45, 'http://localhost/webquanao/uploads/sanpham5.jpg', 3),
-(82, 45, 'http://localhost/webquanao/uploads/chitiet35.png', 4),
-(83, 46, 'http://localhost/webquanao/uploads/tintuc45.jpg', 1),
-(84, 46, 'http://localhost/webquanao/uploads/tintuc213.png', 2),
-(85, 46, 'http://localhost/webquanao/uploads/sanpham51.jpg', 3),
-(86, 46, 'http://localhost/webquanao/uploads/chitiet36.png', 4),
-(87, 47, 'http://localhost/webquanao/uploads/tintuc46.jpg', 1),
-(88, 47, 'http://localhost/webquanao/uploads/tintuc214.png', 2),
-(89, 47, 'http://localhost/webquanao/uploads/sanpham52.jpg', 3),
-(90, 47, 'http://localhost/webquanao/uploads/chitiet37.png', 4),
-(91, 48, 'http://localhost/webquanao/uploads/tintuc47.jpg', 1),
-(92, 48, 'http://localhost/webquanao/uploads/tintuc215.png', 2),
-(93, 48, 'http://localhost/webquanao/uploads/sanpham53.jpg', 3),
-(94, 48, 'http://localhost/webquanao/uploads/chitiet38.png', 4),
-(95, 49, 'http://localhost/webquanao/uploads/tintuc48.jpg', 1),
-(96, 49, 'http://localhost/webquanao/uploads/tintuc216.png', 2),
-(97, 49, 'http://localhost/webquanao/uploads/sanpham54.jpg', 3),
-(98, 49, 'http://localhost/webquanao/uploads/chitiet39.png', 4),
-(99, 50, 'http://localhost/webquanao/uploads/avatar3.png', 1),
-(100, 50, 'http://localhost/webquanao/uploads/tintuc41.jpg', 2),
-(101, 50, 'http://localhost/webquanao/uploads/tintuc2.png', 3),
-(102, 50, 'http://localhost/webquanao/uploads/sanpham13.png', 4),
-(103, 51, 'http://localhost/webquanao/uploads/tintuc4.jpg', 1),
-(104, 51, 'http://localhost/webquanao/uploads/tintuc41.jpg', 2),
-(105, 51, 'http://localhost/webquanao/uploads/tintuc42.jpg', 3),
-(106, 51, 'http://localhost/webquanao/uploads/tintuc43.jpg', 4),
-(107, 52, 'http://localhost/webquanao/uploads/product-1.jpg', 1),
-(108, 52, 'http://localhost/webquanao/uploads/product-11.jpg', 2),
-(109, 52, 'http://localhost/webquanao/uploads/product-12.jpg', 3),
-(110, 52, 'http://localhost/webquanao/uploads/product-13.jpg', 4),
-(111, 53, 'http://localhost/webquanao/uploads/product-14.jpg', 1),
-(112, 53, 'http://localhost/webquanao/uploads/product-15.jpg', 2),
-(113, 53, 'http://localhost/webquanao/uploads/product-16.jpg', 3),
-(114, 53, 'http://localhost/webquanao/uploads/product-17.jpg', 4),
-(115, 54, 'http://localhost/webquanao/uploads/product-18.jpg', 1),
-(116, 54, 'http://localhost/webquanao/uploads/product-19.jpg', 2),
-(117, 54, 'http://localhost/webquanao/uploads/product-110.jpg', 3),
-(118, 54, 'http://localhost/webquanao/uploads/product-111.jpg', 4),
-(119, 55, 'http://localhost/webquanao/uploads/product-112.jpg', 1),
-(120, 55, 'http://localhost/webquanao/uploads/product-113.jpg', 2),
-(121, 55, 'http://localhost/webquanao/uploads/product-114.jpg', 3),
-(122, 55, 'http://localhost/webquanao/uploads/product-115.jpg', 4),
-(123, 56, 'http://localhost/webquanao/uploads/product-116.jpg', 1),
-(124, 56, 'http://localhost/webquanao/uploads/product-117.jpg', 2),
-(125, 56, 'http://localhost/webquanao/uploads/product-118.jpg', 3),
-(126, 56, 'http://localhost/webquanao/uploads/product-119.jpg', 4),
-(127, 57, 'http://localhost/webquanao/uploads/product-120.jpg', 1),
-(128, 57, 'http://localhost/webquanao/uploads/product-121.jpg', 2),
-(129, 57, 'http://localhost/webquanao/uploads/product-122.jpg', 3),
-(130, 57, 'http://localhost/webquanao/uploads/product-123.jpg', 4),
-(131, 58, 'http://localhost/webquanao/uploads/product-124.jpg', 1),
-(132, 58, 'http://localhost/webquanao/uploads/product-125.jpg', 2),
-(133, 58, 'http://localhost/webquanao/uploads/product-126.jpg', 3),
-(134, 58, 'http://localhost/webquanao/uploads/product-127.jpg', 4),
-(135, 59, 'http://localhost/webquanao/uploads/product-128.jpg', 1),
-(136, 59, 'http://localhost/webquanao/uploads/product-129.jpg', 2),
-(137, 59, 'http://localhost/webquanao/uploads/product-130.jpg', 3),
-(138, 59, 'http://localhost/webquanao/uploads/product-131.jpg', 4),
-(139, 60, 'http://localhost/webquanao/uploads/product-132.jpg', 1),
-(140, 60, 'http://localhost/webquanao/uploads/product-133.jpg', 2),
-(141, 60, 'http://localhost/webquanao/uploads/product-134.jpg', 3),
-(142, 60, 'http://localhost/webquanao/uploads/product-135.jpg', 4),
-(143, 61, 'http://localhost/webquanao/uploads/product-136.jpg', 1),
-(144, 61, 'http://localhost/webquanao/uploads/product-137.jpg', 2),
-(145, 61, 'http://localhost/webquanao/uploads/product-138.jpg', 3),
-(146, 61, 'http://localhost/webquanao/uploads/product-139.jpg', 4),
-(147, 62, 'http://localhost/webquanao/uploads/tintuc45.jpg', 1),
-(148, 62, 'http://localhost/webquanao/uploads/product-141.jpg', 2),
-(149, 62, 'http://localhost/webquanao/uploads/product-142.jpg', 3),
-(150, 62, 'http://localhost/webquanao/uploads/product-143.jpg', 4),
-(151, 63, 'http://localhost/webquanao/uploads/on-sale-1.jpg', 1),
-(152, 63, 'http://localhost/webquanao/uploads/on-sale-11.jpg', 2),
-(153, 63, 'http://localhost/webquanao/uploads/on-sale-12.jpg', 3),
-(154, 63, 'http://localhost/webquanao/uploads/on-sale-13.jpg', 4),
-(155, 64, 'http://localhost/webquanao/uploads/on-sale-14.jpg', 1),
-(156, 64, 'http://localhost/webquanao/uploads/on-sale-15.jpg', 2),
-(157, 64, 'http://localhost/webquanao/uploads/on-sale-16.jpg', 3),
-(158, 64, 'http://localhost/webquanao/uploads/on-sale-17.jpg', 4),
-(159, 65, 'http://localhost/webquanao/uploads/on-sale-18.jpg', 1),
-(160, 65, 'http://localhost/webquanao/uploads/on-sale-19.jpg', 2),
-(161, 65, 'http://localhost/webquanao/uploads/on-sale-110.jpg', 3),
-(162, 65, 'http://localhost/webquanao/uploads/on-sale-111.jpg', 4),
-(163, 66, 'http://localhost/webquanao/uploads/on-sale-112.jpg', 1),
-(164, 66, 'http://localhost/webquanao/uploads/on-sale-113.jpg', 2),
-(165, 66, 'http://localhost/webquanao/uploads/on-sale-114.jpg', 3),
-(166, 66, 'http://localhost/webquanao/uploads/on-sale-115.jpg', 4),
-(167, 67, 'http://localhost/webquanao/uploads/on-sale-116.jpg', 1),
-(168, 67, 'http://localhost/webquanao/uploads/on-sale-117.jpg', 2),
-(169, 67, 'http://localhost/webquanao/uploads/on-sale-118.jpg', 3),
-(170, 67, 'http://localhost/webquanao/uploads/on-sale-119.jpg', 4),
-(171, 68, 'http://localhost/webquanao/uploads/on-sale-120.jpg', 1),
-(172, 68, 'http://localhost/webquanao/uploads/on-sale-121.jpg', 2),
-(173, 68, 'http://localhost/webquanao/uploads/on-sale-122.jpg', 3),
-(174, 68, 'http://localhost/webquanao/uploads/on-sale-123.jpg', 4),
-(175, 69, 'http://localhost/webquanao/uploads/on-sale-124.jpg', 1),
-(176, 69, 'http://localhost/webquanao/uploads/on-sale-125.jpg', 2),
-(177, 69, 'http://localhost/webquanao/uploads/on-sale-126.jpg', 3),
-(178, 69, 'http://localhost/webquanao/uploads/on-sale-127.jpg', 4),
-(179, 70, 'http://localhost/webquanao/uploads/on-sale-128.jpg', 1),
-(180, 70, 'http://localhost/webquanao/uploads/on-sale-129.jpg', 2),
-(181, 70, 'http://localhost/webquanao/uploads/on-sale-130.jpg', 3),
-(182, 70, 'http://localhost/webquanao/uploads/on-sale-131.jpg', 4),
-(183, 71, 'http://localhost/webquanao/uploads/on-sale-132.jpg', 1),
-(184, 71, 'http://localhost/webquanao/uploads/on-sale-133.jpg', 2),
-(185, 71, 'http://localhost/webquanao/uploads/on-sale-134.jpg', 3),
-(186, 71, 'http://localhost/webquanao/uploads/on-sale-135.jpg', 4),
-(187, 72, 'http://localhost/webquanao/uploads/on-sale-140.jpg', 1),
-(188, 72, 'http://localhost/webquanao/uploads/on-sale-137.jpg', 2),
-(189, 72, 'http://localhost/webquanao/uploads/on-sale-138.jpg', 3),
-(190, 72, 'http://localhost/webquanao/uploads/on-sale-139.jpg', 4),
-(191, 73, 'http://localhost/webquanao/uploads/best-deal-2.jpg', 1),
-(192, 73, 'http://localhost/webquanao/uploads/best-deal-21.jpg', 2),
-(193, 73, 'http://localhost/webquanao/uploads/best-deal-22.jpg', 3),
-(194, 73, 'http://localhost/webquanao/uploads/best-deal-23.jpg', 4),
-(195, 74, 'http://localhost/webquanao/uploads/best-deal-24.jpg', 1),
-(196, 74, 'http://localhost/webquanao/uploads/best-deal-25.jpg', 2),
-(197, 74, 'http://localhost/webquanao/uploads/best-deal-26.jpg', 3),
-(198, 74, 'http://localhost/webquanao/uploads/best-deal-27.jpg', 4),
-(199, 75, 'http://localhost/webquanao/uploads/best-deal-28.jpg', 1),
-(200, 75, 'http://localhost/webquanao/uploads/best-deal-29.jpg', 2),
-(201, 75, 'http://localhost/webquanao/uploads/best-deal-210.jpg', 3),
-(202, 75, 'http://localhost/webquanao/uploads/best-deal-211.jpg', 4),
-(203, 76, 'http://localhost/webquanao/uploads/best-deal-212.jpg', 1),
-(204, 76, 'http://localhost/webquanao/uploads/best-deal-213.jpg', 2),
-(205, 76, 'http://localhost/webquanao/uploads/best-deal-214.jpg', 3),
-(206, 76, 'http://localhost/webquanao/uploads/best-deal-215.jpg', 4),
-(207, 77, 'http://localhost/webquanao/uploads/best-deal-216.jpg', 1),
-(208, 77, 'http://localhost/webquanao/uploads/best-deal-217.jpg', 2),
-(209, 77, 'http://localhost/webquanao/uploads/best-deal-218.jpg', 3),
-(210, 77, 'http://localhost/webquanao/uploads/best-deal-219.jpg', 4),
-(211, 78, 'http://localhost/webquanao/uploads/best-deal-220.jpg', 1),
-(212, 78, 'http://localhost/webquanao/uploads/best-deal-221.jpg', 2),
-(213, 78, 'http://localhost/webquanao/uploads/best-deal-222.jpg', 3),
-(214, 78, 'http://localhost/webquanao/uploads/best-deal-223.jpg', 4),
-(215, 79, 'http://localhost/webquanao/uploads/best-deal-224.jpg', 1),
-(216, 79, 'http://localhost/webquanao/uploads/best-deal-225.jpg', 2),
-(217, 79, 'http://localhost/webquanao/uploads/best-deal-226.jpg', 3),
-(218, 79, 'http://localhost/webquanao/uploads/best-deal-227.jpg', 4),
-(219, 80, 'http://localhost/webquanao/uploads/best-deal-228.jpg', 1),
-(220, 80, 'http://localhost/webquanao/uploads/best-deal-229.jpg', 2),
-(221, 80, 'http://localhost/webquanao/uploads/best-deal-230.jpg', 3),
-(222, 80, 'http://localhost/webquanao/uploads/best-deal-231.jpg', 4),
-(223, 81, 'http://localhost/webquanao/uploads/best-deal-236.jpg', 1),
-(224, 81, 'http://localhost/webquanao/uploads/best-deal-233.jpg', 2),
-(225, 81, 'http://localhost/webquanao/uploads/best-deal-234.jpg', 3),
-(226, 81, 'http://localhost/webquanao/uploads/best-deal-235.jpg', 4);
+(1, 1, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack76.jpg', 1),
+(2, 1, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack77.jpg', 2),
+(3, 1, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack78.jpg', 3),
+(4, 1, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack79.jpg', 4),
+(5, 2, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack80.jpg', 1),
+(6, 2, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack81.jpg', 2),
+(7, 2, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack82.jpg', 3),
+(8, 2, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack83.jpg', 4),
+(9, 3, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack84.jpg', 1),
+(10, 3, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack85.jpg', 2),
+(11, 3, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack86.jpg', 3),
+(12, 3, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack87.jpg', 4),
+(13, 4, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack88.jpg', 1),
+(14, 4, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack89.jpg', 2),
+(15, 4, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack90.jpg', 3),
+(16, 4, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack91.jpg', 4),
+(17, 5, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack92.jpg', 1),
+(18, 5, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack93.jpg', 2),
+(19, 5, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack94.jpg', 3),
+(20, 5, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 4),
+(21, 6, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack96.jpg', 1),
+(22, 6, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack97.jpg', 2),
+(23, 6, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack98.jpg', 3),
+(24, 6, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack99.jpg', 4),
+(25, 7, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 1),
+(26, 7, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(27, 7, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(28, 7, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(29, 8, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 1),
+(30, 8, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(31, 8, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(32, 8, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(33, 10, 'http://localhost/webshop_ci/uploads/download_(2).png', 1),
+(34, 10, 'http://localhost/webshop_ci/uploads/download_(2)1.png', 2),
+(35, 10, 'http://localhost/webshop_ci/uploads/download_(2)2.png', 3),
+(36, 10, 'http://localhost/webshop_ci/uploads/download_(2)3.png', 4),
+(37, 9, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 1),
+(38, 9, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(39, 9, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(40, 9, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(41, 11, 'http://localhost/webshop_ci/uploads/download_(2)4.png', 1),
+(42, 11, 'http://localhost/webshop_ci/uploads/download_(2)5.png', 2),
+(43, 11, 'http://localhost/webshop_ci/uploads/download_(2)6.png', 3),
+(44, 11, 'http://localhost/webshop_ci/uploads/download_(2)7.png', 4),
+(45, 12, 'http://localhost/webshop_ci/uploads/download_(2)8.png', 1),
+(46, 12, 'http://localhost/webshop_ci/uploads/download_(2)9.png', 2),
+(47, 12, 'http://localhost/webshop_ci/uploads/download_(2)10.png', 3),
+(48, 12, 'http://localhost/webshop_ci/uploads/download_(2)11.png', 4),
+(49, 13, 'http://localhost/webshop_ci/uploads/download_(2)12.png', 1),
+(50, 13, 'http://localhost/webshop_ci/uploads/download_(2)13.png', 2),
+(51, 13, 'http://localhost/webshop_ci/uploads/download_(2)14.png', 3),
+(52, 13, 'http://localhost/webshop_ci/uploads/download_(2)15.png', 4),
+(53, 14, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 1),
+(54, 14, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(55, 14, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(56, 14, 'http://localhost/webshop_ci/uploads/Nhap-Key-Crack95.jpg', 0),
+(57, 15, 'http://localhost/webshop_ci/uploads/download_(2)16.png', 1),
+(58, 15, 'http://localhost/webshop_ci/uploads/rsz_screenshot_from_2020-07-03_12-01-57-722x4001.png', 2),
+(59, 15, 'http://localhost/webshop_ci/uploads/download.png', 3),
+(60, 15, 'http://localhost/webshop_ci/uploads/download_(3)4.png', 4),
+(61, 16, 'http://localhost/webshop_ci/uploads/download_(2)17.png', 1),
+(62, 16, 'http://localhost/webshop_ci/uploads/download_(2)18.png', 2),
+(63, 16, 'http://localhost/webshop_ci/uploads/download_(2)19.png', 3),
+(64, 16, 'http://localhost/webshop_ci/uploads/download_(2)20.png', 4),
+(65, 17, 'http://localhost/webshop_ci/uploads/download1.png', 1),
+(66, 17, 'http://localhost/webshop_ci/uploads/neural_networks-002.png', 2),
+(67, 17, 'http://localhost/webshop_ci/uploads/download_(3)5.png', 3),
+(68, 17, 'http://localhost/webshop_ci/uploads/download_(3)6.png', 4);
 
 -- --------------------------------------------------------
 
@@ -284,12 +229,12 @@ INSERT INTO `hinhanh` (`MaHinhAnh`, `MaSanPham`, `DuongDan`, `LoaiAnh`) VALUES
 
 CREATE TABLE `khachhang` (
   `MaKhachHang` int(11) NOT NULL,
-  `TenKhachHang` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `SoDienThoai` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
-  `DiaChi` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `TaiKhoan` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `MatKhau` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `TenKhachHang` varchar(255) NOT NULL,
+  `SoDienThoai` varchar(11) NOT NULL,
+  `DiaChi` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `TaiKhoan` varchar(255) NOT NULL,
+  `MatKhau` varchar(255) NOT NULL,
   `TrangThai` int(11) NOT NULL DEFAULT 1,
   `NgayThamGia` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -324,18 +269,110 @@ CREATE TABLE `lichsunhap` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `lichsuxem`
+--
+
+CREATE TABLE `lichsuxem` (
+  `MaLichSuXem` int(11) NOT NULL,
+  `MaSanPham` int(11) NOT NULL,
+  `MaKhachHang` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `lichsuxem`
+--
+
+INSERT INTO `lichsuxem` (`MaLichSuXem`, `MaSanPham`, `MaKhachHang`) VALUES
+(136, 17, '25'),
+(137, 13, '25'),
+(138, 10, '25'),
+(139, 7, '25'),
+(140, 14, '13'),
+(141, 10, '13'),
+(142, 8, '13'),
+(143, 5, '13'),
+(144, 7, 'rOAUoxWK9u8y56l324r9mH5ccQEGM0o1'),
+(145, 5, 'rOAUoxWK9u8y56l324r9mH5ccQEGM0o1'),
+(146, 4, 'rOAUoxWK9u8y56l324r9mH5ccQEGM0o1'),
+(147, 6, 'rOAUoxWK9u8y56l324r9mH5ccQEGM0o1'),
+(148, 16, '26'),
+(149, 12, '26'),
+(150, 10, '26'),
+(151, 6, '26'),
+(152, 11, '27'),
+(153, 12, '27'),
+(154, 5, '27'),
+(155, 7, '27'),
+(156, 16, '28'),
+(157, 15, '28'),
+(158, 4, '28'),
+(159, 6, '28'),
+(160, 4, 'JQNcPaYJ1vrelKa6tBMKibTQZZgugonD'),
+(161, 3, 'JQNcPaYJ1vrelKa6tBMKibTQZZgugonD'),
+(162, 1, 'JQNcPaYJ1vrelKa6tBMKibTQZZgugonD'),
+(163, 7, 'JQNcPaYJ1vrelKa6tBMKibTQZZgugonD'),
+(164, 10, 'JQNcPaYJ1vrelKa6tBMKibTQZZgugonD'),
+(165, 6, 'JQNcPaYJ1vrelKa6tBMKibTQZZgugonD'),
+(166, 5, 'JQNcPaYJ1vrelKa6tBMKibTQZZgugonD'),
+(167, 1, 'JQNcPaYJ1vrelKa6tBMKibTQZZgugonD'),
+(168, 16, '28'),
+(169, 15, '28'),
+(170, 2, '28'),
+(171, 4, '28'),
+(172, 16, '13'),
+(173, 11, '13'),
+(174, 8, '13'),
+(175, 3, '13'),
+(176, 10, '24'),
+(177, 8, '24'),
+(178, 3, '24'),
+(179, 1, '24'),
+(180, 14, '24'),
+(181, 5, '24'),
+(182, 3, '24'),
+(183, 8, '24'),
+(184, 16, '24'),
+(185, 11, '24'),
+(186, 12, 'pCpw5JMAAzYDsvWO5ebOxY1WjPveMl6b'),
+(187, 7, 'pCpw5JMAAzYDsvWO5ebOxY1WjPveMl6b'),
+(188, 1, 'CL8PMYS7QbwGa672gEmIb4fiSRAa96lp'),
+(189, 1, 'CL8PMYS7QbwGa672gEmIb4fiSRAa96lp'),
+(190, 5, 'CL8PMYS7QbwGa672gEmIb4fiSRAa96lp'),
+(191, 6, 'CL8PMYS7QbwGa672gEmIb4fiSRAa96lp'),
+(192, 14, 'CL8PMYS7QbwGa672gEmIb4fiSRAa96lp'),
+(193, 14, '28'),
+(194, 12, '28'),
+(195, 4, '28'),
+(196, 6, 'pCpw5JMAAzYDsvWO5ebOxY1WjPveMl6b'),
+(197, 15, 'pCpw5JMAAzYDsvWO5ebOxY1WjPveMl6b'),
+(198, 11, 'pCpw5JMAAzYDsvWO5ebOxY1WjPveMl6b'),
+(199, 9, 'pCpw5JMAAzYDsvWO5ebOxY1WjPveMl6b'),
+(200, 16, 'pCpw5JMAAzYDsvWO5ebOxY1WjPveMl6b'),
+(201, 5, 'pCpw5JMAAzYDsvWO5ebOxY1WjPveMl6b'),
+(202, 16, 'pCpw5JMAAzYDsvWO5ebOxY1WjPveMl6b');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lienhe`
 --
 
 CREATE TABLE `lienhe` (
   `MaLienHe` int(11) NOT NULL,
-  `TenKhachHang` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `SoDienThoai` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
-  `TieuDe` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `NoiDung` text COLLATE utf8_unicode_ci NOT NULL,
+  `TenKhachHang` varchar(255) NOT NULL,
+  `SoDienThoai` varchar(11) NOT NULL,
+  `TieuDe` varchar(255) NOT NULL,
+  `NoiDung` text NOT NULL,
   `ThoiGian` datetime NOT NULL DEFAULT current_timestamp(),
   `TrangThai` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `lienhe`
+--
+
+INSERT INTO `lienhe` (`MaLienHe`, `TenKhachHang`, `SoDienThoai`, `TieuDe`, `NoiDung`, `ThoiGian`, `TrangThai`) VALUES
+(15, 'Nguyễn Văn A', '0999888999', 'ABCD', 'AAA', '2023-09-19 08:27:33', 1);
 
 -- --------------------------------------------------------
 
@@ -345,7 +382,7 @@ CREATE TABLE `lienhe` (
 
 CREATE TABLE `magiamgia` (
   `MaGiamGia` int(11) NOT NULL,
-  `MaSuDung` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `MaSuDung` varchar(255) NOT NULL,
   `NgayTao` date NOT NULL DEFAULT current_timestamp(),
   `NgayHetHan` date NOT NULL,
   `TriGia` int(11) NOT NULL,
@@ -363,9 +400,67 @@ CREATE TABLE `magiamgia` (
 CREATE TABLE `mausac` (
   `MaMauSac` int(11) NOT NULL,
   `MaSanPham` int(11) NOT NULL,
-  `TenMauSac` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `MaHienThi` varchar(11) COLLATE utf8_unicode_ci NOT NULL
+  `TenMauSac` varchar(255) NOT NULL,
+  `MaHienThi` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `mausac`
+--
+
+INSERT INTO `mausac` (`MaMauSac`, `MaSanPham`, `TenMauSac`, `MaHienThi`) VALUES
+(1, 1, 'yellow', 'yellow'),
+(2, 1, 'white', 'white'),
+(3, 2, 'red', 'red'),
+(4, 2, 'yellow', 'yellow'),
+(5, 2, 'white', 'white'),
+(6, 3, 'red', 'red'),
+(7, 3, 'yellow', 'yellow'),
+(8, 3, 'white', 'white'),
+(9, 4, 'yellow', 'yellow'),
+(10, 4, 'white', 'white'),
+(11, 4, 'black', 'black'),
+(12, 5, 'yellow', 'yellow'),
+(13, 5, 'white', 'white'),
+(14, 5, 'black', 'black'),
+(15, 6, 'red', 'red'),
+(16, 6, 'yellow', 'yellow'),
+(17, 7, 'yellow', 'yellow'),
+(18, 7, 'white', 'white'),
+(19, 8, 'yellow', 'yellow'),
+(20, 8, 'white', 'white'),
+(21, 8, 'pink', 'pink'),
+(22, 9, 'yellow', 'yellow'),
+(23, 9, 'white', 'white'),
+(24, 9, 'black', 'black'),
+(25, 10, 'yellow', 'yellow'),
+(26, 10, 'white', 'white'),
+(27, 11, 'yellow', 'yellow'),
+(28, 11, 'white', 'white'),
+(29, 11, 'black', 'black'),
+(30, 12, 'blue', 'blue'),
+(31, 12, 'red', 'red'),
+(32, 12, 'yellow', 'yellow'),
+(33, 12, 'white', 'white'),
+(34, 12, 'black', 'black'),
+(35, 12, 'pink', 'pink'),
+(36, 13, 'red', 'red'),
+(37, 13, 'yellow', 'yellow'),
+(38, 13, 'white', 'white'),
+(39, 14, 'red', 'red'),
+(40, 14, 'yellow', 'yellow'),
+(41, 14, 'white', 'white'),
+(42, 15, 'yellow', 'yellow'),
+(43, 15, 'white', 'white'),
+(46, 17, 'yellow', 'yellow'),
+(47, 17, 'white', 'white'),
+(48, 17, 'black', 'black'),
+(49, 16, 'blue', 'blue'),
+(50, 16, 'red', 'red'),
+(51, 16, 'yellow', 'yellow'),
+(52, 16, 'white', 'white'),
+(53, 16, 'black', 'black'),
+(54, 16, 'pink', 'pink');
 
 -- --------------------------------------------------------
 
@@ -375,8 +470,8 @@ CREATE TABLE `mausac` (
 
 CREATE TABLE `nhacungcap` (
   `MaNhaCungCap` int(11) NOT NULL,
-  `TenNhaCungCap` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `MoTa` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `TenNhaCungCap` varchar(255) NOT NULL,
+  `MoTa` varchar(500) NOT NULL,
   `MaChuyenMuc` int(11) NOT NULL,
   `TrangThai` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -389,13 +484,13 @@ CREATE TABLE `nhacungcap` (
 
 CREATE TABLE `nhanvien` (
   `MaNhanVien` int(11) NOT NULL,
-  `TenNhanVien` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `SoDienThoai` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
-  `DiaChi` text COLLATE utf8_unicode_ci NOT NULL,
-  `Email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `AnhChinh` text COLLATE utf8_unicode_ci NOT NULL,
-  `TaiKhoan` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `MatKhau` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `TenNhanVien` varchar(255) NOT NULL,
+  `SoDienThoai` varchar(11) NOT NULL,
+  `DiaChi` text NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `AnhChinh` text NOT NULL,
+  `TaiKhoan` varchar(255) NOT NULL,
+  `MatKhau` varchar(255) NOT NULL,
   `TrangThai` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -414,18 +509,41 @@ INSERT INTO `nhanvien` (`MaNhanVien`, `TenNhanVien`, `SoDienThoai`, `DiaChi`, `E
 
 CREATE TABLE `sanpham` (
   `MaSanPham` int(11) NOT NULL,
-  `TenSanPham` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `MoTaNgan` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `MoTaDai` text COLLATE utf8_unicode_ci NOT NULL,
+  `TenSanPham` varchar(255) NOT NULL,
+  `MoTaNgan` varchar(500) NOT NULL,
+  `MoTaDai` text NOT NULL,
   `GiaGoc` int(11) NOT NULL,
   `GiaBan` int(11) NOT NULL,
   `MaChuyenMuc` int(11) NOT NULL,
-  `The` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `DuongDan` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `The` varchar(255) NOT NULL,
+  `DuongDan` varchar(255) NOT NULL,
   `TrangThai` int(11) NOT NULL DEFAULT 1,
   `SoLuong` int(11) NOT NULL DEFAULT 0,
   `LoaiSanPham` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `sanpham`
+--
+
+INSERT INTO `sanpham` (`MaSanPham`, `TenSanPham`, `MoTaNgan`, `MoTaDai`, `GiaGoc`, `GiaBan`, `MaChuyenMuc`, `The`, `DuongDan`, `TrangThai`, `SoLuong`, `LoaiSanPham`) VALUES
+(1, 'Sản phẩm 1', 'Sản phẩm 1', '<p>Sản phẩm 1</p>\r\n', 150000, 140000, 1, 'a,b,c', 'san-pham-1', 1, 150, 3),
+(2, 'Sản phẩm 2', 'Sản phẩm 2', '<p>Sản phẩm 2</p>\r\n', 150000, 140000, 1, 'a,b,c', 'san-pham-2', 1, 150, 3),
+(3, 'Sản phẩm 3', 'Sản phẩm 3', '<p>Sản phẩm 3</p>\r\n', 150000, 140000, 1, 'a,b,c', 'san-pham-3', 1, 15, 3),
+(4, 'Sản phẩm 4', 'Sản phẩm 4', '<p>Sản phẩm 4</p>\r\n', 140000, 130000, 1, 'a,b,c', 'san-pham-4', 1, 150, 3),
+(5, 'Sản phẩm 5', 'Sản phẩm 5', '<p>Sản phẩm 5</p>\r\n', 140000, 100000, 1, 'a,b,c', 'san-pham-5', 1, 150, 3),
+(6, 'Sản phẩm 6', 'Sản phẩm 6', '<p>Sản phẩm 6</p>\r\n', 15000, 14000, 1, 'a,b,c', 'san-pham-6', 1, 15, 3),
+(7, 'Sản phẩm 7', 'Sản phẩm 7', '<p>Sản phẩm 7</p>\r\n', 140000, 100000, 1, 'a,b,c', 'san-pham-7', 1, 15, 3),
+(8, 'Sản phẩm 8', 'Sản phẩm 8', '<p>Sản phẩm 8</p>\r\n', 14000, 10000, 1, 'a,b,c', 'san-pham-8', 1, 15, 3),
+(9, 'Sản phẩm 9', 'Sản phẩm 9', '<p>Sản phẩm 9</p>\r\n', 14000, 10000, 1, 'a,b,c', 'san-pham-9', 1, 15, 1),
+(10, 'Sản phẩm 10', 'Sản phẩm 10', '<p>Sản phẩm 10</p>\r\n', 150000, 14000, 1, 'a,b,c', 'san-pham-10', 1, 15, 1),
+(11, 'Sản phẩm 11', 'Sản phẩm 11', '<p>Sản phẩm 11</p>\r\n', 150000, 14000, 1, 'a,b,c', 'san-pham-11', 1, 15, 1),
+(12, 'Sản phẩm 12', 'Sản phẩm 12', '<p>Sản phẩm 12</p>\r\n', 14000, 10000, 1, 'a,b,c', 'san-pham-12', 1, 15, 1),
+(13, 'Sản phẩm 13', 'Sản phẩm 13', '<p>Sản phẩm 13</p>\r\n', 120000, 10000, 1, 'a,b,c', 'san-pham-13', 1, 15, 1),
+(14, 'Sản phẩm 14', 'Sản phẩm 14', '<p>Sản phẩm 14</p>\r\n', 15000, 14000, 1, 'a,b,c', 'san-pham-14', 1, 150, 1),
+(15, 'Sản phẩm 15', 'Sản phẩm 15', '<p>Sản phẩm 15</p>\r\n', 150000, 10000, 1, 'a,b,c', 'san-pham-15', 1, 15, 1),
+(16, 'Sản phẩm 16', 'Sản phẩm 15', '<p>Sản phẩm 15</p>\r\n', 150000, 140000, 1, 'a,b,c', 'san-pham-16', 1, 15, 1),
+(17, 'Sản phẩm 17', 'Sản phẩm 15', '<p>Sản phẩm 15</p>\r\n', 150000, 14000, 1, 'a,b,c', 'san-pham-17', 1, 150, 2);
 
 -- --------------------------------------------------------
 
@@ -436,13 +554,13 @@ CREATE TABLE `sanpham` (
 CREATE TABLE `tintuc` (
   `MaTinTuc` int(11) NOT NULL,
   `MaNhanVien` int(11) NOT NULL,
-  `TieuDe` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `NoiDung` text COLLATE utf8_unicode_ci NOT NULL,
+  `TieuDe` varchar(500) NOT NULL,
+  `NoiDung` text NOT NULL,
   `NgayDang` date NOT NULL DEFAULT current_timestamp(),
   `TrangThai` int(11) NOT NULL DEFAULT 1,
-  `AnhChinh` text COLLATE utf8_unicode_ci NOT NULL,
-  `DuongDan` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `The` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `AnhChinh` text NOT NULL,
+  `DuongDan` varchar(500) NOT NULL,
+  `The` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -496,6 +614,12 @@ ALTER TABLE `khachhang`
 --
 ALTER TABLE `lichsunhap`
   ADD PRIMARY KEY (`MaLichSuNhap`);
+
+--
+-- Indexes for table `lichsuxem`
+--
+ALTER TABLE `lichsuxem`
+  ADD PRIMARY KEY (`MaLichSuXem`);
 
 --
 -- Indexes for table `lienhe`
@@ -553,31 +677,31 @@ ALTER TABLE `cauhinh`
 -- AUTO_INCREMENT for table `chitietdonhang`
 --
 ALTER TABLE `chitietdonhang`
-  MODIFY `MaChiTietDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `MaChiTietDonHang` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `chuyenmuc`
 --
 ALTER TABLE `chuyenmuc`
-  MODIFY `MaChuyenMuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `MaChuyenMuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `MaDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `MaDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `giaodien`
 --
 ALTER TABLE `giaodien`
-  MODIFY `MaGiaoDien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `MaGiaoDien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `hinhanh`
 --
 ALTER TABLE `hinhanh`
-  MODIFY `MaHinhAnh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
+  MODIFY `MaHinhAnh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `khachhang`
@@ -589,13 +713,19 @@ ALTER TABLE `khachhang`
 -- AUTO_INCREMENT for table `lichsunhap`
 --
 ALTER TABLE `lichsunhap`
-  MODIFY `MaLichSuNhap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `MaLichSuNhap` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `lichsuxem`
+--
+ALTER TABLE `lichsuxem`
+  MODIFY `MaLichSuXem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 
 --
 -- AUTO_INCREMENT for table `lienhe`
 --
 ALTER TABLE `lienhe`
-  MODIFY `MaLienHe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `MaLienHe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `magiamgia`
@@ -607,13 +737,13 @@ ALTER TABLE `magiamgia`
 -- AUTO_INCREMENT for table `mausac`
 --
 ALTER TABLE `mausac`
-  MODIFY `MaMauSac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
+  MODIFY `MaMauSac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `nhacungcap`
 --
 ALTER TABLE `nhacungcap`
-  MODIFY `MaNhaCungCap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `MaNhaCungCap` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `nhanvien`
@@ -625,13 +755,13 @@ ALTER TABLE `nhanvien`
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `MaSanPham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `MaSanPham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tintuc`
 --
 ALTER TABLE `tintuc`
-  MODIFY `MaTinTuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `MaTinTuc` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

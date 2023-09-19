@@ -89,6 +89,11 @@ class Model_SanPham extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getSuggestProduct($arr_masanpham){
+		$sql = "SELECT sanpham.*, hinhanh.LoaiAnh, hinhanh.MaSanPham, hinhanh.DuongDan AS duongdananh FROM sanpham,hinhanh WHERE hinhanh.MaSanPham = sanpham.MaSanPham AND hinhanh.LoaiAnh = 1 AND sanpham.TrangThai != 0 AND sanpham.MaSanPham IN ($arr_masanpham)";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
 }
 
 /* End of file Model_SanPham.php */

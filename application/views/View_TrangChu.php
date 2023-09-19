@@ -316,7 +316,7 @@
                                         <div style="height: 547px;" class="image"><img style="height: 100%;" src="<?php echo $value['duongdananh'];?>" alt="Image"></div>
                                         <div class="content-top">
                                             <div class="content-top-left">
-                                                <h4 class="title"><a href="#"><?php echo $value['TenSanPham'];?></a></h4>
+                                                <h4 class="title"><a href="<?php echo base_url('san-pham/'.$value['DuongDan'].'/'); ?>"><?php echo $value['TenSanPham'];?></a></h4>
                                                 <div class="ratting">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -335,7 +335,7 @@
                                         ?>
                                         <div class="content-bottom">
                                             <div class="countdown" data-countdown="<?php echo $futureDate; ?>"></div>
-                                            <a href="#" data-hover="MUA NGAY">MUA NGAY</a>
+                                            <a href="<?php echo base_url('san-pham/'.$value['DuongDan'].'/'); ?>" data-hover="MUA NGAY">MUA NGAY</a>
                                         </div>
                                     </div>
                                 </div>
@@ -393,7 +393,44 @@
             </div>
         </div>
     </div><!-- Feature Section End -->
+    <?php if(count($suggestProduct) >= 4){ ?>
+        <div class="blog-section section section-padding">
+            <div class="container">
+                <div class="row mbn-40">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="row">
+                            <div class="section-title text-start col mb-30">
+                                <h1>Sản Phẩm Dành Cho Bạn</h1>
+                                <p style="font-family: system-ui;">Sản phẩm gợi ý cho bạn</p>
+                            </div>
+                        </div>
+                        <div class="small-product-slider row row-12 mbn-40 col-12">
+                            <?php foreach ($suggestProduct as $key => $value): ?>
+                                <div class="col mb-40">
+                                    <div class="on-sale-product">
+                                        <a style="height: 300px;" href="<?php echo base_url('san-pham/'.$value['DuongDan'].'/'); ?>" class="image"><img style="height: 100%;" src="<?php echo $value['duongdananh']; ?>" alt="Image"></a>
+                                        <div class="content text-center">
+                                            <h4 class="title"><a href="<?php echo base_url('san-pham/'.$value['DuongDan'].'/'); ?>"><?php echo $value['TenSanPham']; ?></a></h4>
+                                            <span class="price"><?php echo number_format($value['GiaBan']); ?>đ <span class="old"><?php echo number_format($value['GiaGoc']); ?>đ</span></span>
+                                            <div class="ratting">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
 
+    
     <!-- Blog Section Start -->
     <div class="blog-section section section-padding">
         <div class="container">

@@ -172,9 +172,9 @@ class SanPham extends CI_Controller {
 			}
 
 			if(count($this->Model_SanPham->getNumberByColorSize($mausac,$kichthuoc)) <= 0){
-				$this->Model_SanPham->insertNumberByColorSize($mausac,$kichthuoc,$soluong);
+				$this->Model_SanPham->insertNumberByColorSize($mausac,$kichthuoc,$soluong,$MaSanPham);
 			}else{
-				$this->Model_SanPham->updateNumberByColorSize($mausac,$kichthuoc,$soluong);
+				$this->Model_SanPham->updateNumberByColorSize($mausac,$kichthuoc,$soluong,$MaSanPham);
 			}
 
 			$data['success'] = "Cập nhật số lượng sản phẩm thành công!";
@@ -382,18 +382,18 @@ class SanPham extends CI_Controller {
 
 			if(empty($nhacungcap) || !$nhacungcap){
 				if(count($this->Model_SanPham->getNumberByColorSize($mausac,$kichthuoc)) <= 0){
-					$this->Model_SanPham->insertNumberByColorSize($mausac,$kichthuoc,$soluongmoi);
+					$this->Model_SanPham->insertNumberByColorSize($mausac,$kichthuoc,$soluongmoi,$MaSanPham);
 				}else{
-					$this->Model_SanPham->updateNumberByColorSize($mausac,$kichthuoc,$soluongmoi);
+					$this->Model_SanPham->updateNumberByColorSize($mausac,$kichthuoc,$soluongmoi,$MaSanPham);
 				}
 				$data['detail'] = $this->Model_SanPham->getProductById($MaSanPham);
 				$data['success'] = "Nhập số lượng sản phẩm vào kho thành công!";
 				return $this->load->view('Admin/View_NhapSanPham', $data);
 			}else{
 				if(count($this->Model_SanPham->getNumberByColorSize($mausac,$kichthuoc)) <= 0){
-					$this->Model_SanPham->insertNumberByColorSize($mausac,$kichthuoc,$soluongmoi);
+					$this->Model_SanPham->insertNumberByColorSize($mausac,$kichthuoc,$soluongmoi,$MaSanPham);
 				}else{
-					$this->Model_SanPham->updateNumberByColorSize($mausac,$kichthuoc,$soluongmoi);
+					$this->Model_SanPham->updateNumberByColorSize($mausac,$kichthuoc,$soluongmoi,$MaSanPham);
 				}
 
                 $tenmausac = [

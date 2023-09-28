@@ -33,15 +33,15 @@ class Model_SanPham extends CI_Model {
 		return $result->result_array();
 	}	
 	
-	public function insertNumberByColorSize($mausac,$kichthuoc,$soluong){
-		$sql = "INSERT INTO `kichthuoc`(`TenKichThuoc`, `MaMauSac`, `SoLuong`) VALUES (?,?,?)";
-		$result = $this->db->query($sql, array($kichthuoc,$mausac,$soluong));
+	public function insertNumberByColorSize($mausac,$kichthuoc,$soluong,$masanpham){
+		$sql = "INSERT INTO `kichthuoc`(`TenKichThuoc`, `MaMauSac`, `SoLuong`, `MaSanPham`) VALUES (?,?,?,?)";
+		$result = $this->db->query($sql, array($kichthuoc,$mausac,$soluong,$masanpham));
 		return $result;
 	}
 
-	public function updateNumberByColorSize($mausac,$kichthuoc,$soluong){
-		$sql = "UPDATE `kichthuoc` SET `SoLuong`=? WHERE `TenKichThuoc`=? AND `MaMauSac`=?";
-		$result = $this->db->query($sql, array($soluong,$kichthuoc,$mausac));
+	public function updateNumberByColorSize($mausac,$kichthuoc,$soluong,$masanpham){
+		$sql = "UPDATE `kichthuoc` SET `SoLuong`=? WHERE `TenKichThuoc`=? AND `MaMauSac`=? AND `MaSanPham`=?";
+		$result = $this->db->query($sql, array($soluong,$kichthuoc,$mausac,$masanpham));
 		return $result;
 	}
 

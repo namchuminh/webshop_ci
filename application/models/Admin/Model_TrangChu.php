@@ -59,7 +59,7 @@ class Model_TrangChu extends CI_Model {
 	}
 
 	public function getNumberProductCurrent(){
-		$sql = "SELECT SUM(SoLuong) AS soluong FROM `sanpham` WHERE TrangThai >= 1";
+		$sql = "SELECT SUM(kichthuoc.SoLuong) AS soluong FROM kichthuoc INNER JOIN sanpham ON kichthuoc.MaSanPham = sanpham.MaSanPham INNER JOIN mausac ON kichthuoc.MaMauSac = mausac.MaMauSac WHERE sanpham.TrangThai >= 1;";
 		$result = $this->db->query($sql);
 		if($result->result_array()[0]['soluong'] == null){
 			return 0;

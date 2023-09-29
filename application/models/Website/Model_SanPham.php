@@ -9,6 +9,24 @@ class Model_SanPham extends CI_Model {
 		parent::__construct();
 	}
 
+	public function getNumberSize($MaSanPham,$MaMauSac){
+		$sql = "SELECT * FROM `kichthuoc` WHERE MaSanPham = ? AND MaMauSac = ?";
+		$result = $this->db->query($sql, array($MaSanPham,$MaMauSac));
+		return $result->result_array();
+	}
+
+	public function getIdColor($MaSanPham,$TenMauSac){
+		$sql = "SELECT * FROM `mausac` WHERE MaSanPham = ? AND TenMauSac = ?";
+		$result = $this->db->query($sql, array($MaSanPham,$TenMauSac));
+		return $result->result_array();
+	}
+
+	public function getAllNumberById($MaSanPham){
+		$sql = "SELECT SUM(SoLuong) AS TongSoLuong FROM kichthuoc WHERE MaMauSac IN (SELECT MaMauSac FROM mausac WHERE MaSanPham = ?)";
+		$result = $this->db->query($sql, array($MaSanPham));
+		return $result->result_array();
+	}
+
 	public function getAll($start = 0, $end = 12){
 		$sql = "SELECT sanpham.*, hinhanh.LoaiAnh, hinhanh.MaSanPham, hinhanh.DuongDan AS duongdananh FROM sanpham,hinhanh WHERE hinhanh.MaSanPham = sanpham.MaSanPham AND hinhanh.LoaiAnh = 1 AND sanpham.TrangThai != 0 ORDER BY sanpham.MaSanPham DESC LIMIT ?, ?";
 		$result = $this->db->query($sql, array($start, $end));

@@ -83,13 +83,16 @@ class ThanhToan extends MY_Controller {
             ];
 
 			foreach ($cart as $key => $value) {
-				$this->Model_ThanhToan->addDetail($madonhang, $value['id'], $value['number'], $mau[$value['color'][0]]);
-				$soluongcu = $this->Model_SanPham->getById($value['id'])[0]['SoLuong'];
-				$soluongmoi = $soluongcu - $value['number'];
-				if($soluongmoi <= 0){
-					$soluongmoi = 0;
-				}
-				$this->Model_SanPham->updateNumberProductPay($value['id'], $soluongmoi);
+				$this->Model_ThanhToan->addDetail($madonhang, $value['id'], $value['number'], $mau[$value['color'][0]], $value['size']);
+
+
+
+				// $soluongcu = $this->Model_SanPham->getById($value['id'])[0]['SoLuong'];
+				// $soluongmoi = $soluongcu - $value['number'];
+				// if($soluongmoi <= 0){
+				// 	$soluongmoi = 0;
+				// }
+				// $this->Model_SanPham->updateNumberProductPay($value['id'], $soluongmoi);
 			}
 
 			$this->session->unset_userdata('saleCode');

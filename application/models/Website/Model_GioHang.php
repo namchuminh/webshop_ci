@@ -10,6 +10,18 @@ class Model_GioHang extends CI_Model {
 		
 	}
 
+	public function getIdColor($MaSanPham,$TenMauSac){
+		$sql = "SELECT * FROM mausac WHERE MaSanPham = ? AND TenMauSac = ?";
+		$result = $this->db->query($sql, array($MaSanPham,$TenMauSac));
+		return $result->result_array();
+	}
+
+	public function checkSize($MaMauSac,$TenKichThuoc){
+		$sql = "SELECT * FROM kichthuoc WHERE MaMauSac = ? AND TenKichThuoc = ?";
+		$result = $this->db->query($sql, array($MaMauSac,$TenKichThuoc));
+		return $result->result_array();
+	}
+
 	public function getProductById($MaSanPham){
 		$sql = "SELECT * FROM sanpham WHERE MaSanPham = ?";
 		$result = $this->db->query($sql, array($MaSanPham));

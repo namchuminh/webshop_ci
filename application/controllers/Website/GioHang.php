@@ -6,6 +6,7 @@ class GioHang extends MY_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Website/Model_GioHang');
+        $this->load->model('Website/Model_SanPham');
 		$data = array();
 	}
 
@@ -32,53 +33,58 @@ class GioHang extends MY_Controller {
         	return redirect(base_url('gio-hang/'));
         }
 
-        $price = $this->Model_GioHang->getProductById($product_id)[0]['GiaBan'];
-        $image = $this->Model_GioHang->getImageProductById($product_id)[0]['DuongDan'];
-        $name =  $this->Model_GioHang->getProductById($product_id)[0]['TenSanPham'];
-        $slug = $this->Model_GioHang->getProductById($product_id)[0]['DuongDan'];
-        $color = $this->Model_GioHang->getColorById($product_id);
-        if (isset($cart[$product_id])) {
-            $cart[$product_id]['number'] += $quantity;
-        } else {
-            $cart[$product_id] = array(
-                'id' => $product_id,
-                'number' => $quantity,
-                'price' => $price,
-                'image' => $image,
-                'name' => $name,
-                'slug' => $slug, 
-                'color' => $color
-            );
+        if($this->Model_SanPham->getAllNumberById($product_id)[0]['TongSoLuong'] != NULL){
+            $price = $this->Model_GioHang->getProductById($product_id)[0]['GiaBan'];
+            $image = $this->Model_GioHang->getImageProductById($product_id)[0]['DuongDan'];
+            $name =  $this->Model_GioHang->getProductById($product_id)[0]['TenSanPham'];
+            $slug = $this->Model_GioHang->getProductById($product_id)[0]['DuongDan'];
+            $color = $this->Model_GioHang->getColorById($product_id);
+            if (isset($cart[$product_id])) {
+                $cart[$product_id]['number'] += $quantity;
+            } else {
+                $cart[$product_id] = array(
+                    'id' => $product_id,
+                    'number' => $quantity,
+                    'price' => $price,
+                    'image' => $image,
+                    'name' => $name,
+                    'slug' => $slug, 
+                    'color' => $color,
+                    'size' => ""
+                );
+            }
+
+            $sumCart = 0;
+
+            foreach ($cart as $key => $value) {
+            	$sumCart += $value['price'] * $value['number'];
+            }
+
+
+            if(isset($_SESSION['saleCode'])){
+                $saleCode = $this->session->userdata('saleCode');
+                $sumCart = $sumCart - $saleCode;
+            }
+
+            $this->session->set_userdata('cart', $cart);
+            $this->session->set_userdata('sumCart', $sumCart);
+            $this->session->set_userdata('numberCart', count($cart));
+
+            $data = array(
+    		    'sumCart' => number_format($sumCart),
+    		    'numberCart' => count($cart),
+    		);
+
+    		$json = json_encode($data);
+
+    		echo $json;
+        }else{
+            echo FALSE;
         }
-
-        $sumCart = 0;
-
-        foreach ($cart as $key => $value) {
-        	$sumCart += $value['price'] * $value['number'];
-        }
-
-
-        if(isset($_SESSION['saleCode'])){
-            $saleCode = $this->session->userdata('saleCode');
-            $sumCart = $sumCart - $saleCode;
-        }
-
-        $this->session->set_userdata('cart', $cart);
-        $this->session->set_userdata('sumCart', $sumCart);
-        $this->session->set_userdata('numberCart', count($cart));
-
-        $data = array(
-		    'sumCart' => number_format($sumCart),
-		    'numberCart' => count($cart),
-		);
-
-		$json = json_encode($data);
-
-		echo $json;
     }
 
 
-    public function AddDetail($product_id, $quantity, $color) {
+    public function AddDetail($product_id, $quantity, $color, $size) {
         $cart = $this->session->userdata('cart');
         
         if (!$cart) {
@@ -94,20 +100,17 @@ class GioHang extends MY_Controller {
         $name =  $this->Model_GioHang->getProductById($product_id)[0]['TenSanPham'];
         $slug = $this->Model_GioHang->getProductById($product_id)[0]['DuongDan'];
 
-        if (isset($cart[$product_id])) {
-            $cart[$product_id]['number'] += $quantity;
-            $cart[$product_id]['color'] = array($color);
-        } else {
-            $cart[$product_id] = array(
-                'id' => $product_id,
-                'number' => $quantity,
-                'price' => $price,
-                'image' => $image,
-                'name' => $name,
-                'slug' => $slug, 
-                'color' => array($color)
-            );
-        }
+
+        $cart[$product_id.'_'.$color.'_'.$size] = array(
+            'id' => $product_id.'_'.$color.'_'.$size,
+            'number' => $quantity,
+            'price' => $price,
+            'image' => $image,
+            'name' => $name,
+            'slug' => $slug, 
+            'color' => array($color),
+            'size' => $size
+        );
 
         $sumCart = 0;
 
@@ -143,6 +146,28 @@ class GioHang extends MY_Controller {
         $cart[$product_id]['color'] = array($color);
         $this->session->set_userdata('cart', $cart);
     }
+
+    public function UpdateSize($product_id, $color, $size){
+        if(count($this->Model_GioHang->getProductById($product_id)) == 0){
+            return redirect(base_url('gio-hang/'));
+        }
+
+        $mamausac = $this->Model_GioHang->getIdColor($product_id, $color)[0]['MaMauSac'];
+        $checksize = $this->Model_GioHang->checkSize($mamausac,$size,$product_id);
+
+
+        if(count($checksize) == 0){
+            echo FALSE;
+        }else{
+            $cart = $this->session->userdata('cart');
+            $cart[$product_id]['size'] = $size;
+            $this->session->set_userdata('cart', $cart);
+            echo TRUE;
+        }
+
+    }
+
+
 
     public function UpdateNumber($product_id, $number){
         if(count($this->Model_GioHang->getProductById($product_id)) == 0){

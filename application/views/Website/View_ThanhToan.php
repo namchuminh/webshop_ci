@@ -112,7 +112,7 @@
 								   <ul>
 								   		<?php foreach ($_SESSION['cart'] as $key => $value): ?>
 											<li>
-												<?php echo $value['name']; ?> x <?php echo $value['number']; ?> 
+												<?php echo $value['name']; ?> (SL: <?php echo $value['number']; ?> - Size <?php echo $value['size']; ?>)
 												<span><?php echo number_format($value['price'] * $value['number']); ?>đ</span>
 											</li>
 								   		<?php endforeach ?>

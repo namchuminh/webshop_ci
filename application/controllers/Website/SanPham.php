@@ -107,6 +107,14 @@ class SanPham extends MY_Controller {
 		return $this->load->view('Website/View_ChiTietSanPham', $data);
 	}
 
+	public function getNumberSizeByColor(){
+		$MaSanPham = $this->input->post('masanpham');
+		$MaMauSac = $this->Model_SanPham->getIdColor($MaSanPham,$this->input->post('tenmausac'))[0]["MaMauSac"];
+		$KichThuoc = $this->Model_SanPham->getNumberSize($MaSanPham,$MaMauSac);
+
+		echo json_encode($KichThuoc);
+	}
+
 	public function Page($trang){
 		$totalRecords = $this->Model_SanPham->checkNumber();
 		$recordsPerPage = 12;

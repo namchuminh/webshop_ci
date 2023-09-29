@@ -21,10 +21,11 @@ $route['thanh-toan/thuc-hien'] = 'Website/ThanhToan/PayOrder';
 //Route cart 
 $route['gio-hang'] = 'Website/GioHang/index';
 $route['gio-hang/them/(:any)/(:any)'] = 'Website/GioHang/Add/$1/$2';
-$route['gio-hang/them-chi-tiet/(:any)/(:any)/(:any)'] = 'Website/GioHang/AddDetail/$1/$2/$3/';
+$route['gio-hang/them-chi-tiet/(:any)/(:any)/(:any)/(:any)'] = 'Website/GioHang/AddDetail/$1/$2/$3/$4';
 $route['gio-hang/xoa/(:any)'] = 'Website/GioHang/DeleteById/$1';
 $route['gio-hang/sua-mau/(:any)/(:any)'] = 'Website/GioHang/UpdateColor/$1/$2';
 $route['gio-hang/sua-so-luong/(:any)/(:any)'] = 'Website/GioHang/UpdateNumber/$1/$2';
+$route['gio-hang/sua-kich-thuoc/(:any)/(:any)/(:any)'] = 'Website/GioHang/UpdateSize/$1/$2/$3';
 $route['gio-hang/ma-giam-gia/(:any)'] = 'Website/GioHang/Code/$1';
 $route['gio-hang/thanh-toan'] = 'Website/GioHang/checkCart';
 
@@ -37,6 +38,7 @@ $route['san-pham/mau/(:any)/trang/(:any)'] = 'Website/SanPham/PageColor/$1/$2';
 $route['san-pham/(:any)'] = 'Website/SanPham/Detail/$1';
 $route['tim-kiem'] = 'Website/SanPham/Search';
 $route['tim-kiem/trang/(:any)'] = 'Website/SanPham/PageSearch/$1';
+$route['lay-so-luong'] = 'Website/SanPham/getNumberSizeByColor';
 
 //Route news
 $route['tin-tuc'] = 'Website/TinTuc/index';

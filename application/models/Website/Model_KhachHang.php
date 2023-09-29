@@ -23,7 +23,7 @@ class Model_KhachHang extends CI_Model {
 	}
 
 	public function getById($makhachhang){
-		$sql = "SELECT donhang.*, khachhang.MaKhachHang, khachhang.TenKhachHang FROM donhang, khachhang WHERE donhang.MaKhachHang = khachhang.MaKhachHang AND khachhang.MaKhachHang = ?";
+		$sql = "SELECT donhang.*, khachhang.MaKhachHang, khachhang.TenKhachHang FROM donhang, khachhang WHERE donhang.MaKhachHang = khachhang.MaKhachHang AND khachhang.MaKhachHang = ? ORDER BY donhang.MaDonHang DESC";
 		$result = $this->db->query($sql, array($makhachhang));
 		return $result->result_array();
 	}

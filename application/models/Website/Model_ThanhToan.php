@@ -33,12 +33,13 @@ class Model_ThanhToan extends CI_Model {
 	    return $lastInsertedId;
 	}
 
-	public function addDetail($madonhang, $masanpham, $soluong, $mausac){
+	public function addDetail($madonhang, $masanpham, $soluong, $mausac, $kichthuoc){
 		$data = array(
 	        "MaDonHang" => $madonhang,
 	        "MaSanPham" => $masanpham,
 	        "SoLuong" => $soluong,
-	        "MauSac" => $mausac
+	        "MauSac" => $mausac,
+	        "KichThuoc" => $kichthuoc
 	    );
 
 	    $this->db->insert('chitietdonhang', $data);

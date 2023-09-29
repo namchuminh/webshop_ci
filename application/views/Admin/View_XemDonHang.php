@@ -105,6 +105,7 @@
                                                 >Mã Đơn Hàng</th>
                                                 <th tabindex="0" aria-controls="basic-datatable" rowspan="1"colspan="1">Tên Sản Phẩm</th>
                                                 <th tabindex="0" aria-controls="basic-datatable" rowspan="1"colspan="1">Màu Sắc</th>
+                                                <th tabindex="0" aria-controls="basic-datatable" rowspan="1"colspan="1">Kích Thước</th>
                                                 <th tabindex="0" aria-controls="basic-datatable" rowspan="1"colspan="1">Giá Bán</th>
                                                 <th tabindex="0" aria-controls="basic-datatable" rowspan="1"colspan="1">Số Lượng</th>
                                                 <th tabindex="0" aria-controls="basic-datatable" rowspan="1"colspan="1">Thành Tiền</th>
@@ -118,6 +119,7 @@
                                                     <td><?php echo $value['MaDonHang']; ?></td>
                                                     <td><?php echo $value['TenSanPham']; ?></td>
                                                     <td><?php echo $value['MauSac']; ?></td>
+                                                    <td>Size - <?php echo $value['KichThuoc']; ?></td>
                                                     <td><?php echo number_format($value['GiaBan']); ?> đ</td>
                                                     <td><?php echo $value['SoLuong']; ?> sản phẩm</td>
                                                     <td><?php echo number_format($value['SoLuong'] * $value['GiaBan'] ); ?> đ</td>

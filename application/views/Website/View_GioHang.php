@@ -29,6 +29,7 @@
                                         <th style="font-family: system-ui;" class="pro-thumbnail">Hình Ảnh</th>
                                         <th style="font-family: system-ui;" class="pro-title">Tên Sản Phẩm</th>
                                         <th style="font-family: system-ui;" class="pro-title">Màu Sắc</th>
+                                        <th style="font-family: system-ui;" class="pro-title">Kích Thước</th>
                                         <th style="font-family: system-ui;" class="pro-price">Giá Bán</th>
                                         <th style="font-family: system-ui;" class="pro-quantity">Số Lượng</th>
                                         <th style="font-family: system-ui;" class="pro-subtotal">Thành Tiền</th>
@@ -59,19 +60,34 @@
                                                  ?>
                                                 <td class="pro-quantity">
                                                     <?php if(count($value['color']) == 1){ ?>
-                                                        <span style="font-size: 17px;">
+                                                        <span style="font-size: 17px;" value="<?php echo $value['color'][0]; ?>" class="color<?php echo $value['id']; ?>">
                                                             <?php echo $mau[$value['color'][0]]; ?>
                                                         </span>
                                                     <?php }else{ ?>
                                                         <select class="form-select mausac">
-                                                            <option hidden>Chọn Màu</option>
+                                                            <option hidden>Chọn</option>
                                                             <?php foreach ($value['color'] as $key1 => $value1): ?>
                                                                 <option value="<?php echo $value1['MaHienThi'].','.$value['id']; ?>"><?php echo $mau[$value1['MaHienThi']] ?>
                                                                 </option>
                                                             <?php endforeach ?>
                                                         </select>
                                                     <?php } ?>
-                                                    
+                                                </td>
+                                                <td class="pro-quantity">
+                                                    <?php if($value['size'] != ""){ ?>
+                                                        <span style="font-size: 17px;">
+                                                            Size - <?php echo $value['size']; ?>
+                                                        </span>
+                                                    <?php }else{ ?>
+                                                        <select class="form-select kichthuoc">
+                                                            <option hidden>Chọn</option>
+                                                            <option value="S,<?php echo $value['id']; ?>">S</option>
+                                                            <option value="M,<?php echo $value['id']; ?>">M</option>
+                                                            <option value="L,<?php echo $value['id']; ?>">L</option>
+                                                            <option value="XL,<?php echo $value['id']; ?>">XL</option>
+                                                            <option value="XXL,<?php echo $value['id']; ?>">XXL</option>
+                                                        </select>
+                                                    <?php } ?>
                                                 </td>
                                                 <td class="pro-price">
                                                     <span class="amount"><?php echo number_format($value['price']); ?>đ</span>
@@ -177,6 +193,28 @@
             var masanpham = valueSelected.split(',')[1]
             $.get($('.url_suagiohang').val() + 'sua-mau/' + masanpham + '/' + mau + '/', function(data){
                 location.reload()
+            });
+        });
+
+        $('.kichthuoc').on('change', function (e) {
+            var valueSelected = this.value;
+            var kichthuoc = valueSelected.split(',')[0]
+            var masanpham = valueSelected.split(',')[1]
+            var mausac = $('.color'+masanpham).attr('value')
+
+            if(mausac == undefined){
+                alert("Vui lòng chọn màu sắc cho sản phẩm trước!")
+                return;
+            }
+
+            var url = $('.url_suagiohang').val() + 'sua-kich-thuoc/' + masanpham + '/' + mausac + '/' + kichthuoc + '/'
+
+            $.get(url, function(data){
+                if(data == 1){
+                    location.reload()
+                }else{
+                    alert("Kích thước size " + kichthuoc + " không có sản phẩm nào!")
+                }
             });
         });
 

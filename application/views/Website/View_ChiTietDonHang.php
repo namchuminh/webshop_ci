@@ -29,6 +29,7 @@
                                     <th class="pro-thumbnail">Hình Ảnh</th>
                                     <th class="pro-title">Tên Sản Phẩm</th>
                                     <th class="pro-price">Màu Sắc</th>
+                                    <th class="pro-price">Kích Thước</th>
                                     <th class="pro-price">Giá Bán</th>
                                     <th class="pro-quantity">Số Lượng</th>
                                     <th class="pro-subtotal">Thành Tiền</th>
@@ -52,6 +53,8 @@
                                         </td>
                                         <td class="pro-quantity">
                                             <?php echo $value['MauSac']; ?>
+                                        </td><td class="pro-quantity">
+                                            Size - <?php echo $value['KichThuoc']; ?>
                                         </td>
                                         <td class="pro-price">
                                             <?php echo number_format($value['GiaBan']); ?>đ

@@ -68,37 +68,84 @@
                                     <p><?php echo $detail[0]['MoTaNgan']; ?></p>
                                 </div>
 
-                                <span class="availability">Trạng Thái: <span>Còn <?php echo $detail[0]['SoLuong']; ?> Sản Phẩm</span></span>
+                                <span class="availability">Trạng Thái: <span>
+                                    <?php if($this->Model_SanPham->getAllNumberById($detail[0]['MaSanPham'])[0]['TongSoLuong'] == NULL){ ?>
+                                        Hết hàng!
+                                    <?php }else{ ?>
+                                        Còn <?php echo $this->Model_SanPham->getAllNumberById($detail[0]['MaSanPham'])[0]['TongSoLuong']; ?> sản phẩm
+                                    <?php } ?>
+                                </span></span>
 
-                                <div class="quantity-colors">
-                                    <div class="quantity">
-                                        <h5>Số Lượng:</h5>
-                                        <div class="pro-qty"><input type="text" class="soluong" value="1"></div>
-                                    </div>                            
-                                </div>
-                                <div class="quantity-colors">
-                                    <div class="colors" style="width: 100%;">
-                                        <h5>Màu Sắc:</h5>
-                                        <ul class="sidebar-list d-flex" style="margin-top: -5px;">
-                                            <?php foreach ($color as $key => $value): ?>
-                                                <li>
-                                                    <a>
-                                                        <span value="<?php echo $value['MaHienThi']; ?>" class="color" style="border: 1px solid #d8d8d8;width: 30px; height: 30px;background-color: <?php echo $value['MaHienThi']; ?>;"></span>
-                                                    </a>
-                                                </li>
-                                            <?php endforeach ?>
-                                        </ul>
-                                        <p class="error-cart"></p>
+                                <?php if($this->Model_SanPham->getAllNumberById($detail[0]['MaSanPham'])[0]['TongSoLuong'] == NULL){ ?>
+                                    <div class="quantity-colors">
+                                        <div class="quantity">
+                                            <h5>Số Lượng:</h5>
+                                            <div class="pro-qty"><input type="number" class="soluong" value="0" max="0" disabled></div>
+                                        </div>                            
                                     </div>
-                                </div>
-                                <div class="actions">
-                                    <button class="them-gio-hang-ct">
-                                        <i class="ti-shopping-cart"></i>
-                                        <span>THÊM GIỎ HÀNG</span>
-                                    </button>
-                                    <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button>
+                                    <div class="quantity-colors">
+                                        <div class="colors" style="width: 100%;">
+                                            <h5>Màu Sắc:</h5>
+                                            <ul class="sidebar-list d-flex" style="margin-top: -5px;">
+                                                <?php foreach ($color as $key => $value): ?>
+                                                    <li>
+                                                        <a>
+                                                            <span class="color" style="border: 1px solid #d8d8d8;width: 30px; height: 30px;background-color: #ffffff;"></span>
+                                                        </a>
+                                                    </li>
+                                                <?php endforeach ?>
+                                            </ul>
+                                            <p class="error-cart"></p>
+                                        </div>
+                                    </div>
+                                    <div class="actions">
+                                        <button class="them-gio-hang-ct" disabled>
+                                            <i class="ti-shopping-cart"></i>
+                                            <span style="text-decoration: line-through;">THÊM GIỎ HÀNG</span>
+                                        </button>
+                                        <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button>
+                                    </div>
+                                <?php }else{ ?>
+                                    <div class="quantity-colors">
+                                        <div class="quantity">
+                                            <h5>Số Lượng:</h5>
+                                            <div class="pro-qty"><input type="text" class="soluong" value="1"></div>
+                                        </div>                            
+                                    </div>
+                                    <div class="quantity-colors">
+                                        <div class="colors" style="width: 100%;">
+                                            <h5>Màu Sắc:</h5>
+                                            <ul class="sidebar-list d-flex" style="margin-top: -5px;">
+                                                <?php foreach ($color as $key => $value): ?>
+                                                    <li>
+                                                        <a>
+                                                            <span value="<?php echo $value['MaHienThi']; ?>" class="color" style="border: 1px solid #d8d8d8;width: 30px; height: 30px;background-color: <?php echo $value['MaHienThi']; ?>;"></span>
+                                                        </a>
+                                                    </li>
+                                                <?php endforeach ?>
+                                            </ul>
+                                            <p class="error-cart"></p>
+                                        </div>
+                                    </div>
+                                    <div class="quantity-colors size-list d-none" style="margin-top: -15px;">
+                                        <div class="colors" style="width: 100%;">
+                                            <h5>Kích Thước:</h5>
+                                            <ul class="sidebar-list d-flex list_size" style="gap: 5px;">
+                                                
+                                            </ul>
+                                            <p class="error-cart-size"></p>
+                                        </div>                           
+                                    </div>
+                                    <div class="actions">
+                                        <button class="them-gio-hang-ct">
+                                            <i class="ti-shopping-cart"></i>
+                                            <span>THÊM GIỎ HÀNG</span>
+                                        </button>
+                                        <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button>
+                                    </div>
+                                <?php } ?>
 
-                                </div>
+                                
 
                                 <div class="tags">
                                     <h5>Thẻ:</h5>
@@ -272,20 +319,74 @@
             </div>
         </div>
     </div>
-    <input type="hidden" class="url_giohang" value="<?php echo base_url('gio-hang/them-chi-tiet/'.$detail[0]['MaSanPham'].'/'); ?>">
-    <input type="hidden" class="mausac" value="">
+    <?php if($this->Model_SanPham->getAllNumberById($detail[0]['MaSanPham'])[0]['TongSoLuong'] != NULL){ ?>
+        <input type="hidden" class="url_giohang" value="<?php echo base_url('gio-hang/them-chi-tiet/'.$detail[0]['MaSanPham'].'/'); ?>">
+        <input type="hidden" class="mausac" value="">
+        <input type="hidden" class="kichthuoc" value="">
+    <?php } ?>
+    
 <style type="text/css">
     #more-info img{
         width: 100%;
+    }
+    .size-product{
+        padding: 5px;
+        padding-right: 15px;
+        padding-left: 15px;
+        border: 1px solid #adadad;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #fdfdfd;
+    }
+    .no-size{
+        padding: 5px;
+        padding-right: 15px;
+        padding-left: 15px;
+        text-align: center;
+        cursor: no-drop;
+        color: #bcbcbc;
+        text-decoration: line-through;
+        border: 1px solid #f3f3f3;
+        border-radius: 5px;
     }
 </style>
 <?php require(__DIR__.'/layouts/footer.php'); ?>
 <script type="text/javascript">
     $(document).ready(function(){
         var color = ""
+        var masanpham = "<?php echo $detail[0]['MaSanPham']; ?>"
         $(".color").click(function(e){
             color = $(this).attr("value")
             $('.mausac').val(color)
+            $('.size-list').removeClass("d-none")
+            $('.error-cart').html("")
+            $.post("<?php echo base_url('lay-so-luong/'); ?>", {masanpham, tenmausac: color}, function(data){
+                var data = JSON.parse(data)
+                var size = [];
+                for (var i = 0; i < data.length; i++) {
+                    size.push(data[i].TenKichThuoc);
+                }
+
+                var list_size = ["S","M","L","XL","XXL"]
+                $(".list_size").empty();
+                for (var i = 0; i < list_size.length; i++) {
+                    if(size.includes(list_size[i])){
+                        $(".list_size").append('<li class="size-item size-product" value='+list_size[i]+'>'+ list_size[i] +' </li>')
+                    }else{
+                        $(".list_size").append('<li class="no-size">'+ list_size[i] +' </li>')
+                    }
+                }
+
+                $(".list_size li:last-child").attr("style", "margin-bottom: auto;");
+
+                $(".size-item").click(function(){
+                    $('.error-cart-size').html("")
+                    $('.kichthuoc').val($(this).attr("value"))
+                })
+
+            });
+
         })
         $(".them-gio-hang-ct").click(function(e){
             if($('.soluong').val() == "" || $('.soluong').val() == 0){
@@ -297,11 +398,20 @@
                 return
             }
 
-            var url = $('.url_giohang').val() + $('.soluong').val() + '/' + $('.mausac').val() + '/'
+            if($('.kichthuoc').val() == ""){
+                $('.error-cart').html("")
+                $('.error-cart-size').html("Vui Lòng Chọn Kích Thước Sản Phẩm!")
+                return
+            }
+
+            var url = $('.url_giohang').val() + $('.soluong').val() + '/' + $('.mausac').val() + '/' + $('.kichthuoc').val() + '/'
+
+            console.log(url)
+
             $.get(url, function(data){
                 var data = JSON.parse(data)
                 $('.cart-info').html('(' + data.numberCart + ') ' + data.sumCart + 'đ')
-                $('.error-cart').html("Đã Thêm Sản Phẩm Vào Giỏ Hàng!")
+                $('.error-cart-size').html("Đã Thêm Sản Phẩm Vào Giỏ Hàng!")
             });
 
         });

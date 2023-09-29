@@ -635,9 +635,11 @@
             e.preventDefault()
             var urlThem = $(this).attr("value");
             $.get(urlThem, function(data){
-
-                var data = JSON.parse(data)
-                $('.cart-info').html('(' + data.numberCart + ') ' + data.sumCart + 'đ')
+                if(data){
+                    var data = JSON.parse(data)
+                    $('.cart-info').html('(' + data.numberCart + ') ' + data.sumCart + 'đ')
+                }
+                
             })
 
         });

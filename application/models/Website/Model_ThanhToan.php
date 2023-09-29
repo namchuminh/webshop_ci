@@ -48,6 +48,18 @@ class Model_ThanhToan extends CI_Model {
 	    return $lastInsertedId;
 	}
 
+	public function getNumberOld($MaSanPham,$MaMauSac,$TenKichThuoc){
+		$sql = "SELECT * FROM kichthuoc WHERE MaSanPham = ? AND MaMauSac = ? AND TenKichThuoc = ?";
+		$result = $this->db->query($sql,array($MaSanPham,$MaMauSac,$TenKichThuoc));
+		return $result->result_array();
+	}
+
+	public function updateNumberProductPay($SoLuong,$MaSanPham,$MaMauSac,$TenKichThuoc){
+		$sql = "UPDATE `kichthuoc` SET `SoLuong`= ? WHERE `MaSanPham`= ? AND `MaMauSac`= ? AND `TenKichThuoc`= ?";
+		$result = $this->db->query($sql, array($SoLuong,$MaSanPham,$MaMauSac,$TenKichThuoc));
+		return $result;
+	}
+
 }
 
 /* End of file Model_ThanhToan.php */

@@ -10,6 +10,12 @@ class Model_KhachHang extends CI_Model {
 		
 	}
 
+	public function updateNumberProductCancel($SoLuong,$MaSanPham,$MaMauSac,$TenKichThuoc){
+		$sql = "UPDATE `kichthuoc` SET `SoLuong`= ? WHERE `MaSanPham`= ? AND `MaMauSac`= ? AND `TenKichThuoc`= ?";
+		$result = $this->db->query($sql, array($SoLuong,$MaSanPham,$MaMauSac,$TenKichThuoc));
+		return $result;
+	}
+
 	public function countViewHistory($makhachhang){
 		$sql = "SELECT * FROM lichsuxem WHERE MaKHachHang = ?";
 		$result = $this->db->query($sql, array($makhachhang));

@@ -15,6 +15,8 @@ class KhachHang extends MY_Controller {
 
 		$this->load->model('Website/Model_KhachHang');
 		$this->load->model('Website/Model_SanPham');
+		$this->load->model('Website/Model_ThanhToan');
+		$this->load->model('Website/Model_GioHang');
 		$data = array();
 	}
 
@@ -42,10 +44,25 @@ class KhachHang extends MY_Controller {
 
 		$data = $this->Model_KhachHang->getDetailById($madonhang);
 
+		$mausac = [
+			'Xanh' => 'blue',
+            'Đỏ' => 'red',
+            'Vàng' => 'yellow',
+            'Trắng' => 'white',
+            'Đen' => 'black',
+            'Hồng' => 'pink'
+		];
+
 		foreach ($data as $key => $value) {
-			$soluongcu = $this->Model_SanPham->getById($value['MaSanPham'])[0]['SoLuong'];
+
+			$tenmausac = $mausac[$value['MauSac']];
+
+			$mamausac = $this->Model_GioHang->getIdColor($value['MaSanPham'], $tenmausac)[0]['MaMauSac'];
+
+			$soluongcu = $this->Model_ThanhToan->getNumberOld($value['MaSanPham'],$mamausac,$value['KichThuoc'])[0]['SoLuong'];
+
 			$soluongmoi = $soluongcu + $value['SoLuong'];
-			$this->Model_SanPham->updateNumberProductCancel($value['MaSanPham'], $soluongmoi);
+			$this->Model_KhachHang->updateNumberProductCancel($soluongmoi,$value['MaSanPham'],$mamausac,$value['KichThuoc']);
 		}
 
 		$this->Model_KhachHang->removeOrder($madonhang);

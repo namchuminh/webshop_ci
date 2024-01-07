@@ -81,11 +81,14 @@
                                                     <?php }else{ ?>
                                                         <select class="form-select kichthuoc">
                                                             <option hidden>Chọn</option>
-                                                            <option value="S,<?php echo $value['id']; ?>">S</option>
-                                                            <option value="M,<?php echo $value['id']; ?>">M</option>
-                                                            <option value="L,<?php echo $value['id']; ?>">L</option>
-                                                            <option value="XL,<?php echo $value['id']; ?>">XL</option>
-                                                            <option value="XXL,<?php echo $value['id']; ?>">XXL</option>
+                                                            <option value="36,<?php echo $value['id']; ?>">Size - 36</option>
+                                                            <option value="37,<?php echo $value['id']; ?>">Size - 37</option>
+                                                            <option value="38,<?php echo $value['id']; ?>">Size - 38</option>
+                                                            <option value="39,<?php echo $value['id']; ?>">Size - 39</option>
+                                                            <option value="40,<?php echo $value['id']; ?>">Size - 40</option>
+                                                            <option value="41,<?php echo $value['id']; ?>">Size - 41</option>
+                                                            <option value="42,<?php echo $value['id']; ?>">Size - 42</option>
+                                                            <option value="43,<?php echo $value['id']; ?>">Size - 43</option>
                                                         </select>
                                                     <?php } ?>
                                                 </td>

@@ -47,7 +47,7 @@
                                                     <div class="action-buttons">
                                                         <button><a style="color: unset;" class="them-gio-hang" value="<?php echo base_url('gio-hang/them/'.$value['MaSanPham'].'/1/'); ?>">THÊM GIỎ HÀNG
                                                         </a></button>
-                                                        <button>Yêu Thích</button>
+                                                        <button class="them-yeu-thich" value="<?php echo base_url('yeu-thich/them/'.$value['MaSanPham']); ?>">Yêu Thích</button>
                                                     </div>
                                                 </div>
                                             </div>

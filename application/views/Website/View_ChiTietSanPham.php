@@ -103,7 +103,7 @@
                                             <i class="ti-shopping-cart"></i>
                                             <span style="text-decoration: line-through;">THÊM GIỎ HÀNG</span>
                                         </button>
-                                        <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button>
+                                        <button class="box them-yeu-thich" data-tooltip="Wishlist" value="<?php echo base_url('yeu-thich/them/'.$detail[0]['MaSanPham']); ?>"><i class="ti-heart"></i></button>
                                     </div>
                                 <?php }else{ ?>
                                     <div class="quantity-colors">
@@ -141,7 +141,7 @@
                                             <i class="ti-shopping-cart"></i>
                                             <span>THÊM GIỎ HÀNG</span>
                                         </button>
-                                        <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button>
+                                        <button class="box them-yeu-thich" data-tooltip="Wishlist" value="<?php echo base_url('yeu-thich/them/'.$detail[0]['MaSanPham']); ?>"><i class="ti-heart"></i></button>
                                     </div>
                                 <?php } ?>
 
@@ -368,7 +368,7 @@
                     size.push(data[i].TenKichThuoc);
                 }
 
-                var list_size = ["S","M","L","XL","XXL"]
+                var list_size = ["36","37","38","39","40","41","42","43"]
                 $(".list_size").empty();
                 for (var i = 0; i < list_size.length; i++) {
                     if(size.includes(list_size[i])){

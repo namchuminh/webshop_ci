@@ -75,14 +75,14 @@
 							   <div class="col-12 mb-40">
 								   <h4 class="checkout-title">Phương Thức Thanh Toán</h4>
 								   <div class="checkout-payment-method">
-									   <div class="single-method">
+									   <div class="single-method ship_code">
 										   <input type="radio" id="payment_check" name="payment-method" value="1">
 										   <label for="payment_check">Thanh Toán Khi Nhận Hàng</label>
 									   </div>
-									   <div class="single-method">
+									   <div class="single-method ship_bank">
 										   <input type="radio" id="payment_bank" name="payment-method" value="2">
 										   <label for="payment_bank">Chuyển Khoản Ngân Hàng</label>
-										   <p data-method="bank" style="font-family: system-ui; display: none;">NGAN HANG: MB BANK <br>SO TAI KHOAN: 1110110246810 <br> CHU TAI KHOAN: BUI TRAN BA TAI <br>NOI DUNG: KHACH HANG <?php echo $_SESSION['khachhang']; ?> THANH TOAN DON HANG <?php echo number_format($_SESSION['sumCart']); ?> VND </p>
+										  	<img class="qr_code" style="width: 50%; margin-top: 30px;" src="<?php echo base_url('uploads/QR_CODE.jpg'); ?>">
 									   </div>
 								   </div>
 								   
@@ -181,5 +181,16 @@
 				}
 			});
 		})
+
+		$(".qr_code").css("display", "none");
+
+		$(".ship_bank").click(function(e){
+			$(".qr_code").css("display", "block");
+		})
+
+		$(".ship_code").click(function(e){
+			$(".qr_code").css("display", "none");
+		})
+
 	})
 </script>

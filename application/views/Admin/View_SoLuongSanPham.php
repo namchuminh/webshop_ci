@@ -95,11 +95,14 @@
                                             <label for="duongdan">Kích Thước</label>
                                             <select name="kichthuoc" required class="form-control" id="exampleFormControlSelect1">
                                                 <option hidden value="">--Chọn Kích Thước--</option>
-                                                <option value="S">S</option>
-                                                <option value="M">M</option>
-                                                <option value="L">L</option>
-                                                <option value="XL">XL</option>
-                                                <option value="XXL">XXL</option>
+                                                <option value="36">Size - 36</option>
+                                                <option value="37">Size - 37</option>
+                                                <option value="38">Size - 38</option>
+                                                <option value="39">Size - 39</option>
+                                                <option value="40">Size - 40</option>
+                                                <option value="41">Size - 41</option>
+                                                <option value="42">Size - 42</option>
+                                                <option value="43">Size - 43</option>
                                             </select>
                                         </div>
 

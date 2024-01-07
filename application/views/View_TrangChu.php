@@ -97,7 +97,13 @@
                             </div>
 
                             <div class="header-wishlist">
-                                <a href="wishlist.html"><img src="<?php echo base_url('public/website/'); ?>images/icons/wishlist.png" alt="Wishlist"> <span></span></a>
+                                <a href="wishlist.html"><img src="<?php echo base_url('public/website/'); ?>images/icons/wishlist.png" alt="Yêu thích"> <span style="font-size: 14px;" class="sl-yeu-thich">
+                                    <?php if(isset($_SESSION['count_wishlist'])){ ?>
+                                        (<?php echo $_SESSION['count_wishlist']; ?>)
+                                    <?php }else{ ?>
+                                        (0)
+                                    <?php } ?>
+                                </span></a>
                             </div>
 
                             <div class="header-mini-cart">
@@ -208,7 +214,7 @@
                                         <div class="image-overlay">
                                             <div class="action-buttons">
                                                 <button><a class="them-gio-hang" style="color: unset;" value="<?php echo base_url('gio-hang/them/'.$value['MaSanPham'].'/1/'); ?>">Thêm Giỏ Hàng</a></button>
-                                                <button>Yêu Thích</button>
+                                                <button class="them-yeu-thich" value="<?php echo base_url('yeu-thich/them/'.$value['MaSanPham']); ?>">Yêu Thích</button>
                                             </div>
                                         </div>
                                     </div>
@@ -641,7 +647,18 @@
                 }
                 
             })
+        });
 
+        $(".them-yeu-thich").click(function(e){
+            e.preventDefault()
+            var urlThem = $(this).attr("value");
+            $.get(urlThem, function(data){
+                if(data.length <= 2){
+                    $('.sl-yeu-thich').html('('+data+')')
+                }else{
+                    alert(data)
+                }
+            })
         });
     });
 </script>

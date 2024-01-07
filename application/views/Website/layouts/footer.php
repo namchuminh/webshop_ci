@@ -108,6 +108,18 @@
             })
         });
     });
+
+    $(".them-yeu-thich").click(function(e){
+        e.preventDefault()
+        var urlThem = $(this).attr("value");
+        $.get(urlThem, function(data){
+            if(data.length <= 2){
+                $('.sl-yeu-thich').html('('+data+')')
+            }else{
+                alert(data)
+            }
+        })
+    });
 </script>
 </body>
 

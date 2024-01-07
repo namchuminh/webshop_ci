@@ -96,7 +96,15 @@
                             </div>
 
                             <div class="header-wishlist">
-                                <a href="wishlist.html"><img src="<?php echo base_url('public/website/'); ?>images/icons/wishlist.png" alt="Wishlist"> <span></span></a>
+                                <a href="<?php echo base_url('yeu-thich/'); ?>"><img src="<?php echo base_url('public/website/'); ?>images/icons/wishlist.png" alt="Yêu thích"> 
+                                    <span class="sl-yeu-thich" style="font-size: 14px;">
+                                        <?php if(isset($_SESSION['count_wishlist'])){ ?>
+                                            (<?php echo $_SESSION['count_wishlist']; ?>)
+                                        <?php }else{ ?>
+                                            (0)
+                                        <?php } ?>
+                                    </span>
+                                </a>
                             </div>
 
                             <div class="header-mini-cart">

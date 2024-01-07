@@ -184,4 +184,10 @@ $route['admin/giao-dien/trang/(:any)'] = 'Admin/GiaoDien/Page/$1';
 $route['admin/giao-dien/sua/(:any)'] = 'Admin/GiaoDien/Update/$1';
 $route['admin/giao-dien/xoa/(:any)'] = 'Admin/GiaoDien/delete/$1';
 
+//Route Wishlist
+$route['yeu-thich'] = 'Website/YeuThich/index';
+$route['yeu-thich/them/(:any)'] = 'Website/YeuThich/add/$1';
+$route['yeu-thich/xoa/(:any)'] = 'Website/YeuThich/delete/$1';
+
+
 
